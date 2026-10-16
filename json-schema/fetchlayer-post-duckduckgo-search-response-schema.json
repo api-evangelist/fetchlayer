@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/fetchlayer/main/json-schema/fetchlayer-post-duckduckgo-search-response-schema.json",
+  "title": "PostDuckduckgoSearchResponse",
+  "x-generated": "2026-10-16",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/_ae-authored/fetchlayer-openapi-generated.yml#/components/schemas/PostDuckduckgoSearchResponse",
+  "type": "object",
+  "properties": {
+    "resultType": {
+      "type": "string"
+    },
+    "region": {
+      "type": "string"
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "position": {
+            "type": "integer"
+          },
+          "title": {
+            "type": "string"
+          },
+          "domain": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    "ads": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "domain": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "zeroClick": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "endOfResults": {
+      "type": "boolean"
+    },
+    "pagesScraped": {
+      "type": "integer"
+    },
+    "nextCursor": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/fetchlayer/main/json-schema/fetchlayer-post-douyin-douyinid-response-schema.json",
+  "title": "PostDouyinDouyinidResponse",
+  "x-generated": "2026-10-16",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/_ae-authored/fetchlayer-openapi-generated.yml#/components/schemas/PostDouyinDouyinidResponse",
+  "type": "object",
+  "properties": {
+    "video": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "stats": {
+          "type": "object",
+          "properties": {
+            "likes": {
+              "type": "integer"
+            },
+            "comments": {
+              "type": "integer"
+            },
+            "shares": {
+              "type": "integer"
+            },
+            "saves": {
+              "type": "integer"
+            }
+          }
+        },
+        "author": {
+          "type": "object",
+          "properties": {
+            "nickname": {
+              "type": "string"
+            },
+            "followerCount": {
+              "type": "integer"
+            }
+          }
+        },
+        "collection": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "episode": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    }
+  }
+}

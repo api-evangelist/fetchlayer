@@ -1,0 +1,1279 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/mcp-server-card/v1.json",
+  "version": "1.0",
+  "protocolVersion": "2025-11-25",
+  "serverInfo": {
+    "name": "upbutler",
+    "title": "UpButler",
+    "version": "2.0.0"
+  },
+  "description": "Uptime monitoring, status pages and AI incident reports. Plug in a service with services_add, report incidents, push component statuses, subscribe to status pages.",
+  "iconUrl": "https://upbutler.com/brand/mark-192.png",
+  "documentationUrl": "https://upbutler.com/docs/connect-claude",
+  "transport": {
+    "type": "streamable-http",
+    "endpoint": "https://upbutler.com/mcp"
+  },
+  "authentication": {
+    "required": true,
+    "schemes": [
+      "oauth2",
+      "bearer"
+    ],
+    "description": "OAuth 2.1 with PKCE and dynamic client registration (discovery: /.well-known/oauth-protected-resource/mcp; scopes read, incidents, write), or \"Authorization: Bearer ub_live_...\" with an API key. No account? The keyless endpoint https://upbutler.com/mcp/public serves the public tools (agent_bootstrap, heartbeat_ping, public_*) and connects the session to a bootstrapped workspace.",
+    "resourceMetadata": "https://upbutler.com/.well-known/oauth-protected-resource/mcp",
+    "authorizationServer": "https://upbutler.com",
+    "scopes": [
+      "read",
+      "incidents",
+      "write"
+    ]
+  },
+  "endpoints": {
+    "authenticated": "https://upbutler.com/mcp",
+    "keyless": "https://upbutler.com/mcp/public"
+  },
+  "capabilities": {
+    "tools": {
+      "listChanged": false
+    },
+    "prompts": {
+      "listChanged": false
+    },
+    "resources": {
+      "subscribe": false,
+      "listChanged": false
+    }
+  },
+  "tools": [
+    {
+      "name": "agent_bootstrap",
+      "title": "Create a workspace + API key with no human in the loop",
+      "requiresAuth": false
+    },
+    {
+      "name": "services_add",
+      "title": "Plug in a service: monitor + status page component in one call",
+      "requiresAuth": true
+    },
+    {
+      "name": "heartbeat_ping",
+      "title": "Send a heartbeat (no API key needed — the token is the secret)",
+      "requiresAuth": false
+    },
+    {
+      "name": "components_push",
+      "title": "Push one component status by its push token (no API key needed)",
+      "requiresAuth": false
+    },
+    {
+      "name": "agent_whoami",
+      "title": "Identify the calling key",
+      "requiresAuth": true
+    },
+    {
+      "name": "agent_claim",
+      "title": "Get a fresh claim link for this unclaimed workspace, and optionally email it to your human",
+      "requiresAuth": true
+    },
+    {
+      "name": "monitors_list",
+      "title": "List monitors",
+      "requiresAuth": true
+    },
+    {
+      "name": "monitors_create",
+      "title": "Create a monitor",
+      "requiresAuth": true
+    },
+    {
+      "name": "monitors_get",
+      "title": "Get a monitor with recent checks and stats",
+      "requiresAuth": true
+    },
+    {
+      "name": "monitors_update",
+      "title": "Update a monitor",
+      "requiresAuth": true
+    },
+    {
+      "name": "monitors_delete",
+      "title": "Delete a monitor and its history",
+      "requiresAuth": true
+    },
+    {
+      "name": "monitors_check",
+      "title": "Run a check right now",
+      "requiresAuth": true
+    },
+    {
+      "name": "monitors_checks",
+      "title": "List checks (raw results, 30 days)",
+      "requiresAuth": true
+    },
+    {
+      "name": "checks_get",
+      "title": "Get one check with full evidence",
+      "requiresAuth": true
+    },
+    {
+      "name": "monitors_schema",
+      "title": "MCP monitor: tool schema baseline and change history",
+      "requiresAuth": true
+    },
+    {
+      "name": "monitors_schema_accept",
+      "title": "MCP monitor: accept the pending schema change",
+      "requiresAuth": true
+    },
+    {
+      "name": "monitors_balance",
+      "title": "Balance monitor: history and run-out projection",
+      "requiresAuth": true
+    },
+    {
+      "name": "monitors_metrics",
+      "title": "Per-check metrics (time to first token, MCP step timings, balance)",
+      "requiresAuth": true
+    },
+    {
+      "name": "pages_list",
+      "title": "List status pages",
+      "requiresAuth": true
+    },
+    {
+      "name": "pages_create",
+      "title": "Create a status page",
+      "requiresAuth": true
+    },
+    {
+      "name": "pages_get",
+      "title": "Get a status page with components",
+      "requiresAuth": true
+    },
+    {
+      "name": "pages_update",
+      "title": "Update page settings, theme, branding or domain",
+      "requiresAuth": true
+    },
+    {
+      "name": "pages_delete",
+      "title": "Delete a status page, its components and subscribers",
+      "requiresAuth": true
+    },
+    {
+      "name": "pages_verifyDomain",
+      "title": "Check the custom domain DNS now",
+      "requiresAuth": true
+    },
+    {
+      "name": "pages_preview",
+      "title": "Get the rendered public status data (as visitors see it)",
+      "requiresAuth": true
+    },
+    {
+      "name": "pages_groups",
+      "title": "Replace the ordered list of component groups",
+      "requiresAuth": true
+    },
+    {
+      "name": "pages_subscribers",
+      "title": "List subscribers of a status page",
+      "requiresAuth": true
+    },
+    {
+      "name": "pages_analytics",
+      "title": "Status page analytics: views, visitors, agent reads, subscribers",
+      "requiresAuth": true
+    },
+    {
+      "name": "pages_analytics_incidents",
+      "title": "Per-incident analytics: views, peak, time to first view, notifications",
+      "requiresAuth": true
+    },
+    {
+      "name": "subscribers_delete",
+      "title": "Remove a subscriber",
+      "requiresAuth": true
+    },
+    {
+      "name": "components_create",
+      "title": "Add a component to a status page",
+      "requiresAuth": true
+    },
+    {
+      "name": "components_update",
+      "title": "Update a component (name, group, source, visibility)",
+      "requiresAuth": true
+    },
+    {
+      "name": "components_delete",
+      "title": "Delete a component",
+      "requiresAuth": true
+    },
+    {
+      "name": "components_override",
+      "title": "Manually set (or clear) a component status",
+      "requiresAuth": true
+    },
+    {
+      "name": "pages_push",
+      "title": "Push statuses for many components at once",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_list",
+      "title": "List incidents and maintenance",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_get",
+      "title": "Get an incident with its timeline and AI reports",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_create",
+      "title": "Report an incident",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_update",
+      "title": "Post an incident update",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_edit",
+      "title": "Change an incident's impact or title, or publish a draft automatic incident",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_resolve",
+      "title": "Resolve an incident",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_analyze",
+      "title": "Generate (or regenerate) the AI report for an incident",
+      "requiresAuth": true
+    },
+    {
+      "name": "maintenance_create",
+      "title": "Schedule maintenance",
+      "requiresAuth": true
+    },
+    {
+      "name": "channels_list",
+      "title": "List alert channels",
+      "requiresAuth": true
+    },
+    {
+      "name": "channels_create",
+      "title": "Create an alert channel",
+      "requiresAuth": true
+    },
+    {
+      "name": "channels_update",
+      "title": "Update an alert channel",
+      "requiresAuth": true
+    },
+    {
+      "name": "channels_delete",
+      "title": "Delete an alert channel",
+      "requiresAuth": true
+    },
+    {
+      "name": "channels_test",
+      "title": "Send a test notification",
+      "requiresAuth": true
+    },
+    {
+      "name": "public_status",
+      "title": "Public status of a page (no auth)",
+      "requiresAuth": false
+    },
+    {
+      "name": "public_incidents",
+      "title": "Public incident history of a page",
+      "requiresAuth": false
+    },
+    {
+      "name": "public_incident",
+      "title": "One public incident with its updates",
+      "requiresAuth": false
+    },
+    {
+      "name": "public_subscribe",
+      "title": "Subscribe to a status page (email, webhook, Slack, Discord or Telegram)",
+      "requiresAuth": false
+    },
+    {
+      "name": "public_subscriber_get",
+      "title": "View a subscription (requires its manage token)",
+      "requiresAuth": false
+    },
+    {
+      "name": "public_subscriber_update",
+      "title": "Change which components a subscription follows (requires the manage token)",
+      "requiresAuth": false
+    },
+    {
+      "name": "public_unsubscribe",
+      "title": "Unsubscribe (requires the manage token)",
+      "requiresAuth": false
+    },
+    {
+      "name": "public_responseTimes",
+      "title": "Public response-time series of a component (p50/p95)",
+      "requiresAuth": false
+    },
+    {
+      "name": "workspace_get",
+      "title": "Current workspace, plan, limits and usage",
+      "requiresAuth": true
+    },
+    {
+      "name": "workspace_quota",
+      "title": "Every metered plan limit: used, limit, percent and warning threshold",
+      "requiresAuth": true
+    },
+    {
+      "name": "workspace_update",
+      "title": "Rename the workspace",
+      "requiresAuth": true
+    },
+    {
+      "name": "members_list",
+      "title": "List workspace members and pending invites",
+      "requiresAuth": true
+    },
+    {
+      "name": "keys_list",
+      "title": "List API keys",
+      "requiresAuth": true
+    },
+    {
+      "name": "keys_create",
+      "title": "Create an API key",
+      "requiresAuth": true
+    },
+    {
+      "name": "keys_revoke",
+      "title": "Revoke an API key",
+      "requiresAuth": true
+    },
+    {
+      "name": "events_list",
+      "title": "Poll the event stream",
+      "requiresAuth": true
+    },
+    {
+      "name": "plans_list",
+      "title": "Available plans and limits",
+      "requiresAuth": false
+    },
+    {
+      "name": "billing_checkout",
+      "title": "Start a checkout to upgrade the workspace",
+      "requiresAuth": true
+    },
+    {
+      "name": "import_preview",
+      "title": "Dry run: what an import would create",
+      "requiresAuth": true
+    },
+    {
+      "name": "import_apply",
+      "title": "Run an import (background job)",
+      "requiresAuth": true
+    },
+    {
+      "name": "import_status",
+      "title": "Progress and result of an import job",
+      "requiresAuth": true
+    },
+    {
+      "name": "import_jobs",
+      "title": "Recent import jobs",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_ack",
+      "title": "Acknowledge an incident or a down monitor",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_unack",
+      "title": "Remove an acknowledgement",
+      "requiresAuth": true
+    },
+    {
+      "name": "oncall_current",
+      "title": "Who is on call right now",
+      "requiresAuth": true
+    },
+    {
+      "name": "oncall_schedules_list",
+      "title": "List on-call schedules",
+      "requiresAuth": true
+    },
+    {
+      "name": "oncall_schedules_get",
+      "title": "Get a schedule with upcoming shifts",
+      "requiresAuth": true
+    },
+    {
+      "name": "oncall_schedules_create",
+      "title": "Create a weekly on-call rotation (Business plan)",
+      "requiresAuth": true
+    },
+    {
+      "name": "oncall_schedules_update",
+      "title": "Update a schedule",
+      "requiresAuth": true
+    },
+    {
+      "name": "oncall_schedules_delete",
+      "title": "Delete a schedule",
+      "requiresAuth": true
+    },
+    {
+      "name": "oncall_overrides_create",
+      "title": "Put someone on call for a period (override)",
+      "requiresAuth": true
+    },
+    {
+      "name": "oncall_overrides_delete",
+      "title": "Remove an override",
+      "requiresAuth": true
+    },
+    {
+      "name": "oncall_members",
+      "title": "Members with their paging contact status",
+      "requiresAuth": true
+    },
+    {
+      "name": "escalation_list",
+      "title": "List escalation policies",
+      "requiresAuth": true
+    },
+    {
+      "name": "escalation_create",
+      "title": "Create an escalation policy (Business plan)",
+      "requiresAuth": true
+    },
+    {
+      "name": "escalation_update",
+      "title": "Update an escalation policy",
+      "requiresAuth": true
+    },
+    {
+      "name": "escalation_delete",
+      "title": "Delete an escalation policy",
+      "requiresAuth": true
+    },
+    {
+      "name": "audit_list",
+      "title": "Audit log: sign-ins, 2FA changes, keys, members, billing, deletions, domains",
+      "requiresAuth": true
+    },
+    {
+      "name": "regions_list",
+      "title": "List check regions and probe health",
+      "requiresAuth": true
+    },
+    {
+      "name": "monitors_regions",
+      "title": "Per-region latency and failures for a monitor",
+      "requiresAuth": true
+    },
+    {
+      "name": "probes_list",
+      "title": "List private probes",
+      "requiresAuth": true
+    },
+    {
+      "name": "probes_create",
+      "title": "Create a private probe",
+      "requiresAuth": true
+    },
+    {
+      "name": "probes_update",
+      "title": "Rename a private probe",
+      "requiresAuth": true
+    },
+    {
+      "name": "probes_rotate",
+      "title": "Rotate a private probe token",
+      "requiresAuth": true
+    },
+    {
+      "name": "probes_delete",
+      "title": "Delete a private probe",
+      "requiresAuth": true
+    },
+    {
+      "name": "monitors_proxy",
+      "title": "Proxy monitor: the pool and the latest result per proxy",
+      "requiresAuth": true
+    },
+    {
+      "name": "deploys_create",
+      "title": "Record a deploy",
+      "requiresAuth": true
+    },
+    {
+      "name": "deploys_list",
+      "title": "List deploys",
+      "requiresAuth": true
+    },
+    {
+      "name": "deploys_delete",
+      "title": "Delete a deploy marker",
+      "requiresAuth": true
+    },
+    {
+      "name": "deploy_hooks_list",
+      "title": "List deploy hooks, with the last delivery and the last guard verdict",
+      "requiresAuth": true
+    },
+    {
+      "name": "deploy_hooks_create",
+      "title": "Create a deploy hook URL",
+      "requiresAuth": true
+    },
+    {
+      "name": "deploy_hooks_deliveries",
+      "title": "Recent deploy hook deliveries",
+      "requiresAuth": true
+    },
+    {
+      "name": "deploy_hooks_get",
+      "title": "Get a deploy hook",
+      "requiresAuth": true
+    },
+    {
+      "name": "deploy_hooks_update",
+      "title": "Update a deploy hook",
+      "requiresAuth": true
+    },
+    {
+      "name": "deploy_hooks_rotate",
+      "title": "Rotate a deploy hook URL",
+      "requiresAuth": true
+    },
+    {
+      "name": "deploy_hooks_delete",
+      "title": "Delete a deploy hook",
+      "requiresAuth": true
+    },
+    {
+      "name": "deploy_mappings_list",
+      "title": "List project → monitor mappings",
+      "requiresAuth": true
+    },
+    {
+      "name": "deploy_mappings_resolve",
+      "title": "Preview which monitors a deploy would be guarded against",
+      "requiresAuth": true
+    },
+    {
+      "name": "deploy_mappings_put",
+      "title": "Set the monitors a project's deploys are guarded against",
+      "requiresAuth": true
+    },
+    {
+      "name": "deploy_mappings_delete",
+      "title": "Remove a project mapping",
+      "requiresAuth": true
+    },
+    {
+      "name": "deploys_guards_list",
+      "title": "List deploy guards",
+      "requiresAuth": true
+    },
+    {
+      "name": "previews_settings_get",
+      "title": "Get the preview check settings",
+      "requiresAuth": true
+    },
+    {
+      "name": "previews_settings_update",
+      "title": "Change the preview check settings",
+      "requiresAuth": true
+    },
+    {
+      "name": "previews_list",
+      "title": "List preview check runs",
+      "requiresAuth": true
+    },
+    {
+      "name": "previews_run",
+      "title": "Check a preview deployment now",
+      "requiresAuth": true
+    },
+    {
+      "name": "previews_get",
+      "title": "Is my pull request's preview green? The verdict of a preview check run",
+      "requiresAuth": true
+    },
+    {
+      "name": "previews_fix",
+      "title": "Ask the Fix with Claude responder to repair a failing preview",
+      "requiresAuth": true
+    },
+    {
+      "name": "digest_settings",
+      "title": "Weekly digest settings",
+      "requiresAuth": true
+    },
+    {
+      "name": "digest_settings_update",
+      "title": "Change the workspace timezone or your weekly digest opt-in",
+      "requiresAuth": true
+    },
+    {
+      "name": "digest_preview",
+      "title": "Build the weekly digest on demand",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_postmortem",
+      "title": "Draft a postmortem with AI",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_postmortem_get",
+      "title": "Get an incident's postmortem",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_postmortem_save",
+      "title": "Save an edited postmortem (new version)",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_postmortem_publish",
+      "title": "Publish a post-incident report to status pages",
+      "requiresAuth": true
+    },
+    {
+      "name": "templates_list",
+      "title": "List incident templates",
+      "requiresAuth": true
+    },
+    {
+      "name": "templates_create",
+      "title": "Create an incident template",
+      "requiresAuth": true
+    },
+    {
+      "name": "templates_update",
+      "title": "Update an incident template",
+      "requiresAuth": true
+    },
+    {
+      "name": "templates_delete",
+      "title": "Delete an incident template",
+      "requiresAuth": true
+    },
+    {
+      "name": "templates_render",
+      "title": "Fill in a template",
+      "requiresAuth": true
+    },
+    {
+      "name": "responders_list",
+      "title": "List agent responders",
+      "requiresAuth": true
+    },
+    {
+      "name": "responders_get",
+      "title": "Get an agent responder",
+      "requiresAuth": true
+    },
+    {
+      "name": "responders_create",
+      "title": "Create an agent responder",
+      "requiresAuth": true
+    },
+    {
+      "name": "responders_update",
+      "title": "Update an agent responder",
+      "requiresAuth": true
+    },
+    {
+      "name": "responders_delete",
+      "title": "Delete an agent responder",
+      "requiresAuth": true
+    },
+    {
+      "name": "responders_test",
+      "title": "Send a test page",
+      "requiresAuth": true
+    },
+    {
+      "name": "responder_wait_for_page",
+      "title": "Wait for the next page of an agent responder (long-poll)",
+      "requiresAuth": true
+    },
+    {
+      "name": "responder_ack_page",
+      "title": "Confirm that a page was received",
+      "requiresAuth": true
+    },
+    {
+      "name": "runbooks_list",
+      "title": "List runbooks",
+      "requiresAuth": true
+    },
+    {
+      "name": "runbooks_get",
+      "title": "Get the runbook of a monitor, a component or the workspace",
+      "requiresAuth": true
+    },
+    {
+      "name": "runbooks_set",
+      "title": "Write a runbook",
+      "requiresAuth": true
+    },
+    {
+      "name": "runbooks_delete",
+      "title": "Delete a runbook",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_packet",
+      "title": "Incident handoff packet: everything a responder needs",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_claim",
+      "title": "Claim an incident (take ownership under a lease)",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_claim_renew",
+      "title": "Renew your claim (heartbeat)",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_note",
+      "title": "Add an internal timeline note",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_publicUpdate",
+      "title": "Post a public update as a responder",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_drafts_approve",
+      "title": "Approve (and optionally edit) an agent's draft public update",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_drafts_reject",
+      "title": "Reject an agent's draft public update",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_verify",
+      "title": "Verify the fix: re-check the incident's monitors from every region now",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_escalate",
+      "title": "Hand the incident back to humans",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_mute",
+      "title": "Briefly mute the incident's monitors",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_takeover",
+      "title": "Take an incident over from an agent",
+      "requiresAuth": true
+    },
+    {
+      "name": "monitors_mute",
+      "title": "Mute a monitor for N minutes",
+      "requiresAuth": true
+    },
+    {
+      "name": "monitors_unmute",
+      "title": "End a mute now",
+      "requiresAuth": true
+    },
+    {
+      "name": "deploys_guard",
+      "title": "Watch monitors after a deploy and get a regression / clear verdict",
+      "requiresAuth": true
+    },
+    {
+      "name": "deploys_guards_get",
+      "title": "Get a deploy guard and its verdict",
+      "requiresAuth": true
+    },
+    {
+      "name": "deploys_guards_cancel",
+      "title": "Stop a deploy guard",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_fix",
+      "title": "Ask the coding agent to fix an incident (Fix with Claude)",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_link_pr",
+      "title": "Report the pull request that fixes an incident",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_evidence",
+      "title": "What changed: last good vs first bad check, suspect deploys, repro command",
+      "requiresAuth": true
+    },
+    {
+      "name": "fix_get",
+      "title": "Fix with Claude: responders, linked repositories and attempt limits",
+      "requiresAuth": true
+    },
+    {
+      "name": "fix_update",
+      "title": "Set the workspace limits for Fix with Claude",
+      "requiresAuth": true
+    },
+    {
+      "name": "fix_repos_set",
+      "title": "Link a project to its GitHub repository",
+      "requiresAuth": true
+    },
+    {
+      "name": "fix_repos_delete",
+      "title": "Remove a repository link",
+      "requiresAuth": true
+    },
+    {
+      "name": "fix_recipe",
+      "title": "Preview the files and commands of a Fix with Claude delivery",
+      "requiresAuth": true
+    },
+    {
+      "name": "fix_setup",
+      "title": "Turn on Fix with Claude: create the responder and get the files to add",
+      "requiresAuth": true
+    },
+    {
+      "name": "fix_policy",
+      "title": "Change the fix policy of a responder",
+      "requiresAuth": true
+    },
+    {
+      "name": "fix_test",
+      "title": "Test Fix with Claude end to end with a synthetic incident",
+      "requiresAuth": true
+    },
+    {
+      "name": "runs_start",
+      "title": "Start an agent run (no API key needed with the monitor's ar_ token)",
+      "requiresAuth": false
+    },
+    {
+      "name": "runs_progress",
+      "title": "Report progress of a run and read the kill switch",
+      "requiresAuth": false
+    },
+    {
+      "name": "runs_signal",
+      "title": "Read the kill switch of a run without reporting progress",
+      "requiresAuth": false
+    },
+    {
+      "name": "runs_end",
+      "title": "End a run: success, failed or cancelled",
+      "requiresAuth": false
+    },
+    {
+      "name": "runs_list",
+      "title": "List the runs of an agent monitor, with a fleet summary",
+      "requiresAuth": true
+    },
+    {
+      "name": "runs_get",
+      "title": "Get a run with its timeline",
+      "requiresAuth": true
+    },
+    {
+      "name": "runs_stop",
+      "title": "Kill switch: tell a running agent to stop, pause or slow down",
+      "requiresAuth": true
+    },
+    {
+      "name": "runs_resume",
+      "title": "Lift a stop, pause or slow-down that the agent has not acted on yet",
+      "requiresAuth": true
+    },
+    {
+      "name": "runs_stopAll",
+      "title": "Kill switch for a whole fleet: stop every running (or every flagged) run of a monitor",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_runs_list",
+      "title": "The agent runs behind an incident: task, last steps, spend, kill switch state",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_runs_stop",
+      "title": "Stop the agent runs behind an incident",
+      "requiresAuth": true
+    },
+    {
+      "name": "setup_apply",
+      "title": "Apply an upbutler.yaml: create and update monitors, heartbeats and status pages to match the file",
+      "requiresAuth": true
+    },
+    {
+      "name": "setup_export",
+      "title": "Export the workspace as an upbutler.yaml",
+      "requiresAuth": true
+    },
+    {
+      "name": "integrations_list",
+      "title": "List hosting accounts connected for rollbacks, and the alert action settings",
+      "requiresAuth": true
+    },
+    {
+      "name": "integrations_test",
+      "title": "Test a connected hosting account",
+      "requiresAuth": true
+    },
+    {
+      "name": "integrations_projects",
+      "title": "Map project names to provider projects",
+      "requiresAuth": true
+    },
+    {
+      "name": "alert_actions_update",
+      "title": "Choose which actions alerts carry",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_actions",
+      "title": "What can be done about an incident, in plain words",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_rollback",
+      "title": "Roll production back to the deployment before the incident's suspect deploy",
+      "requiresAuth": true
+    },
+    {
+      "name": "errorRate_get",
+      "title": "Error rate of an error-rate monitor: the current window, per minute, and the failing paths",
+      "requiresAuth": true
+    },
+    {
+      "name": "reports_list",
+      "title": "Problem reports end users sent for a status page, with the signals they added up to",
+      "requiresAuth": true
+    },
+    {
+      "name": "reports_update",
+      "title": "Mark one report as new, known or noise",
+      "requiresAuth": true
+    },
+    {
+      "name": "reports_delete",
+      "title": "Delete one report, or everything an email address sent to this page (erasure requests)",
+      "requiresAuth": true
+    },
+    {
+      "name": "reports_signal_mark",
+      "title": "Mark a report signal (and all its reports) as known or noise",
+      "requiresAuth": true
+    },
+    {
+      "name": "reports_summarize",
+      "title": "AI summary of what users report (one signal, or the last 24 hours for a component)",
+      "requiresAuth": true
+    },
+    {
+      "name": "spend_summary",
+      "title": "Spend per source and day, with baselines and anomalies",
+      "requiresAuth": true
+    },
+    {
+      "name": "spend_sources_list",
+      "title": "List connected provider accounts",
+      "requiresAuth": true
+    },
+    {
+      "name": "spend_sources_create",
+      "title": "Connect a provider account as a spend source",
+      "requiresAuth": true
+    },
+    {
+      "name": "spend_sources_update",
+      "title": "Rename a spend source, replace its key or pause polling",
+      "requiresAuth": true
+    },
+    {
+      "name": "spend_sources_delete",
+      "title": "Disconnect a provider account",
+      "requiresAuth": true
+    },
+    {
+      "name": "spend_sources_sync",
+      "title": "Read a provider account now",
+      "requiresAuth": true
+    },
+    {
+      "name": "digest_value",
+      "title": "What UpButler did: deploys guarded, regressions caught, incidents agents handled",
+      "requiresAuth": true
+    },
+    {
+      "name": "billing_downgrade_preview",
+      "title": "What a lower plan would pause, slow and hide",
+      "requiresAuth": true
+    },
+    {
+      "name": "upstream_status",
+      "title": "Is a third-party service down? (no auth)",
+      "requiresAuth": false
+    },
+    {
+      "name": "upstream_list",
+      "title": "The upstream catalog with current status (no auth)",
+      "requiresAuth": false
+    },
+    {
+      "name": "dependencies_list",
+      "title": "Upstream dependencies of this workspace",
+      "requiresAuth": true
+    },
+    {
+      "name": "dependencies_set",
+      "title": "Declare (or change) a dependency on an upstream service",
+      "requiresAuth": true
+    },
+    {
+      "name": "dependencies_delete",
+      "title": "Remove a dependency",
+      "requiresAuth": true
+    },
+    {
+      "name": "dependencies_policy",
+      "title": "Set how likely-upstream incidents are paged",
+      "requiresAuth": true
+    },
+    {
+      "name": "dependencies_suggest",
+      "title": "Suggest dependencies from env var names and package names",
+      "requiresAuth": true
+    },
+    {
+      "name": "drills_scenarios",
+      "title": "List drill scenarios and how drills are scored",
+      "requiresAuth": true
+    },
+    {
+      "name": "drills_start",
+      "title": "Start an incident drill",
+      "requiresAuth": true
+    },
+    {
+      "name": "drills_list",
+      "title": "List drills, newest first",
+      "requiresAuth": true
+    },
+    {
+      "name": "drills_get",
+      "title": "Get a drill and, once it ended, its report",
+      "requiresAuth": true
+    },
+    {
+      "name": "drills_end",
+      "title": "End a running drill now",
+      "requiresAuth": true
+    },
+    {
+      "name": "drills_schedules_list",
+      "title": "List drill schedules",
+      "requiresAuth": true
+    },
+    {
+      "name": "drills_schedules_create",
+      "title": "Schedule a recurring drill",
+      "requiresAuth": true
+    },
+    {
+      "name": "drills_schedules_update",
+      "title": "Change a drill schedule",
+      "requiresAuth": true
+    },
+    {
+      "name": "drills_schedules_delete",
+      "title": "Delete a drill schedule",
+      "requiresAuth": true
+    },
+    {
+      "name": "attestations_list",
+      "title": "List signed uptime attestations of a status page",
+      "requiresAuth": true
+    },
+    {
+      "name": "attestations_create",
+      "title": "Issue a signed uptime attestation now",
+      "requiresAuth": true
+    },
+    {
+      "name": "attestations_get",
+      "title": "Get a signed uptime attestation",
+      "requiresAuth": true
+    },
+    {
+      "name": "attestations_keys",
+      "title": "Public keys that sign uptime attestations (no auth)",
+      "requiresAuth": false
+    },
+    {
+      "name": "attestations_public",
+      "title": "Fetch a signed uptime attestation by id (no auth)",
+      "requiresAuth": false
+    },
+    {
+      "name": "attestations_verified_uptime",
+      "title": "Live verified uptime of a public status page (no auth)",
+      "requiresAuth": false
+    },
+    {
+      "name": "github_status",
+      "title": "GitHub App installations connected to this workspace",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_room",
+      "title": "The incident room: merged timeline, roles, tasks, approvals, who is here",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_room_role",
+      "title": "Assign incident commander, comms or ops",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_tasks_set",
+      "title": "Tick or untick a task",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_approvals_request",
+      "title": "Ask a human to approve something before you do it",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_approvals_get",
+      "title": "State of an approval request (long-poll with wait)",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_catchup",
+      "title": "Catch me up: what happened, what was tried, the hypothesis, open tasks",
+      "requiresAuth": true
+    },
+    {
+      "name": "incidents_ask",
+      "title": "Ask a question about this incident",
+      "requiresAuth": true
+    },
+    {
+      "name": "pages_access_get",
+      "title": "Access settings of a status page (internal pages)",
+      "requiresAuth": true
+    },
+    {
+      "name": "pages_access_update",
+      "title": "Change who may view an internal page and what it shows",
+      "requiresAuth": true
+    },
+    {
+      "name": "pages_access_links_create",
+      "title": "Create a shared access link / page access token",
+      "requiresAuth": true
+    },
+    {
+      "name": "pages_access_links_rotate",
+      "title": "Rotate a shared access link (the old token stops working at once)",
+      "requiresAuth": true
+    },
+    {
+      "name": "pages_access_links_delete",
+      "title": "Delete a shared access link",
+      "requiresAuth": true
+    },
+    {
+      "name": "pages_access_embed_secret_rotate",
+      "title": "Create or rotate the signing secret for signed embeds",
+      "requiresAuth": true
+    },
+    {
+      "name": "pages_access_embed_secret_delete",
+      "title": "Turn signed embeds off (tokens signed with the old secret stop working)",
+      "requiresAuth": true
+    },
+    {
+      "name": "pages_access_viewers_revoke",
+      "title": "Sign viewers out of an internal page",
+      "requiresAuth": true
+    }
+  ],
+  "prompts": [
+    {
+      "name": "triage-incident",
+      "title": "Triage an incident"
+    },
+    {
+      "name": "setup-monitoring",
+      "title": "Set up monitoring"
+    },
+    {
+      "name": "weekly-reliability-review",
+      "title": "Weekly reliability review"
+    },
+    {
+      "name": "deploy-guard",
+      "title": "Deploy guard"
+    },
+    {
+      "name": "write-postmortem",
+      "title": "Write a postmortem"
+    }
+  ],
+  "resources": [
+    {
+      "uri": "upbutler://workspace/overview",
+      "title": "Workspace overview"
+    },
+    {
+      "uri": "upbutler://monitors",
+      "title": "Monitors"
+    },
+    {
+      "uri": "upbutler://incidents/open",
+      "title": "Open incidents"
+    },
+    {
+      "uri": "upbutler://status-pages",
+      "title": "Status pages"
+    },
+    {
+      "uri": "upbutler://guide",
+      "title": "How to use UpButler"
+    }
+  ]
+}

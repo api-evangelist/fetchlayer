@@ -1,0 +1,5 @@
+Contact: mailto:hey@fetchlayer.dev
+Contact: mailto:legal@hoot.codes
+Expires: 2027-08-29T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://fetchlayer.dev/.well-known/security.txt

@@ -1,0 +1,702 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://api.fetchlayer.dev/reddit/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/reddit/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/reddit-scraper"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/twitter/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/twitter/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/twitter-scraper"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/appstore/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/appstore/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/app-store-reviews-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/youtube/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/youtube/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/youtube-comments-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/google-maps/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/google-maps/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/google-maps-reviews-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/playstore/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/playstore/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/google-play-reviews-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/facebook-ad-library/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/facebook-ad-library/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/facebook-ad-library-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/google-ad-library/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/google-ad-library/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/google-ad-library-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/tiktok-ad-library/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/tiktok-ad-library/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/tiktok-ad-library-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/linkedin-ad-library/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/linkedin-ad-library/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/linkedin-ad-library-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/trustpilot/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/trustpilot/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/trustpilot-reviews-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/glassdoor/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/glassdoor/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/glassdoor-reviews-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/tripadvisor/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/tripadvisor/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/tripadvisor-reviews-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/producthunt/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/producthunt/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/product-hunt-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/printables/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/printables/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/printables-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/makerworld/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/makerworld/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/makerworld-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/shopify-stores/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/shopify-stores/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/shopify-store-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/woocommerce-stores/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/woocommerce-stores/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/woocommerce-store-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/amazon/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/amazon/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/amazon-product-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/ebay/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/ebay/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/ebay-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/aliexpress/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/aliexpress/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/aliexpress-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/temu/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/temu/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/temu-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/duckduckgo/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/duckduckgo/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/duckduckgo-search-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/bing/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/bing/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/bing-search-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/chatgpt/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/chatgpt/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/ai-visibility-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/tiktok/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/tiktok/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/tiktok-scraper-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/instagram/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/instagram/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/instagram-scraper-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/weibo/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/weibo/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/weibo-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/douyin/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/douyin/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/douyin-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/link-in-bio/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/link-in-bio/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/link-in-bio-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/web-unblocker/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/web-unblocker/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/web-unblocker-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/upwork/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/upwork/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/upwork-jobs-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/email-finder/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/email-finder/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/email-finder-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/airbnb/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/airbnb/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/airbnb-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/booking/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/booking/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/booking-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.fetchlayer.dev/flights/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/documentation/flights/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/flight-search-api"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.fetchlayer.dev/dummy-request"
+        }
+      ]
+    },
+    {
+      "anchor": "https://mcp.fetchlayer.dev/",
+      "service-desc": [
+        {
+          "href": "https://fetchlayer.dev/.well-known/mcp/server-card.json",
+          "type": "application/json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fetchlayer.dev/reddit-scraper"
+        }
+      ]
+    }
+  ]
+}

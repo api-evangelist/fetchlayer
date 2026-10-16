@@ -1,23 +1,146 @@
 aid: fetchlayer
+
 name: HootCodes
-description: 'HootCodes is a company surfaced via the API Evangelist harvest backlog (source: g2-catalog)
-  and added to the network as a stub for full-pipeline profiling.'
+
+image: https://fetchlayer.dev/og.png?p=%2F&t=Multi-Platform+Social+Media+Scraping+API+%7C+FetchLayer&s=Access+structured+data+from+social+platforms+and+popular+websites+through+one+web+scraping+API.+Clean+JSON+with+no+scrapers+or+proxies+to+maintain.
+
+description: HootCodes, operating as FetchLayer, provides a multi‑platform social media scraping API suite. It enables developers to programmatically
+  access content, profiles, comments, and analytics across Reddit, X/Twitter, YouTube, TikTok, Instagram, Weibo, and more. The service offers
+  endpoints for ad libraries, app store reviews, and various other data sources, targeting SaaS applications that need scalable social data extraction.
+
 url: https://raw.githubusercontent.com/api-evangelist/fetchlayer/refs/heads/main/apis.yml
+
 x-type: company
+
 x-source: harvest:g2-catalog
-x-tier: stub
-x-tier-reason: harvest
+
+x-tier: profiled
+x-tier-reason: enrichment pass 2026-10-16 (modular-v1; was harvest)
+
 specificationVersion: '0.20'
+
 created: '2026-10-16'
+
 modified: '2026-10-16'
+
 tags:
 - Company
-apis: []
+- Social Media
+- Data Extraction
+- API
+- SaaS
+
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+
 common:
+- type: Plans
+  url: plans/fetchlayer-plans-pricing.yml
+- type: Spectral
+  url: rules/fetchlayer-rules.yml
+- type: JSONLD
+  url: json-ld/fetchlayer-context.jsonld
+- type: Vocabulary
+  url: vocabulary/fetchlayer-vocabulary.yml
+- type: DataModel
+  url: data-model/fetchlayer-data-model.yml
+- type: Security
+  url: security/fetchlayer-vulnerability-disclosure.yml
+- type: Conformance
+  url: conformance/fetchlayer-conformance.yml
+- type: LLMsTxt
+  url: llms/fetchlayer-llms.txt
+- type: SecurityTxt
+  url: well-known/fetchlayer-security.txt
+- type: SecurityTxt
+  url: well-known/fetchlayer-api-security.txt
+- type: WellKnown
+  url: well-known/fetchlayer-well-known.yml
+- type: Hosts
+  url: hosts/fetchlayer-hosts.yml
+- type: Vendors
+  url: vendors/fetchlayer-vendors.yml
+- type: SDKs
+  url: packages/fetchlayer-packages.yml
+- type: Packages
+  url: packages/fetchlayer-packages.yml
+- type: TermsOfService
+  url: https://fetchlayer.dev/terms
+- type: StatusPage
+  url: https://status.fetchlayer.dev
+- type: Sandbox
+  url: https://fetchlayer.dev/playground
+- type: PrivacyPolicy
+  url: https://fetchlayer.dev/privacy
+- type: Login
+  url: https://fetchlayer.dev/signin
+- type: GitHubOrganization
+  url: https://github.com/fetchlayer-dev
+- type: GettingStarted
+  url: https://fetchlayer.dev/signin?callbackUrl=/get-started
+- type: APIReference
+  url: https://fetchlayer.dev/llms-full.txt
+- type: VulnerabilityDisclosure
+  url: security/fetchlayer-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/fetchlayer-domain-security.yml
 - type: Website
   url: https://fetchlayer.dev/
+- type: Documentation
+  url: https://fetchlayer.dev/documentation/getting-started
+- type: Pricing
+  url: https://fetchlayer.dev/pricing
+- type: Blog
+  url: https://fetchlayer.dev/blog
+- type: Support
+  url: https://fetchlayer.dev/enterprise
+
+apis:
+- name: FetchLayer API
+  description: Social media scraping API suite providing programmatic access to content, profiles, comments, and analytics across multiple platforms.
+  humanURL: https://fetchlayer.dev/documentation
+  baseURL: null
+  aid: fetchlayer:fetchlayer-api-2
+- aid: fetchlayer:fetchlayer-api
+  name: HootCodes API
+  description: 'HootCodes API as documented publicly: 7 operations. Contract generated from the documentation by API Evangelist (2026-10-16);
+
+    not the provider''s own document.'
+  humanURL: https://fetchlayer.dev/ebay-api
+  baseURL: https://api.fetchlayer.dev
+  properties:
+  - type: OpenAPI
+    url: openapi/_ae-authored/fetchlayer-openapi-generated.yml
+    x-provenance: generated
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-bing-bingid-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-duckduckgo-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-douyin-douyinid-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-temu-temuid-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-ebay-ebayid-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-temu-temuid-request-schema.json
+
+x-coverage:
+  state: unreadable
+  reason: no-machine-readable-spec
+  detail: No OpenAPI, AsyncAPI, GraphQL, gRPC, or WSDL spec found on API host or docs.
+  evidence:
+  - url: https://api.fetchlayer.dev/openapi.json
+    status: 404
+  - url: https://api.fetchlayer.dev/openapi.yaml
+    status: 404
+  checked: '2026-10-16'
+x-enrichment:
+  date: '2026-10-16'
+  status: enriched
+  artifacts_added: 32
+  pass: modular-v1
+  engine: identity=local,contract=local,surfaces=local,docs=local,regulatory=local

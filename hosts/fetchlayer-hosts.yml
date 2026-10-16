@@ -1,0 +1,90 @@
+generated: '2026-10-16'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 5
+  own: 3
+  other_domain: 0
+  platform: 2
+  roles:
+  - api
+  - other
+  - source
+  - status
+  - website
+hosts:
+- host: api.fetchlayer.dev
+  found_by:
+  - apis[]
+  - contract-discovery
+  types: []
+  serves:
+  - api
+  registrable_domain: fetchlayer.dev
+  role: api
+  relation: own
+- host: fetchlayer.dev
+  found_by:
+  - pointer
+  - apis[]
+  - probed
+  - docs-index
+  - spec-found
+  - contract-discovery
+  - well-known
+  - vendor-detect
+  types:
+  - TermsOfService
+  - Sandbox
+  - PrivacyPolicy
+  - Login
+  - GettingStarted
+  - APIReference
+  - Website
+  - Documentation
+  - Pricing
+  - Blog
+  - Support
+  serves:
+  - docs
+  - spec
+  - cdn
+  platform: githubusercontent.com
+  vendor: cloudflare
+  registrable_domain: fetchlayer.dev
+  role: website
+  relation: own
+- host: github.com
+  found_by:
+  - pointer
+  - docs-index
+  types:
+  - GitHubOrganization
+  serves:
+  - docs
+  registrable_domain: github.com
+  role: source
+  relation: platform
+- host: status.fetchlayer.dev
+  found_by:
+  - pointer
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  types:
+  - StatusPage
+  serves: []
+  registrable_domain: fetchlayer.dev
+  role: status
+  relation: own
+- host: www.npmjs.com
+  found_by:
+  - docs-index
+  types: []
+  serves:
+  - docs
+  registrable_domain: npmjs.com
+  role: other
+  relation: platform

@@ -1,0 +1,522 @@
+openapi: 3.1.0
+info:
+  title: HootCodes API
+  version: '2026-10-16'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-16: 7 operation(s) read from 6 public documentation page(s) (each operation
+    names its page in x-source). This is not the provider''s published contract; HootCodes has published no machine-readable contract that the
+    pipeline could find. Engine: local.'
+  x-evidence-tiers:
+    code-example: 8
+    documentation: -1
+    pages-with-code: 6
+    pages-read: 6
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-16'
+  x-generator: generate-contract-from-docs.py
+  x-engine: local
+  x-sources:
+  - https://fetchlayer.dev/ebay-api
+  - https://fetchlayer.dev/serp-api
+  - https://fetchlayer.dev/temu-api
+  - https://fetchlayer.dev/weibo-api
+  - https://fetchlayer.dev/airbnb-api
+  - https://fetchlayer.dev/douyin-api
+servers:
+- url: https://api.fetchlayer.dev
+paths:
+  /airbnb/{airbnbid}:
+    post:
+      operationId: post_airbnb_airbnbid
+      tags:
+      - Airbnb
+      summary: Airbnb Scraper API & MCP for AI Agents
+      description: 'One listing''s calendar, night by night: open, closed, whether a stay can start or end on it, and the minimum and maximum
+        stay length the host enforces for that night.'
+      x-source: https://fetchlayer.dev/airbnb-api
+      parameters:
+      - name: airbnbid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: listing
+        in: query
+        required: true
+        schema:
+          type: string
+        description: A listing URL or its numeric id.
+      - name: from
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Any date inside the first month you want, YYYY-MM-DD.
+      - name: months
+        in: query
+        required: false
+        schema:
+          type: number
+        description: Months of calendar, up to 12. -1 for the maximum.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostAirbnbAirbnbidRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+      x-evidence:
+        kind: documentation
+        collapsed_from: 5 example path(s) differing only at airbnbId
+  /bing/{bingid}:
+    post:
+      operationId: post_bing_bingid
+      tags:
+      - Bing
+      summary: POST /bing/rank-check
+      x-source: https://fetchlayer.dev/serp-api
+      parameters:
+      - name: bingid
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostBingBingidRequest'
+      responses:
+        '201':
+          description: Success (shape read from the example response on the page)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostBingBingidResponse'
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl -X POST  https://api.fetchlayer.dev/bing/rank-check  -H \"Authorization: Bearer ss-your-key\"  -d '{\"query\":\"reddit\
+          \ api\",\"target\":\"fetchlayer.dev\",\"depth\":200}' {\n \"resultType\" : \"rank-check\" ,\n \"query\" : \"reddit api\" ,\n \"market\"\
+          \ : \"en-US\" ,\n \"target\" : {\n \"input\" : \"fetchlayer.dev\" ,\n \"type\" : \"domain\" \n },\n \"found\" : true ,\n \"position\"\
+          \ : 124 ,\n \"matches\" : [\n {\n \"position\" : 124 ,\n \"page\" : 1"
+        collapsed_from: 2 example path(s) differing only at bingId
+  /douyin/{douyinid}:
+    post:
+      operationId: post_douyin_douyinid
+      tags:
+      - Douyin
+      summary: Every video in a collection (合集), in episode order, with the collection’s total plays and saves.
+      x-source: https://fetchlayer.dev/douyin-api
+      parameters:
+      - name: douyinid
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostDouyinDouyinidRequest'
+      responses:
+        '201':
+          description: Success (shape read from the example response on the page)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostDouyinDouyinidResponse'
+      x-evidence:
+        kind: documentation
+        collapsed_from: 10 example path(s) differing only at douyinId
+  /duckduckgo/search:
+    post:
+      operationId: post_duckduckgo_search
+      tags:
+      - Duckduckgo
+      summary: POST /duckduckgo/search
+      x-source: https://fetchlayer.dev/serp-api
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostDuckduckgoSearchRequest'
+      responses:
+        '201':
+          description: Success (shape read from the example response on the page)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostDuckduckgoSearchResponse'
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: 'curl -X POST  https://api.fetchlayer.dev/duckduckgo/search  -H "Authorization: Bearer ss-your-key"  -H "Content-Type: application/json"  -d
+          ''{"query":"open source crm","limit":10}'' Fields a DuckDuckGo search returns results ads zeroClick Empty or null when the engine doesn’t
+          show it for that query. One page read, one request. $0.00199 at full price. Captured 15 September 2026. Every field in the D'
+  /ebay/{ebayid}:
+    post:
+      operationId: post_ebay_ebayid
+      tags:
+      - Ebay
+      summary: 'One listing in full: price in US dollars and in the seller’s currency, exact quantity where stated, units sold, condition, seller
+        with exact feedback score, shipping and returns, auction end time and '
+      description: Provides detailed information for a single eBay listing.
+      x-source: https://fetchlayer.dev/ebay-api
+      parameters:
+      - name: ebayid
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostEbayEbayidRequest'
+      responses:
+        '201':
+          description: Success (shape read from the example response on the page)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostEbayEbayidResponse'
+      x-evidence:
+        kind: documentation
+        collapsed_from: 6 example path(s) differing only at ebayId
+  /temu/{temuid}:
+    post:
+      operationId: post_temu_temuid
+      tags:
+      - Temu
+      summary: POST /temu/price-check
+      x-source: https://fetchlayer.dev/temu-api
+      parameters:
+      - name: temuid
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostTemuTemuidRequest'
+      responses:
+        '201':
+          description: Success (shape read from the example response on the page)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostTemuTemuidResponse'
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl -X POST  https://api.fetchlayer.dev/temu/price-check  -H \"Authorization: Bearer ss-your-key\"  -H \"Content-Type: application/json\"\
+          \  -d '{\"market\":\"US\",\"items\":[\n {\"goodsId\":\"607033881415363\",\n \"skuId\":\"117585735607558\"}]}' Response {\n \"market\"\
+          \ : { \"code\" : \"US\" , \"currency\" : \"USD\" },\n \"items\" : [{\n \"skuId\" : \"117585735607558\" ,\n \"status\" : \"ok\" ,\n \"\
+          price\" : { \"amount\" : 18.39 , \"currency\" : \""
+        collapsed_from: 3 example path(s) differing only at temuId
+  /weibo/{weiboid}:
+    post:
+      operationId: post_weibo_weiboid
+      tags:
+      - Weibo
+      summary: Comments on a post, most-liked or newest first, with likes, reply counts, the few replies Weibo shows inline and the province each
+        commenter posted from.
+      x-source: https://fetchlayer.dev/weibo-api
+      parameters:
+      - name: weiboid
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostWeiboWeiboidRequest'
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostWeiboWeiboidResponse'
+      x-evidence:
+        kind: documentation
+        collapsed_from: 8 example path(s) differing only at weiboId
+components:
+  schemas:
+    PostAirbnbAirbnbidRequest:
+      type: object
+      properties:
+        listing:
+          type: string
+        limit:
+          type: integer
+    PostBingBingidRequest:
+      type: object
+      properties:
+        query:
+          type: string
+        target:
+          type: string
+        depth:
+          type: integer
+    PostBingBingidResponse:
+      type: object
+      properties:
+        resultType:
+          type: string
+        query:
+          type: string
+        market:
+          type: string
+        target:
+          type: object
+          properties:
+            input:
+              type: string
+            type:
+              type: string
+        found:
+          type: boolean
+        position:
+          type: integer
+        matches:
+          type: array
+          items:
+            type: object
+            properties:
+              position:
+                type: integer
+              page:
+                type: integer
+              url:
+                type: string
+        depth:
+          type: integer
+        depthScanned:
+          type: integer
+        serpPagesFetched:
+          type: integer
+        pagesScraped:
+          type: integer
+    PostDouyinDouyinidRequest:
+      type: object
+      properties:
+        video:
+          type: string
+    PostDouyinDouyinidResponse:
+      type: object
+      properties:
+        video:
+          type: object
+          properties:
+            id:
+              type: string
+            kind:
+              type: string
+            createdAt:
+              type: string
+              format: date-time
+            stats:
+              type: object
+              properties:
+                likes:
+                  type: integer
+                comments:
+                  type: integer
+                shares:
+                  type: integer
+                saves:
+                  type: integer
+            author:
+              type: object
+              properties:
+                nickname:
+                  type: string
+                followerCount:
+                  type: integer
+            collection:
+              type: object
+              properties:
+                name:
+                  type: string
+                episode:
+                  type: integer
+    PostDuckduckgoSearchRequest:
+      type: object
+      properties:
+        query:
+          type: string
+        limit:
+          type: integer
+    PostDuckduckgoSearchResponse:
+      type: object
+      properties:
+        resultType:
+          type: string
+        region:
+          type: string
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              position:
+                type: integer
+              title:
+                type: string
+              domain:
+                type: string
+              date:
+                type: string
+                format: date-time
+        ads:
+          type: array
+          items:
+            type: object
+            properties:
+              title:
+                type: string
+              domain:
+                type: string
+        zeroClick:
+          type:
+          - string
+          - 'null'
+        endOfResults:
+          type: boolean
+        pagesScraped:
+          type: integer
+        nextCursor:
+          type: string
+    PostEbayEbayidRequest:
+      type: object
+      properties:
+        listings:
+          type: array
+          items:
+            type: string
+    PostEbayEbayidResponse:
+      type: object
+      properties:
+        mode:
+          type: string
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              itemId:
+                type: string
+              status:
+                type: string
+              price:
+                type: object
+                properties:
+                  amount:
+                    type: number
+                  currency:
+                    type: string
+              buyingFormat:
+                type: string
+              freeShipping:
+                type: boolean
+        activeCount:
+          type: integer
+        endedCount:
+          type: integer
+        notes:
+          type: array
+          items: {}
+    PostTemuTemuidRequest:
+      type: object
+      properties:
+        market:
+          type: string
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              goodsId:
+                type: string
+              skuId:
+                type: string
+    PostTemuTemuidResponse:
+      type: object
+      properties:
+        market:
+          type: object
+          properties:
+            code:
+              type: string
+            currency:
+              type: string
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              skuId:
+                type: string
+              status:
+                type: string
+              price:
+                type: object
+                properties:
+                  amount:
+                    type: number
+                  currency:
+                    type: string
+              availability:
+                type: string
+              variantLookedUp:
+                type: boolean
+        okCount:
+          type: integer
+        notes:
+          type: array
+          items: {}
+    PostWeiboWeiboidRequest:
+      type: object
+      properties:
+        query:
+          type: string
+        since:
+          type: string
+          format: date
+    PostWeiboWeiboidResponse:
+      type: object
+      properties:
+        comments:
+          type: array
+          description: Array of comment objects
+        hasMore:
+          type: boolean
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+security:
+- bearer: []
+tags:
+- name: Airbnb
+- name: Bing
+- name: Douyin
+- name: Duckduckgo
+- name: Ebay
+- name: Temu
+- name: Weibo

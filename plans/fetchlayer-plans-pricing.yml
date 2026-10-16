@@ -1,0 +1,27 @@
+generated: '2026-10-16'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://fetchlayer.dev/pricing
+sources:
+- https://fetchlayer.dev/pricing
+name: HootCodes pricing
+audience: developer-api
+pricing_basis: per-call
+plans:
+- name: Free
+  price_text: $0
+  price: 0
+  description: 30 requests, no credit card required
+- name: Pay as you go
+  price_text: $1.99 per 1,000
+  price: 1.99
+  description: Buy credits as you need them
+- name: Starter
+  price_text: $25 per month
+  price: 25
+  description: 15,000 requests a month
+- name: Enterprise
+  price_text: $900/mo
+  price: 900
+  description: More than 1,000,000 requests a month, flat bill
+docs: https://fetchlayer.dev/pricing

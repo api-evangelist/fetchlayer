@@ -1,0 +1,912 @@
+{
+  "$schema": "https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/main/schema/2025-03-26/server-card.json",
+  "serverInfo": {
+    "name": "FetchLayer Reddit & X / Twitter & App Store & YouTube & Google Maps & Google Play Store & Facebook Ad Library & Google Ad Library & TikTok Ad Library & LinkedIn Ad Library & Trustpilot & Glassdoor & Tripadvisor & Product Hunt & Printables & MakerWorld & Shopify & WooCommerce & Amazon & eBay & AliExpress & Temu & DuckDuckGo & Bing & ChatGPT & TikTok & Instagram & Weibo & Douyin & Link in Bio & Web Unblocker & Upwork & Email Finder & Airbnb & Booking.com & Flight Search MCP",
+    "version": "1.0.0",
+    "description": "MCP server providing structured access to public Reddit & X / Twitter & App Store & YouTube & Google Maps & Google Play Store & Facebook Ad Library & Google Ad Library & TikTok Ad Library & LinkedIn Ad Library & Trustpilot & Glassdoor & Tripadvisor & Product Hunt & Printables & MakerWorld & Shopify & WooCommerce & Amazon & eBay & AliExpress & Temu & DuckDuckGo & Bing & ChatGPT & TikTok & Instagram & Weibo & Douyin & Link in Bio & Web Unblocker & Upwork & Email Finder & Airbnb & Booking.com & Flight Search data — search posts, read threads, explore communities, and analyze user activity."
+  },
+  "url": "https://mcp.fetchlayer.dev",
+  "transport": {
+    "type": "streamable-http",
+    "url": "https://mcp.fetchlayer.dev"
+  },
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false
+  },
+  "authentication": {
+    "type": "bearer",
+    "instructions": "Sign up at https://fetchlayer.dev/signin to get a free API key, then pass it as a Bearer token."
+  },
+  "tools": [
+    {
+      "name": "ai_mentions_ask",
+      "description": "Asks ChatGPT a prompt as a visitor with no account would, and returns the finished answer as Markdown and plain text with what backs it: the sources it cites (position, URL, title, domain and the sentence each supports), every inline citation, the web searches it ran and every page it read when shown, whether it searched the web, and the model when shown. Web search can be forced on. Counts as one answer."
+    },
+    {
+      "name": "ai_mentions_check_mentions",
+      "description": "Asks ChatGPT a prompt and reports, for each brand you name (with aliases and domains): whether the answer mentions it, how often, where it first appears and in what order among your brands, the sentences around each mention, and whether one of its domains is a cited source or among the pages read. Also lists the other brands the answer recommends. Matching ignores case, respects word boundaries, counts subdomains and never matches look-alike domains. Counts as one answer."
+    },
+    {
+      "name": "ai_mentions_discover_prompts",
+      "description": "For a topic or a brand, asks ChatGPT a few prompts with web search on and returns the web searches it ran to answer them (observed, with how often each appeared), the domains it cited, and a separate list of prompts people might ask, written by the assistant and labelled as suggestions rather than observations. Counts as one answer per prompt asked, plus one for the suggestions."
+    },
+    {
+      "name": "ai_mentions_rank",
+      "description": "Where a brand ranks among the options ChatGPT recommends for a prompt, read from the answer's numbered list, table, headings or bulleted list (or the order of first mention when there is none, stating which), with its best citation position and the ranks of competitors you name. Answers vary between runs, so ask up to 5 times for mention rate, average, best and worst rank and citation rate. Counts as one answer per run."
+    },
+    {
+      "name": "ai_mentions_visibility_report",
+      "description": "Runs up to 10 prompts (times up to 3 runs each, 10 answers at most) through ChatGPT and compares up to 5 brands across them: share of voice, mention rate, average and best rank, and citation rate, overall and per prompt. Meant for small batches that finish in one call. Counts as one answer per prompt per run."
+    },
+    {
+      "name": "airbnb_listing_availability",
+      "description": "Which nights a listing is open, closed or booked, night by night, with the minimum and maximum stay length Airbnb enforces for each. Covers up to a year ahead in one call, starting from today by default or from any month you give. How far the real calendar actually extends depends on the listing — Airbnb answers every night you ask for, but nights past what the listing owner has opened for booking come back marked closed, so a long unbroken run of closed nights right at the end of what you asked for usually means you have reached that edge rather than a genuine closure. A closed night that still allows checkout but not check-in is the far end of a booked stay; per-night pricing is not included here — use the listing detail tool with dates for a priced stay. Accepts a listing URL or its numeric id."
+    },
+    {
+      "name": "airbnb_listing_detail",
+      "description": "One Airbnb listing in full: title, description, property and room type, guest capacity, location, amenities, photos, highlights, the aggregate rating and its breakdown by category, and the host's public profile (name, photo, Superhost status, rating, years hosting, response rate). Pass check-in/check-out dates and a guest count to also get this listing's price for that specific stay. Without dates, no price is returned at all. With dates, the stay may still come back unpriced if it cannot be booked for those nights — either way a note explains which of the two happened. Accepts a listing URL or its numeric id."
+    },
+    {
+      "name": "airbnb_listing_reviews",
+      "description": "Guest reviews for one Airbnb listing: each review's overall rating, original-language text (never a machine translation), the language it is written in, its date, the guest's public first name and photo, and the host's reply when there is one. A review carries one overall rating, not a breakdown by category — the per-category rating (cleanliness, accuracy, check-in, communication, location, value) is on the listing itself, from the listing detail tool. The response reports the listing's full review count separately from how many are returned here. Accepts a listing URL or its numeric id."
+    },
+    {
+      "name": "airbnb_resolve_url",
+      "description": "Reads any Airbnb link and says what it names — a listing or a search — along with the listing id it encodes and its canonical URL, ready to pass to the other tools. Makes no request to Airbnb."
+    },
+    {
+      "name": "airbnb_search_listings",
+      "description": "Airbnb listings for a place, each with its price, rating, badges (Superhost, Guest favorite, and so on), coordinates and photos. Pass check-in/check-out dates and guest counts to price a specific stay; without dates, each listing's price reflects a default stay window the response reports back. Results are capped by the source at a few hundred per search, newest data first."
+    },
+    {
+      "name": "aliexpress_category_products",
+      "description": "Browses one AliExpress category by id or category URL, with the same filters, sort orders and product fields as a keyword search. Paginated with nextCursor."
+    },
+    {
+      "name": "aliexpress_product_details",
+      "description": "Everything public about one product: title, current price and the range across variants, the original price and discount, every variant with its own price and stock, availability, the store (name, id, country, feedback), specifications, images and video, rating and review count, orders sold, and the default shipping option with its fee and delivery estimate."
+    },
+    {
+      "name": "aliexpress_product_prices",
+      "description": "A compact price check for up to 20 products at once, built for monitoring: for each product, its current price, the highest variant price, the original price, currency, stock and whether it can be bought — and optionally one variant's price and stock. Much lighter than full product details."
+    },
+    {
+      "name": "aliexpress_product_reviews",
+      "description": "Buyer reviews for one product, with the star distribution and average. Each review carries its rating, text, date, the reviewer's country, the variant bought, photos, and any follow-up review. Filter to reviews with photos or with a follow-up, and sort by best match or latest. Paginated with nextCursor."
+    },
+    {
+      "name": "aliexpress_resolve_url",
+      "description": "Reads any AliExpress URL and says what it points at — a product, a search, a category listing or a store — plus the product id, variant id, keyword, category id, page and filters it carries, ready to pass to the other tools."
+    },
+    {
+      "name": "aliexpress_search_products",
+      "description": "Keyword search over AliExpress listings, with the filters AliExpress offers: price range, free shipping, four stars and up, Choice only, ship-from country, category, and sort by best match, orders or price. Each product carries its price and discount, rating, orders sold, images and id. Prices, ranking and availability depend on the market, so shipTo, currency and language can be set. Paginated with nextCursor."
+    },
+    {
+      "name": "amazon_price_check",
+      "description": "Get the current price and currency for up to 20 Amazon products at once, given ASINs or product URLs. Built for price monitoring: lightweight, and returns nothing else. The default fast mode prices the whole batch cheaply; mode full also returns stock status and seller for every product. Prices are quoted for a delivery postal code in the marketplace's own currency. Each product reports ok, unavailable, not_found or failed, so one bad product never fails the batch."
+    },
+    {
+      "name": "amazon_product_details",
+      "description": "Everything on an Amazon product page for one ASIN or product URL: title, brand, price and list price, savings, stock, seller, star rating and rating count, images, feature bullets, category, and the other sizes or colours in its variation family. Does not include individual customer reviews."
+    },
+    {
+      "name": "amazon_resolve_url",
+      "description": "Turn any Amazon URL, on any marketplace, into structured input: whether it is a product or a search, its marketplace, the ASIN, and any search keywords, department, price range, sort and page it encodes. Works offline and returns a clean canonical URL."
+    },
+    {
+      "name": "amazon_search_products",
+      "description": "Search an Amazon marketplace by keyword and get each product's ASIN, title, price, list price, star rating, rating count, image and whether it is a sponsored placement. Filter by department, price range and minimum rating, sort by price, rating, newest or best-selling, and page through results with a cursor."
+    },
+    {
+      "name": "appstore_reviews",
+      "description": "Fetch customer reviews for an App Store app. Supports filtering by platform, country, and language. Pass `since` (ISO 8601) to return only reviews from that date onward; with the default sort=recent this also stops paginating once it passes the cutoff, so date-range pulls do not walk the full review history."
+    },
+    {
+      "name": "appstore_search",
+      "description": "Search the App Store for apps by name or keyword. Returns app details including ratings and screenshots."
+    },
+    {
+      "name": "bing_news",
+      "description": "News articles for a query from Bing News: title, URL, publisher, snippet, age and image. Filter by market, safe search and how recent (past hour, day, week or month)."
+    },
+    {
+      "name": "bing_rank_check",
+      "description": "Find where a domain or URL ranks in Bing's organic results for a query. Returns whether it was found, its best position, and every matching result with its position, URL, title and page, scanning up to the depth you set (up to 200). A domain target matches its subdomains but never look-alike domains. If the scan could not reach the full depth, partial is true and depthScanned says how far it got; not found with partial true is not a confirmed absence. Charged as one request however deep it scans."
+    },
+    {
+      "name": "bing_resolve_url",
+      "description": "Turn a Bing URL into request fields: a web, news, video, image, shopping or map search page into its query, market, country, language, safe search, time range and offset; a Bing result link into its destination. Needs no request to Bing."
+    },
+    {
+      "name": "bing_search",
+      "description": "Bing web results for a query: organic results with position, title, URL, displayed URL, site name, snippet, date and sitelinks; the answer or AI overview shown above them, the knowledge panel, People also ask, related searches, top stories and videos; and ads listed separately (ads never take a position). Choose the market, safe search, time range and desktop or mobile results; collect several pages at once or continue with a cursor."
+    },
+    {
+      "name": "bing_suggestions",
+      "description": "The completions Bing's search box suggests for a partial query, in order, for a market. Useful for keyword research and query expansion."
+    },
+    {
+      "name": "bing_videos",
+      "description": "Videos for a query from Bing Videos: title, URL, hosting site, channel, duration, views, age and thumbnail. Filter by market and safe search."
+    },
+    {
+      "name": "booking_hotel_detail",
+      "description": "One property in full: name, location, star rating, the aggregate review score and its breakdown by category (staff, facilities, cleanliness, comfort, value for money, location, wifi), amenities, photos, languages spoken, and its room catalog (room names, sizes, bed configuration and photos). Does not include a live price for a specific stay — use search-hotels with the same destination and dates for that. Accepts a property URL or its compact id."
+    },
+    {
+      "name": "booking_hotel_reviews",
+      "description": "Guest reviews for one property: each review's score, what the guest liked and disliked (as separate fields, in the language they wrote it — never a machine translation), the language it is written in, the stay dates and room type it refers to, the guest's public first name, country and trip type (e.g. solo traveler, family with young children), and the property's reply when there is one. Also returns the property's review score broken down by category (staff, facilities, cleanliness, comfort, value for money, location, wifi). The response reports the property's full review count separately from how many are returned here. Accepts a property URL or its compact id."
+    },
+    {
+      "name": "booking_resolve_url",
+      "description": "Reads any Booking.com link and says what it names — a property or a search — along with the property id it encodes and its canonical URL, ready to pass to the other tools. Makes no request to Booking.com."
+    },
+    {
+      "name": "booking_search_hotels",
+      "description": "Properties for a destination and stay, each with its price, star rating, review score, badges (e.g. Limited-time Deal), coordinates, photos and every bookable room option priced for that exact stay. Pass check-in/check-out dates and guest counts to price a specific stay; without dates, results are priced for a default stay window the response reports back. The response also reports the precise total number of properties the destination has, separate from how many are returned here."
+    },
+    {
+      "name": "douyin_collection_videos",
+      "description": "Every video in one Douyin collection (合集), in episode order and paged with a cursor, plus the collection's name, episode count and total plays. Start from a collection id or any video in it (each video carries its collection id). This covers one collection, not an account's whole history."
+    },
+    {
+      "name": "douyin_comment_replies",
+      "description": "Replies to one comment on a Douyin video, each with author, text, time, exact like count, the commenter's IP location (province), and which reply it answers. Pages deep; returns a cursor to continue."
+    },
+    {
+      "name": "douyin_hashtag_detail",
+      "description": "A Douyin hashtag's summary: name, total views, how many accounts have posted with it, description and cover."
+    },
+    {
+      "name": "douyin_related_videos",
+      "description": "The videos Douyin recommends alongside a given video, each with exact engagement counts, caption, author and media URLs."
+    },
+    {
+      "name": "douyin_resolve_url",
+      "description": "Turn any Douyin link — including v.douyin.com share links and pasted share text — into what it points at (video, account, hashtag or collection) and its id, for use with the other tools."
+    },
+    {
+      "name": "douyin_trending",
+      "description": "Douyin's hot-search board right now: each topic's rank, heat score, view and video counts, and when it started trending."
+    },
+    {
+      "name": "douyin_user_profile",
+      "description": "A Douyin account's profile: exact follower and following counts, total likes received, video count, the IP location (province) Douyin shows, bio, Douyin ID and verification."
+    },
+    {
+      "name": "douyin_user_videos",
+      "description": "An account's most recent videos (about 40, newest first, pinned videos flagged), each with exact like, comment, share and save counts, caption, hashtags and media URLs."
+    },
+    {
+      "name": "douyin_video_comments",
+      "description": "Top-level comments on a Douyin video with author, text, time, exact like count, reply count and the commenter's IP location (province). Pages deep; returns a cursor to continue."
+    },
+    {
+      "name": "douyin_video_detail",
+      "description": "One Douyin video or image post in full: exact like, comment, share and save counts, caption, hashtags, author, sound, duration, cover and video URLs, and when it was posted."
+    },
+    {
+      "name": "duckduckgo_images",
+      "description": "Images for a query from DuckDuckGo Images: title, image URL, thumbnail URL, width, height and the page each image appears on. Filter by size, color, type, layout, license, time range, region and safe search."
+    },
+    {
+      "name": "duckduckgo_instant_answer",
+      "description": "DuckDuckGo's instant answer for a query: a topic summary with its source, a definition or direct answer, fact rows such as founding date or developer, the official website, and related topics — or, for an ambiguous term, the list of meanings. Reports found: false when there is none."
+    },
+    {
+      "name": "duckduckgo_news",
+      "description": "News articles for a query from DuckDuckGo News: title, URL, publisher, excerpt, publication time and image. Filter by region, safe search and time range."
+    },
+    {
+      "name": "duckduckgo_rank_check",
+      "description": "Find where a domain or URL ranks in DuckDuckGo's organic results for a query. Returns whether it was found, its best position, and every matching result with its position, URL, title and page, scanning up to the depth you set (up to 200). A domain target matches its subdomains but never look-alike domains. Charged as one request however deep it scans."
+    },
+    {
+      "name": "duckduckgo_resolve_url",
+      "description": "Turn a DuckDuckGo URL into request fields: a search, news or video page into its query, region, safe search and time range; a topic page into its topic; a result or ad link into its destination. Needs no request to DuckDuckGo."
+    },
+    {
+      "name": "duckduckgo_search",
+      "description": "DuckDuckGo web results for a query: organic results with position, title, URL, displayed URL, snippet and date, sitelinks on request, the instant-answer summary when there is one, and ads listed separately (ads never take a position). Filter by region, safe search and time range; collect several pages at once or continue with a cursor."
+    },
+    {
+      "name": "duckduckgo_suggestions",
+      "description": "The completions DuckDuckGo's search box suggests for a partial query, in order. Useful for keyword research and query expansion."
+    },
+    {
+      "name": "duckduckgo_videos",
+      "description": "Videos for a query from DuckDuckGo Videos: title, URL, description, duration, publisher, uploader, publication date, view count, thumbnail and embed URL. Filter by region, safe search and time range."
+    },
+    {
+      "name": "ebay_listing_details",
+      "description": "Everything one listing publishes: title, whether it is active or ended, price in US dollars and in the seller's own currency, list price, condition, quantity available and units sold, auction bids, exact end time and reserve, seller with exact feedback score, shipping cost and service, where it ships from, return policy, item specifics, category path, brand, MPN and GTIN, and image URLs."
+    },
+    {
+      "name": "ebay_parse_url",
+      "description": "Reads any eBay URL and says what it points at — a listing, a search, a category, a seller, a seller's feedback, a store, a catalogue product or its reviews — plus the item number, keywords, category id, username or product id it carries, ready to pass to the other tools. Makes no request to eBay."
+    },
+    {
+      "name": "ebay_price_check",
+      "description": "The cheapest way to monitor prices: give up to 100 item numbers or listing URLs and get each listing's current price in US dollars, bids for auctions, shipping cost, and whether it is active, ended or gone — nothing else. mode fast (default) is the cheapest; mode exact also returns the seller's own currency, availability and the exact quantity left."
+    },
+    {
+      "name": "ebay_product_reviews",
+      "description": "Buyer reviews of one eBay catalogue product (a product page, not a single listing): average rating, rating count, the count at each star, what share of buyers agree with attributes such as 'Good sound quality', and each review's rating, title, text, author, date, verified-purchase flag, the condition bought and who sold it. Paginated with nextCursor."
+    },
+    {
+      "name": "ebay_search_listings",
+      "description": "Search eBay's live listings by keyword, category or seller, filtered by condition, auction or Buy It Now, price range, free shipping, returns accepted and offers, and sorted by relevance, price plus shipping, ending soonest or newly listed. Each listing carries its title, price in US dollars (a range for listings with variations), condition, bids and time left for auctions, shipping cost, where it ships from, units sold, and the seller's username and feedback. Paginated with nextCursor."
+    },
+    {
+      "name": "ebay_seller_feedback",
+      "description": "A member's feedback profile: feedback score, positive percentage, member since, positive / neutral / negative counts for the last 1, 6 and 12 months, detailed seller ratings (accurate description, shipping cost, shipping speed, communication), and individual feedback comments with the rating, the item and its price. Filter by role, by rating (for example only negative) and whether to include eBay's automatic feedback. Paginated with nextCursor."
+    },
+    {
+      "name": "email_finder_find_email",
+      "description": "Finds the contact or business email a company, creator or person publishes, given their website, a social profile, or a YouTube channel. Reads the target's own page and its about and contact pages, the public profiles it links to, a YouTube channel's recent video descriptions, and publicly indexed pages that name it. Returns the address, where it was published, and a confidence grade saying whether it sits on the target's own domain. When nothing is published it says so explicitly and lists the places it checked — 'no email published' is a real answer here, and is reported as one rather than as an empty result."
+    },
+    {
+      "name": "email_finder_resolve_target",
+      "description": "Reads a target — a domain, a website URL, a social profile URL, or a YouTube handle, URL or channel ID — and says what it is, which page a lookup would start from, and which places that lookup would check. Requests nothing from the target, so it is the cheap way to validate an input before spending a lookup on it, or to confirm why a particular source was not consulted: a plain website has no video descriptions to read."
+    },
+    {
+      "name": "facebook_ad_library_ad_detail",
+      "description": "Everything the Ad Library shows for a single ad: creative, advertiser profile, EU transparency reach breakdown, violation history, and every other creative version running under the same ad group."
+    },
+    {
+      "name": "facebook_ad_library_ad_media",
+      "description": "Resolve the downloadable video, image and thumbnail files on an ad. Each asset comes with a download URL that streams the file through this service, since Facebook's own URLs are signed and expire."
+    },
+    {
+      "name": "facebook_ad_library_advertiser_ads",
+      "description": "List all Ad Library ads for one advertiser, given a page id, an Ad Library advertiser URL, a facebook.com page URL, an @username or the page's exact name. Defaults to both active and inactive ads. Each ad carries its copy, media, carousel cards, and for partnership ads the account it appears under (postedBy), the account it tags (taggedPartner) and which of them ran it (runBy); the response carries Facebook's estimated total and a cursor for the next page."
+    },
+    {
+      "name": "facebook_ad_library_advertiser_profile",
+      "description": "Page name, category, verification status, page likes, linked Instagram account and follower count, and political spend reporting where the page has any."
+    },
+    {
+      "name": "facebook_ad_library_resolve_url",
+      "description": "Turn any Ad Library URL into structured filters: whether it points at one ad, one advertiser or a search, plus the country, status and media filters it encodes."
+    },
+    {
+      "name": "facebook_ad_library_search_ads",
+      "description": "Search public Facebook and Instagram ads by keyword, with filters for country, status, media type, platform, language and impression date. Returns ad copy, creative, media URLs, run dates and a pagination cursor."
+    },
+    {
+      "name": "facebook_ad_library_search_advertisers",
+      "description": "Look up advertisers (Facebook pages) by brand or company name — pages named like it and pages running ads that match it — and get their page ids, usernames, categories and verification status for use with the other tools."
+    },
+    {
+      "name": "flights_search",
+      "description": "Flight fares and itineraries for a route and date, across carriers. Each itinerary carries its price (in the currency you request), operating airline, stop count and any layovers, and departure/arrival times. Supports one-way and round-trip searches, cabin class, a nonstop-only filter, and passenger counts. Prices reflect a live read and change frequently — always use the response's own timestamp rather than a cached figure. A round-trip search prices each outbound option against its cheapest matching return, without itemizing that return flight; a search with no matching itineraries reports that explicitly rather than erroring."
+    },
+    {
+      "name": "glassdoor_company_profile",
+      "description": "Overall and per-category ratings for one company — career opportunities, compensation and benefits, culture and values, diversity and inclusion, senior management, work-life balance — with the one-to-five star distribution behind each, total review counts, CEO approval, recommend-to-a-friend and six-month business-outlook rates."
+    },
+    {
+      "name": "glassdoor_company_reviews",
+      "description": "Employee reviews for one company, newest-ranked first: headline, pros, cons, advice to management, overall and per-category stars, job title, location, employment status, tenure, review date, helpful counts, and the employer's public reply where there is one. Walk several pages in one call, or resume later from the returned cursor."
+    },
+    {
+      "name": "glassdoor_company_salaries",
+      "description": "Self-reported pay at one company, one row per job title: how many reports it is based on, the currency, and base pay and total pay (base plus bonus, stock and other additional pay) at the 10th, 25th, 50th, 75th and 90th percentiles."
+    },
+    {
+      "name": "glassdoor_interview_reports",
+      "description": "Interview reports written by candidates at one company: job title, location, reported difficulty, how the experience felt, whether an offer followed, how the candidate applied, how long the process took, a description of the stages, and the questions they were asked. Walk several pages in one call, or resume later from the returned cursor."
+    },
+    {
+      "name": "glassdoor_resolve_url",
+      "description": "Turn any Glassdoor URL into structured input: which kind of page it names (company overview, reviews, salaries, interviews, or a company lookup), the company id and name it carries, the page number, and the search keyword."
+    },
+    {
+      "name": "glassdoor_search_companies",
+      "description": "Look up companies by company or brand name. Each match comes back with its company id, overall rating, review and salary counts, industry, headquarters, employee-count band, website and logo. Use the id with the other tools."
+    },
+    {
+      "name": "google_ad_library_ad_detail",
+      "description": "Everything the Google Ad Library shows for a single ad: every version of the creative, the format, the countries it ran in with the last date it was seen in each, and when it first ran."
+    },
+    {
+      "name": "google_ad_library_ad_media",
+      "description": "Resolve the video, image and thumbnail files on an ad, including the YouTube video where there is one. Each asset comes with a download URL that streams the file through this service, which is the reliable way to fetch a video file."
+    },
+    {
+      "name": "google_ad_library_advertiser_ads",
+      "description": "List all the ads one advertiser has in the Google Ad Library, given an advertiser id, an Ad Library advertiser URL, or an advertiser name. Filter by country, format, Google surface and the dates the ads ran."
+    },
+    {
+      "name": "google_ad_library_advertiser_profile",
+      "description": "The identity behind an advertiser: the name it advertises under, the legal name on its completed advertiser verification, and the country it verified in."
+    },
+    {
+      "name": "google_ad_library_resolve_url",
+      "description": "Turn any Google Ad Library URL into structured filters: whether it points at one ad, one advertiser or a website, plus the country, format, surface and date filters it encodes."
+    },
+    {
+      "name": "google_ad_library_search_ads",
+      "description": "Find the ads an advertiser or a website is running on Google Search, YouTube, Shopping, Maps and Play. Give a brand or company name (or a website with `domain`) and get back each ad's creative, format, run dates, and the countries it ran in. Note that this matches advertisers, not the wording inside ads — Google does not publish a searchable index of ad copy."
+    },
+    {
+      "name": "google_ad_library_search_advertisers",
+      "description": "Look up advertisers by brand or company name and get their advertiser ids for use with the other tools, along with the country each one verified itself in and roughly how many ads it is running. Also returns matching advertiser websites."
+    },
+    {
+      "name": "instagram_comment_replies",
+      "description": "The replies to one comment on an Instagram post or reel, oldest first, in the same shape as a comment: the text, who wrote it, when, its like count, and for a GIF or photo reply its kind and a link to the media. Takes the post and the comment's id from instagram_post_comments. About 8 replies a page: pass a response's nextCursor back as cursor to read on, or raise pages to collect several at once; nextCursor is null when there is nothing further. totalCount is Instagram's own count, which can be higher than the replies it lists."
+    },
+    {
+      "name": "instagram_post_comments",
+      "description": "Comments on an Instagram post or reel, newest first: the text, who wrote it, when, its like count, and how many replies it has where that is published. A GIF or photo comment comes back with its kind and a link to the media. 10 to 16 comments a page: pass a response's nextCursor back as cursor to read on, or raise pages to collect several pages at once; nextCursor is null when there is nothing further. Also reports the total comment count Instagram publishes for the post, which counts replies as well. The replies to a comment are read with instagram_comment_replies, using the comment's id. Accepts a post or reel URL, or the short code from that URL."
+    },
+    {
+      "name": "instagram_post_detail",
+      "description": "One Instagram post or reel in full: caption, posting date, like and comment counts, current play count (views) and length in seconds for a video or reel, dimensions, alt text, the account that posted it and any co-authors, accounts tagged in the image, the place it was tagged at, topics, hashtags, mentions and links to every image or video rendition. A carousel comes back with each of its frames. The first comments are included; use instagram_post_comments to read them all. Accepts a post or reel URL, or the short code from that URL. Set include to any of [\"reposts\", \"shares\", \"saves\"] to also get how many times the post was reposted, shared and saved (share and save counts exist for reels and videos)."
+    },
+    {
+      "name": "instagram_reels_feed",
+      "description": "Popular reels from many accounts, as Instagram lists them publicly, with no account or subject needed. Instagram no longer makes its own live reel feed public, so this is what it lists as popular, not a personalised or real-time feed. Each reel comes with its caption, play count, the account that posted it and links to its video; like counts, comment counts and posting dates come from post-detail. Read several pages at once, or continue with nextCursor."
+    },
+    {
+      "name": "instagram_resolve_url",
+      "description": "Reads any Instagram link and says what it names — a post, a reel, an account, a hashtag or a place — along with the short code, numeric post id, username, hashtag name or place id it encodes, and its canonical URL, ready to pass to the other tools. Makes no request to Instagram. Links naming something Instagram does not make public are identified and flagged as such."
+    },
+    {
+      "name": "instagram_trending_searches",
+      "description": "The search terms Instagram itself is promoting right now, grouped into the sections it publishes — what is trending now, pop-culture moments, profiles to watch, categories, and what is happening this month — each with the number of posts Instagram counts under that term. Useful for tracking what is moving without naming an account first."
+    },
+    {
+      "name": "instagram_user_posts",
+      "description": "The posts an Instagram account has published, newest first, each with its short code, link, caption, hashtags, mentions, image or video links and alt text, and normally its posting date, like and comment counts, play count and length for a video. Read several pages at once, or continue with nextCursor. When a page comes without dates and counts, each post's fieldsFrom says so, notes names the posts, and a single post read supplies them. include adds repost, share and save counts (share and save counts exist for reels and videos). A private account returns no posts and says so. A cursor belongs to the account it came from; one sent with another account, or one that is not a nextCursor, is rejected. A list that stops short of what was asked has hasMore true, a nextCursor and a note saying so, and an empty list always says why."
+    },
+    {
+      "name": "instagram_user_profile",
+      "description": "An Instagram account's public profile: display name, bio, bio links, avatar, whether it is verified, private or memorialised, its pronouns and badges, its follower, following and exact post counts, whether it has a story up now, and the titles and covers of the story highlights it keeps on the profile. Accepts a username with or without the @, or a profile URL. Set include to [\"country\"] to also get where the account is based and the month it joined."
+    },
+    {
+      "name": "instagram_user_reels",
+      "description": "The reels an Instagram account has published, newest first. Every reel comes with its play count, like count and comment count, alongside its short code and link; most also carry their posting date, length in seconds, caption and video links (fieldsFrom says which do). include adds repost, share and save counts. Read several pages at once, or continue with nextCursor. A cursor belongs to the account it came from; one sent with another account, or one that is not a nextCursor, is rejected. A list that stops short of what was asked has hasMore true, a nextCursor and a note saying so, and an empty list always says why."
+    },
+    {
+      "name": "instagram_user_stories",
+      "description": "The stories an Instagram account has live right now, oldest first: each frame's id, when it was posted and when it expires (24 hours later), whether it is an image or a video, its video length, links to every image and video rendition, any link the account attached and any post it re-shared — plus the account's profile and when it last posted a story. An account with no active story returns an empty list and says so; a private account's stories are not public and the response says that instead. Accepts a username with or without the @, or a profile URL."
+    },
+    {
+      "name": "linkedin_ad_library_ad_detail",
+      "description": "Everything the Ad Library shows for a single ad: full ad copy, format, advertiser and payer, media, and — for ads targeting the EU — run dates, the impressions band, impressions by country, and the targeting the advertiser chose."
+    },
+    {
+      "name": "linkedin_ad_library_ad_media",
+      "description": "Resolve the downloadable video, image and thumbnail files on an ad. Each asset comes with a download URL that streams the file through this service, since LinkedIn's own URLs are signed and expire."
+    },
+    {
+      "name": "linkedin_ad_library_advertiser_ads",
+      "description": "List all Ad Library ads for one advertiser by company or advertiser name. Names are matched by substring, so the response lists which advertisers the results actually cover."
+    },
+    {
+      "name": "linkedin_ad_library_resolve_url",
+      "description": "Turn any Ad Library URL into structured filters: whether it points at one ad or a search, plus the keyword, advertiser, payer, countries, dates, impressions range and targeting filters it encodes."
+    },
+    {
+      "name": "linkedin_ad_library_search_ads",
+      "description": "Search public LinkedIn ads by keyword, with filters for country, date range, payer, impressions range and targeting categories. Returns ad copy, format, advertiser, media URLs and a pagination cursor."
+    },
+    {
+      "name": "linkedin_ad_library_search_advertisers",
+      "description": "Look up companies and people running LinkedIn ads whose name matches a brand or company name, with their LinkedIn page and how many of their ads were seen. Use the name it returns with the other tools."
+    },
+    {
+      "name": "linkinbio_detect_provider",
+      "description": "Given any web address, report which link-in-bio service hosts it, whether its pages can be read, the handle the address names, and the evidence behind the answer. Answers cleanly for an address that is not a link page at all, and names the services whose pages can be read. Optionally reads the page too, so a link page served on the creator's own domain is still identified."
+    },
+    {
+      "name": "linkinbio_links",
+      "description": "Just the link list from a creator's page, filtered to one kind if you want: plain links, embedded players, products, social icons, headings or groups. Each link carries its label, destination, position, grouping, thumbnail, price where it sells something, any gate on it, and whether clicks are tracked. Can also follow each link through its redirects to the address it really lands on, which is how you find the retailer or affiliate network behind a shortened link."
+    },
+    {
+      "name": "linkinbio_profile",
+      "description": "One creator's link page in full: display name, bio, avatar, whether the account is verified and on a paid plan, country and creation date where published, the page's colours and font, whether it sells anything or takes tips, any gate standing in front of it, the social icon row, and every link with its label, destination, position, grouping, thumbnail and whether clicks are tracked. Can also follow each link through its redirects to the address it really lands on."
+    },
+    {
+      "name": "linkinbio_resolve_url",
+      "description": "Turn any address into structured input for the other tools, without fetching anything: which service it belongs to, whether it points at one creator's page or at the service's own site, the handle it carries, and the canonical page address. Free and instant, so it is the right first step for a list of pasted addresses."
+    },
+    {
+      "name": "linkinbio_unwrap_link",
+      "description": "Follow a single link through its redirects and report the address it actually lands on, that address's host and page title, every step of the chain, and whether it passed through a link shortener or an affiliate redirect. Use it on a shortened or campaign link to find the real destination. Follows a limited number of steps and says so when a chain is still going."
+    },
+    {
+      "name": "makerworld_categories",
+      "description": "The MakerWorld category tree with each category's id, which is what the `categories` filter on a model search takes."
+    },
+    {
+      "name": "makerworld_collection_detail",
+      "description": "A collection's title, description, owner, tags and like count, plus the models it contains with their popularity counts and URLs, paginated. Accepts a collection id or a collection URL."
+    },
+    {
+      "name": "makerworld_contests",
+      "description": "MakerWorld's design contests — past, running and upcoming — with each one's theme, brief, dates, entry and participant counts, allowed licenses, and derived phase. Pass a contest id to get just that one."
+    },
+    {
+      "name": "makerworld_designer_profile",
+      "description": "A designer's public profile: name, handle, bio, links, follower and following counts, how many models and print profiles they have published, total likes, downloads, prints and boosts received, their level, their verified and official badges, when they joined, and the models they have pinned. Accepts a designer id, an @handle, or a profile URL."
+    },
+    {
+      "name": "makerworld_model_detail",
+      "description": "Everything MakerWorld publishes about a single model: description, designer, license and whether remixing is allowed, categories and tags, download / like / print / boost / collection counts, the list of attached files with their types and sizes, every gallery image and render URL, the models it was remixed from, any contest placement, and each published print profile with its printer, nozzle size, estimated print time, filament use, layer height and rating."
+    },
+    {
+      "name": "makerworld_resolve_url",
+      "description": "Turn any MakerWorld URL into structured input: whether it points at a model, a designer, a collection, a contest or a search, plus the id, slug and filters it encodes."
+    },
+    {
+      "name": "makerworld_search_collections",
+      "description": "Find curated MakerWorld collections by keyword, with their owner, how many models each holds, and how many likes they have."
+    },
+    {
+      "name": "makerworld_search_designers",
+      "description": "Look up MakerWorld designers by name or handle, and get their ids for use with the other tools, along with follower counts and how many models each has published."
+    },
+    {
+      "name": "makerworld_search_models",
+      "description": "Search MakerWorld's 3D model catalogue by keyword, sorted by relevance, trending, newest, downloads, likes, collections, prints or boosts, and filterable by license, category, nozzle size and whether a ready-to-print profile exists. Returns each model's title, designer, popularity counts, license, tags, cover image and URL, plus a cursor for the next page."
+    },
+    {
+      "name": "printables_browse_models",
+      "description": "List models by popularity rather than relevance — trending, newest, highest rated, most printed, most viewed or most liked — optionally narrowed to a category, tags or material. Use this instead of search when there is no keyword to search for."
+    },
+    {
+      "name": "printables_collection_detail",
+      "description": "A single collection by id or URL: its name, description, owner, model count, like count and a sample of the models it holds."
+    },
+    {
+      "name": "printables_contest_detail",
+      "description": "A single contest by id or URL, with the placed entries in order: the winning models, their designers and their download counts."
+    },
+    {
+      "name": "printables_contests",
+      "description": "Every design contest Printables has run, with its id, name, entry count and the rules and prize text. Use the returned id with the contest detail tool to see who placed."
+    },
+    {
+      "name": "printables_filter_values",
+      "description": "The category tree, licences, materials, printers and design tools Printables knows about, each with the id the search filters expect. Call this first when filtering a search by category, licence, material or printer — the ids cannot be guessed."
+    },
+    {
+      "name": "printables_model_detail",
+      "description": "Everything Printables publishes about a single model: description, designer, licence, category, tags, download and like and view and print counts, the recommended print settings, the list of files with their sizes, every gallery image URL, what it was remixed from, and any contest placements."
+    },
+    {
+      "name": "printables_resolve_url",
+      "description": "Turn any Printables URL into structured fields: whether it points at a model, a designer, a collection, a contest or a search, plus the id, handle, slug and sort it encodes. Use it to get the id the other tools need out of a link somebody pasted."
+    },
+    {
+      "name": "printables_search_models",
+      "description": "Search the Printables model library by keyword, with filters for category, licence, material, printer, nozzle size, print time, weight, filament use, price and more. Returns each model's title, designer, category, ratings, download and like counts, cover image URL and a pagination cursor."
+    },
+    {
+      "name": "printables_user_collections",
+      "description": "The public collections a designer has put together, with each one's name, model count, like count, description and a sample of the models inside it."
+    },
+    {
+      "name": "printables_user_models",
+      "description": "Every model a designer has published, newest first, with the same fields a search returns. Paginated, so a prolific designer's whole catalogue can be walked."
+    },
+    {
+      "name": "printables_user_profile",
+      "description": "A model designer's display name, handle, biography, join date, verification status, follower and following counts, total downloads across their models, and profile level. Accepts a handle, an @handle, a profile URL, or a numeric designer id."
+    },
+    {
+      "name": "producthunt_collections",
+      "description": "Curated collections of products, searchable by name, with each collection's curator, product count and a preview of what is in it."
+    },
+    {
+      "name": "producthunt_leaderboard",
+      "description": "The ranked launches for a period, with each launch's rank, upvotes, comment count, tagline and topics. Defaults to today. For the first hours of each launch day Product Hunt has not ranked that day's launches yet, so they come back marked pending, without ranks or upvotes."
+    },
+    {
+      "name": "producthunt_product_comments",
+      "description": "Comment threads on a launch, with each author, their comment text, upvotes and timestamp, and replies nested underneath. Paginated, newest or highest-voted first."
+    },
+    {
+      "name": "producthunt_product_detail",
+      "description": "Everything Product Hunt shows for a product and its launch: description, website, topics and categories, upvote and comment counts, launch date and rank, pricing, gallery images and video, makers, and who hunted it. Optionally lists every launch the product has had."
+    },
+    {
+      "name": "producthunt_resolve_url",
+      "description": "Turn any Product Hunt URL into structured input: whether it points at a product, a launch, a person, a topic, a collection or a leaderboard, plus the identifiers it carries."
+    },
+    {
+      "name": "producthunt_search_products",
+      "description": "Search Product Hunt by keyword and get the matching products with their tagline, rating, review count and page URL, plus a cursor for the next page."
+    },
+    {
+      "name": "producthunt_topic_products",
+      "description": "Products filed under a topic, ordered by recency, rating, follower count or launch count, with the topic's description and related topics."
+    },
+    {
+      "name": "producthunt_user_profile",
+      "description": "A person's public profile: bio, headline, links, join date, follower and following counts, upvotes they have given, products they have made, launches they have submitted, and the products they are credited on."
+    },
+    {
+      "name": "resolve_url_type",
+      "description": "Classify and normalize a Reddit URL into the backend primitive it maps to."
+    },
+    {
+      "name": "scrape_comment_permalink",
+      "description": "Scrape one Reddit comment permalink and return the focal comment plus local thread context, each with the author's flair in that community."
+    },
+    {
+      "name": "scrape_community_details",
+      "description": "Get a subreddit's details: title, description, member count, weekly visitors and weekly contributions, creation date, whether the community itself is marked NSFW (18+), and its rules — each rule's number, title and explanation."
+    },
+    {
+      "name": "scrape_community_posts",
+      "description": "Scrape subreddit listing pages across hot, new, top, rising, or controversial."
+    },
+    {
+      "name": "scrape_explore",
+      "description": "Scrape Reddit's explore page showing recommended, popular, and curated communities."
+    },
+    {
+      "name": "scrape_google_maps_place_contacts",
+      "description": "Email addresses, phone numbers and social profile links (Facebook, Instagram, LinkedIn, X, YouTube, TikTok, Pinterest) from the websites of up to 20 Google Maps places or business websites per call. Pass places (Place IDs, feature IDs or Maps links) and their websites are found for you, or pass websites directly (for example the website field from place search). Each item reports found, none, no_website, not_found, blocked, unreachable or timeout."
+    },
+    {
+      "name": "scrape_google_maps_place_details",
+      "description": "Full details for one Google Maps place: everything place search returns plus the description, amenities and service options, and plus code. Identify the place by Google Place ID (ChIJ…), feature ID (0x…:0x…), Google Maps place URL, ?cid= or ?q=place_id: URL, or a maps.app.goo.gl / goo.gl/maps short link."
+    },
+    {
+      "name": "scrape_google_maps_place_search",
+      "description": "Search Google Maps for places matching a query in an area (text location or coordinates with a radius). Returns each place's name, categories, address, coordinates, phone, website, rating, review count, opening hours, business status, Google Maps link and photo. Optional filters: minimum rating, open now, category. Use nextCursor to continue a search. Pass places or their websites to scrape_google_maps_place_contacts for emails, phone numbers and social profiles."
+    },
+    {
+      "name": "scrape_google_maps_reviews",
+      "description": "Fetch reviews for a Google Maps place. Identify the place by Google Place ID (ChIJ…), feature ID (0x…:0x…), Google Maps place URL, ?cid= or ?q=place_id: URL, or a maps.app.goo.gl / goo.gl/maps short link."
+    },
+    {
+      "name": "scrape_leaderboard",
+      "description": "Scrape the top/popular subreddits leaderboard."
+    },
+    {
+      "name": "scrape_playstore_reviews",
+      "description": "Fetch and filter reviews for an Android app from Google Play."
+    },
+    {
+      "name": "scrape_popular",
+      "description": "Scrape the old Reddit popular listing surface."
+    },
+    {
+      "name": "scrape_post",
+      "description": "Scrape one Reddit post page, optionally expanding more comment batches. The post and every comment include the author's flair in that community (e.g. the team a user supports in a sports subreddit)."
+    },
+    {
+      "name": "scrape_search",
+      "description": "Scrape old Reddit search results, optionally restricted to a subreddit."
+    },
+    {
+      "name": "scrape_search_comments",
+      "description": "Search Reddit comments by keyword. Returns comment previews with body text, author and their flair in that community, subreddit, score, and parent post info."
+    },
+    {
+      "name": "scrape_search_communities",
+      "description": "Search old Reddit community directory results by keyword."
+    },
+    {
+      "name": "scrape_search_users",
+      "description": "Search old Reddit user directory results by keyword."
+    },
+    {
+      "name": "scrape_twitter_about_profile",
+      "description": "Look up a Twitter/X profile and return bio, follower counts, join date, and other public profile information."
+    },
+    {
+      "name": "scrape_twitter_followers",
+      "description": "Get the list of followers of a Twitter/X user."
+    },
+    {
+      "name": "scrape_twitter_following",
+      "description": "Get the list of accounts a Twitter/X user follows."
+    },
+    {
+      "name": "scrape_twitter_search",
+      "description": "Search for tweets on Twitter/X by keyword, hashtag, or phrase."
+    },
+    {
+      "name": "scrape_twitter_tweet_detail",
+      "description": "Get the full details of a specific tweet including its text, author, stats, and conversation context."
+    },
+    {
+      "name": "scrape_twitter_tweet_replies",
+      "description": "Get the replies to a specific tweet."
+    },
+    {
+      "name": "scrape_twitter_user_profile_details",
+      "description": "Get detailed profile information for a Twitter/X user including their display name, bio, verification status, and account metadata."
+    },
+    {
+      "name": "scrape_twitter_user_replies",
+      "description": "Get recent tweets and replies from a Twitter/X user."
+    },
+    {
+      "name": "scrape_twitter_user_tweets",
+      "description": "Get recent tweets from a Twitter/X user's timeline."
+    },
+    {
+      "name": "scrape_twitter_verified_followers",
+      "description": "Get the list of verified (blue check) followers of a Twitter/X user."
+    },
+    {
+      "name": "scrape_twitter_video_transcript",
+      "description": "Get the spoken-word transcript of the video in an X/Twitter post, as full text plus time-coded lines. Captions exist for a minority of posts (roughly one in six of the videos measured, and very few clips under ten seconds); when a video has none, the response says so rather than failing. Transcripts come back only in the language spoken in the video."
+    },
+    {
+      "name": "scrape_user_comments",
+      "description": "Scrape the comments listing for a Reddit user."
+    },
+    {
+      "name": "scrape_user_posts",
+      "description": "Scrape the submitted posts listing for a Reddit user. Each post says whether it was removed (`removed`) and why (`removedByCategory`, e.g. moderator, reddit, deleted); `removed: null` means the status could not be checked."
+    },
+    {
+      "name": "scrape_user_profile",
+      "description": "Scrape Reddit user profile metadata such as karma, age, about text, trophies, and follower count (when the user shows it)."
+    },
+    {
+      "name": "scrape_youtube_comment_replies",
+      "description": "Get a YouTube comment and its replies. Provide the video URL and a comment ID returned by Get YouTube Comments. A reply ID may also be used and will return its parent thread."
+    },
+    {
+      "name": "scrape_youtube_comments",
+      "description": "Get top-level comments from a YouTube video. Choose the sort order and how many comment pages to collect. Each comment includes an ID that can be used with Get YouTube Comment Replies."
+    },
+    {
+      "name": "search_playstore_apps",
+      "description": "Search the Google Play app store by keyword and return matching apps with ratings, pricing, and developer details."
+    },
+    {
+      "name": "shopify_collections",
+      "description": "Without a collection, lists the store's collections with their titles, descriptions and product counts. With one, returns that collection's products in full."
+    },
+    {
+      "name": "shopify_detect_store",
+      "description": "Decide whether a domain runs on Shopify and see the evidence behind the answer, along with the store's name, currency and which of its catalog data is published. Answers cleanly for a domain that is not a Shopify store, so it is safe to run over a list."
+    },
+    {
+      "name": "shopify_product_detail",
+      "description": "Everything a store publishes about a single product, given its URL or its handle: the full description, every image with its dimensions, and every variant with price, sale price, SKU, barcode, options and stock."
+    },
+    {
+      "name": "shopify_product_reviews",
+      "description": "Customer reviews of one product from the review service the store uses: the average rating, review count and star breakdown, then each review with its rating, title, text, author, date, photo and video links, and the store's reply. Sortable, filterable by star rating, and paginated with a cursor."
+    },
+    {
+      "name": "shopify_products",
+      "description": "Walk a store's product catalog: title, vendor, product type, tags, description, image URLs, and every variant with its price, sale price, SKU, options and stock status. Paginated, with a cursor to resume from."
+    },
+    {
+      "name": "shopify_resolve_url",
+      "description": "Turn any store URL into structured fields: whether it points at a product, a collection or the store itself, plus the domain, the handle and the selected variant. Needs no request to the store."
+    },
+    {
+      "name": "shopify_review_providers",
+      "description": "Which supported review services a store uses (Judge.me, Yotpo, Loox, Okendo, Stamped, REVIEWS.io), where each was found, and whether each has store-wide and per-product reviews to read."
+    },
+    {
+      "name": "shopify_store_profile",
+      "description": "Name, description, currency, locale, country, theme, product and collection totals, the countries it ships to, accepted payment methods, and links to its social profiles."
+    },
+    {
+      "name": "shopify_store_reviews",
+      "description": "Customer reviews across a whole store from the review service it uses, each with the product it is about where known, plus the store-wide average rating, review count and star breakdown. Sortable and paginated with a cursor."
+    },
+    {
+      "name": "temu_price_check",
+      "description": "Current price, currency and availability for up to 50 Temu products or variants in one call, priced for a chosen country storefront. Built for scheduled price monitoring: pass variant ids (returned by a first check) for the fastest checks."
+    },
+    {
+      "name": "temu_product",
+      "description": "One Temu product in full for a chosen country storefront: title, current price and currency, price before promotion, strikethrough list price, discount, price range, promotion end time, variants with their own price and stock, images, video and specifications."
+    },
+    {
+      "name": "temu_resolve_url",
+      "description": "Turn any Temu URL into its product id, variant id, store id, category id or search query, plus the country storefront it belongs to. Works offline."
+    },
+    {
+      "name": "tiktok_ad_library_ad_detail",
+      "description": "Everything the ad library publishes for a single ad: its text and creative, the advertiser behind it, and the disclosures — reach per region broken down by age bracket and gender, the targeting the advertiser chose per region, and the size of the audience it could reach."
+    },
+    {
+      "name": "tiktok_ad_library_ad_media",
+      "description": "Resolve the downloadable video, image and cover files on an ad. Each asset comes with a download URL that streams the file through this service, because the ad library's own media URLs are signed and expire."
+    },
+    {
+      "name": "tiktok_ad_library_advertiser_ads",
+      "description": "List one advertiser's ads in the TikTok Ad Library, given their registered advertiser name or an ad library URL naming one. Covers both active and inactive ads over the requested date window by default. Use the advertiser search tool first if you only know a brand name."
+    },
+    {
+      "name": "tiktok_ad_library_advertiser_profile",
+      "description": "Registered business name and location, who paid for the ads, the linked TikTok account with its follower count and verification type, the countries the advertiser's ads ran in, and how many ads they ran in the requested window."
+    },
+    {
+      "name": "tiktok_ad_library_resolve_url",
+      "description": "Turn any TikTok Ad Library URL into structured filters: whether it points at one ad, one advertiser or a search, plus the query, countries, status, media type, audience and date filters it encodes."
+    },
+    {
+      "name": "tiktok_ad_library_search_ads",
+      "description": "Search public TikTok ads by keyword or by advertiser name, with filters for country, active status, media type, audience age, gender, audience reach and the dates the ad was shown. Returns ad text, creative, media URLs, the advertiser, reach bands and a pagination cursor."
+    },
+    {
+      "name": "tiktok_ad_library_search_advertisers",
+      "description": "Look up advertisers running ads whose registered business name matches a brand or company name, and get the exact name and id the other tools accept. Also returns related keyword suggestions."
+    },
+    {
+      "name": "tiktok_comments",
+      "description": "Comments on a TikTok video: the text, who wrote it, when, its like count, how many replies it has, and whether it is pinned or was liked by the video's creator. Any replies TikTok shows alongside a comment are included; a comment with more replies than are listed says so. Also reports the total comment count TikTok publishes for the video, which can exceed what is readable. Read several pages at once, or continue with nextCursor."
+    },
+    {
+      "name": "tiktok_hashtag_videos",
+      "description": "Videos posted under a TikTok hashtag, each with its description, posting date, engagement counts, account, sound and media links, plus the hashtag's own total view count. Accepts a hashtag name with or without the #, or a hashtag URL. Read several pages at once, or continue with nextCursor. A hashtag can also be named by its numeric id (hashtagId), and requireHashtag: true keeps only posts that carry the hashtag in their own caption. includeSearch: true also adds recent posts a search for the hashtag finds that its list does not (about 10 seconds more). To poll a hashtag, send pollState \"new\" and then each response's nextPollState (or pass the ids you already have as knownIds and your previous request time as lastPollAt), with a recency window as within (e.g. \"2d\"): only posts new to you come back, each marked as newly published or newly appeared. TikTok lists a hashtag by popularity, not by date, and shows roughly the top 30 to 200 posts depending on the hashtag. Each video lists its tagged accounts (username, numeric id, secUid and where the tag sits in the caption) and its hashtags with their ids, says whether TikTok runs it as an ad, labels it a paid partnership or marks it shoppable, names in roundedStats any view, like, comment or share count TikTok publishes only rounded (it does so from 10,000), and carries TikTok's own raw ad and shop values in commercialSignals. With include: [\"exactStats\"], it also fills exactStats (the exact whole-number counts behind the rounded ones), isAdsNative (TikTok's own ad marker for the post), brandedContentType (0 none, 1 paid partnership, 7 commission) and accountRegion (the region TikTok records the account as registered in — the account's own country, not where the post was made); when they cannot be read they are null and the notes say why."
+    },
+    {
+      "name": "tiktok_resolve_url",
+      "description": "Reads any TikTok link and says what it names — a video, an account, a hashtag, a sound or a search — along with the id, username, hashtag name or search term it encodes and its canonical URL, ready to pass to the other tools. Makes no request to TikTok. A shortened share link cannot be identified without opening it, and says so."
+    },
+    {
+      "name": "tiktok_search_videos",
+      "description": "TikTok videos matching a search term, in the order TikTok ranks them, each with its description, posting date, engagement counts, account, sound, hashtags and media links. Read several pages at once, or continue with nextCursor. Results are whatever TikTok returns for the term; there is no sort or date filter. Each video lists its tagged accounts (username, numeric id, secUid and where the tag sits in the caption) and its hashtags with their ids, says whether TikTok runs it as an ad, labels it a paid partnership or marks it shoppable, names in roundedStats any view, like, comment or share count TikTok publishes only rounded (it does so from 10,000), and carries TikTok's own raw ad and shop values in commercialSignals. With include: [\"exactStats\"], it also fills exactStats (the exact whole-number counts behind the rounded ones), isAdsNative (TikTok's own ad marker for the post), brandedContentType (0 none, 1 paid partnership, 7 commission) and accountRegion (the region TikTok records the account as registered in — the account's own country, not where the post was made); when they cannot be read they are null and the notes say why."
+    },
+    {
+      "name": "tiktok_user_profile",
+      "description": "A TikTok account's public profile: display name, bio and bio link, avatar, whether it is verified, private or a business account, when it was created, and its follower, following, total-likes and video counts. Accepts exactly one of: a username with or without the @ or a profile URL, a numeric userId, or a secUid. Counts are the exact published figures, not the rounded ones shown on the page. region is the account's registered country or region; the first request for an account answers null with a note saying it is being worked out, and later requests carry it (kept for 90 days). It stays null for a private account or one with no public videos. accountRegion on a video reports the same fact and is available at once with include exactStats."
+    },
+    {
+      "name": "tiktok_user_videos",
+      "description": "The videos a TikTok account has posted, newest first by default, or ordered by most popular or oldest. Each video comes back with its description, posting date, length, view, like, comment, share and save counts, hashtags, mentions, sound, cover image and media links. The account's own profile is included in the response. Name the account by exactly one of username, userId or secUid. Read several pages at once, or continue with nextCursor. Each video lists its tagged accounts (username, numeric id, secUid and where the tag sits in the caption) and its hashtags with their ids, says whether TikTok runs it as an ad, labels it a paid partnership or marks it shoppable, names in roundedStats any view, like, comment or share count TikTok publishes only rounded (it does so from 10,000), and carries TikTok's own raw ad and shop values in commercialSignals. With include: [\"exactStats\"], it also fills exactStats (the exact whole-number counts behind the rounded ones), isAdsNative (TikTok's own ad marker for the post), brandedContentType (0 none, 1 paid partnership, 7 commission) and accountRegion (the region TikTok records the account as registered in — the account's own country, not where the post was made); when they cannot be read they are null and the notes say why."
+    },
+    {
+      "name": "tiktok_video_detail",
+      "description": "One TikTok video in full: description, posting date, length, view, like, comment, share and save counts, the account that posted it, the sound it uses, its hashtags and mentions, the region it was posted from, and links to its media. Photo posts come back with each image rather than a clip. Accepts a video URL or a video id. Each video lists its tagged accounts (username, numeric id, secUid and where the tag sits in the caption) and its hashtags with their ids, says whether TikTok runs it as an ad, labels it a paid partnership or marks it shoppable, names in roundedStats any view, like, comment or share count TikTok publishes only rounded (it does so from 10,000), and carries TikTok's own raw ad and shop values in commercialSignals. With include: [\"exactStats\"], it also fills exactStats (the exact whole-number counts behind the rounded ones), isAdsNative (TikTok's own ad marker for the post), brandedContentType (0 none, 1 paid partnership, 7 commission) and accountRegion (the region TikTok records the account as registered in — the account's own country, not where the post was made); when they cannot be read they are null and the notes say why."
+    },
+    {
+      "name": "tiktok_video_transcript",
+      "description": "What is said out loud in a TikTok video, as text. Each line comes with its start and end time in the video, and the whole track is also returned as one block of plain text. When the video was not spoken in English, a separate English translation is usually included alongside the original language. Accepts a video URL or a video id. Not every video has one: TikTok publishes a transcript for most spoken-word videos, and none for a photo post or a video with no speech — about two thirds of videos carry one. Check `available` and read `notes` rather than treating an empty result as an error."
+    },
+    {
+      "name": "tripadvisor_location_photos",
+      "description": "Photos from a place's gallery as URLs, with captions, dimensions and credit. Each one also carries a URL that serves the file through this service."
+    },
+    {
+      "name": "tripadvisor_location_profile",
+      "description": "Name, kind, rating and review count with the per-bubble breakdown, ranking within its city, price range, address and coordinates, phone, website, facilities, opening hours, award history and description."
+    },
+    {
+      "name": "tripadvisor_location_reviews",
+      "description": "Paginated reviews for one place. Each carries its rating, title and full text, the trip type, the month of the visit and the date it was written, the reviewer's name, home town and contribution count, per-aspect ratings, attached photo URLs, and the owner's reply where there is one. Filter by language, minimum rating and trip type."
+    },
+    {
+      "name": "tripadvisor_resolve_url",
+      "description": "Turn any Tripadvisor URL into structured identifiers: which place, region, review or photo it points at, and what kind of place it is."
+    },
+    {
+      "name": "tripadvisor_search_locations",
+      "description": "Look up hotels, restaurants, attractions, tours, cities and regions by name. Returns each place's Tripadvisor id, kind, city and country, coordinates, rating and review count — the ids the other tools take."
+    },
+    {
+      "name": "trustpilot_company_profile",
+      "description": "TrustScore, total review count, reviews in the last 12 months, the full one-to-five star distribution, category and location, whether the company has claimed its profile and is still collecting reviews, how often it replies to negative reviews, any consumer alert against it, and how many reviews it has in each language."
+    },
+    {
+      "name": "trustpilot_company_reviews",
+      "description": "Reviews for one company, filtered by star rating, review language, date window, verified reviewers, or a keyword, and sorted by recency or relevance. Each review carries its rating, title, text, language, the date of the experience, the author and their country, whether the reviewer was verified, and the company's reply where it has answered. Paginated, with a cursor to continue."
+    },
+    {
+      "name": "trustpilot_resolve_url",
+      "description": "Turn any Trustpilot link into structured input: whether it points at a company, a single review or a search, plus the company domain, review id, or the star, language, date and keyword filters it encodes."
+    },
+    {
+      "name": "trustpilot_review",
+      "description": "A single review in full, from its id or its Trustpilot link: rating, title, text, dates, author, verification status, and the company's reply. Also identifies the company the review is about."
+    },
+    {
+      "name": "trustpilot_search_companies",
+      "description": "Look up companies by name, brand or keyword. Returns each company's domain, display name, TrustScore, review count, category, country and contact details, plus a pagination cursor."
+    },
+    {
+      "name": "upwork_job_detail",
+      "description": "Everything Upwork publishes for a single job posting: full description, exact posting time, budget, screening questions, any applicant country restrictions, and the client's rating, spend, hire rate and average paid hourly rate. Takes a job id or a job URL."
+    },
+    {
+      "name": "upwork_resolve_url",
+      "description": "Turn any Upwork link into the identifiers the other tools take: whether it points at a single job posting or a job search, plus the job id or the search keywords it encodes."
+    },
+    {
+      "name": "upwork_search_jobs",
+      "description": "Search Upwork job postings by keyword, or by pasting an Upwork job search URL. Filters cover experience level, fixed-price or hourly work, budget and rate ranges, client hiring history, client location, and how recently a job was posted. Returns the posting title, description, budget, required skills, proposal count, and the client's country, rating, total spend and hire rate."
+    },
+    {
+      "name": "web_unblocker_fetch",
+      "description": "Fetches a web page and returns it as HTML, plain text or markdown, along with the final URL after redirects, the HTTP status and the page title. Handles pages that need a browser to render and pages that turn away ordinary requests: the least effort that works is spent first, and the response says what it cost. Use waitForSelector or expectText when you know what the page should contain, and the request is reported as unsuccessful rather than returning the wrong page. Ask for markdown when feeding the result to a model — it is a fraction of the size of the HTML."
+    },
+    {
+      "name": "web_unblocker_screenshot",
+      "description": "Renders a web page and returns an image of it, either the visible area or the whole scrollable page. Images and fonts are loaded so the capture looks like the real page. Returns the image as base64 along with the final URL, the HTTP status and the page title. Pages that turn away ordinary requests are handled the same way as for fetching, and the response reports what it cost."
+    },
+    {
+      "name": "weibo_comment_replies",
+      "description": "The replies under one comment on a Weibo post, oldest first, each with the comment it answers. Pass a comment's id from weibo_post_comments. Pages with nextCursor."
+    },
+    {
+      "name": "weibo_post_comments",
+      "description": "The comments on a public Weibo post, most-liked first or newest first. Each comment has id, text, createdAt, postedFrom (where the commenter posted from), exact likes, replyCount, a few previewReplies, the author, and any image. Weibo shows only part of a very large thread (a few hundred comments by likes, several hundred newest first); the response says so in notes when that is where it stopped. Pages with nextCursor."
+    },
+    {
+      "name": "weibo_post_detail",
+      "description": "One public Weibo post in full by its link or id: the complete text, author, time and place of posting, exact repost, comment, like and read counts, topics, photos and video. Every post has the same fields on every tool: id, shortId (the short id in post links), url, text, textTruncated (lists shorten long posts; the shortened text is the start of the full text, which weibo_post_detail returns), createdAt, postedFrom (the province or country Weibo says it was posted from), source (the app; null in search results), author (id, screenName, url, avatarUrl, verified, verifiedType), stats (reposts, comments, likes, reads), roundedStats (empty when every counter is exact), topics (the #topics# in the text), media (each with kind, url, downloadUrl, width, height, durationSeconds, coverUrl; downloadUrl opens anywhere, Weibo's own url does not; images have dimensions, videos a duration), mediaTruncated (a search can list fewer pictures than the post has; weibo_post_detail returns every one), editCount, isPinned (known on weibo_user_posts; null elsewhere), and repostOf (the post it reposts, same shape)."
+    },
+    {
+      "name": "weibo_resolve_url",
+      "description": "Turn any Weibo address into input for the other tools without fetching anything: whether it is a post, an account, a search or a topic, the post id and short id, the account id or custom address, the search term, the canonical address, and which tool reads it. Free and instant."
+    },
+    {
+      "name": "weibo_search_posts",
+      "description": "Search public Weibo posts for a keyword or a #topic#. tab latest (the default) returns every matching post newest first, up to 50 per page; pass nextCursor for older ones, back years. tabs all, original (no reposts) and verified (verified accounts) page the same way. top, hot and videos are Weibo's ranked picks, one page per time range; media, images and combined give one page. since and until (a date or ISO date-time) limit the period on every tab but images and media. A busy term matches more posts than Weibo returns at once, so this is a large time-ordered part of them, not every match; nothing is ranked out, and most posts carry no likes or reposts at all. Every post has the same fields on every tool: id, shortId (the short id in post links), url, text, textTruncated (lists shorten long posts; the shortened text is the start of the full text, which weibo_post_detail returns), createdAt, postedFrom (the province or country Weibo says it was posted from), source (the app; null in search results), author (id, screenName, url, avatarUrl, verified, verifiedType), stats (reposts, comments, likes, reads), roundedStats (empty when every counter is exact), topics (the #topics# in the text), media (each with kind, url, downloadUrl, width, height, durationSeconds, coverUrl; downloadUrl opens anywhere, Weibo's own url does not; images have dimensions, videos a duration), mediaTruncated (a search can list fewer pictures than the post has; weibo_post_detail returns every one), editCount, isPinned (known on weibo_user_posts; null elsewhere), and repostOf (the post it reposts, same shape)."
+    },
+    {
+      "name": "weibo_search_users",
+      "description": "Find public Weibo accounts by name or keyword. Each has id, screenName, url, avatarUrl, verified, verifiedReason, description, postsCount, gender, and the follower count as Weibo displays it (rounded); weibo_user_profile gives the exact figure. First page of results only."
+    },
+    {
+      "name": "weibo_trending",
+      "description": "Weibo's live hot-search list: each topic's rank, word, exact heat score, category, badge (such as 新 new or 热 hot), when it entered the list, and its search link. Paid placements are left out unless includePromoted is true, and are marked isPromoted."
+    },
+    {
+      "name": "weibo_user_posts",
+      "description": "A public Weibo account's posts, newest first, every kind of post: pass nextCursor for older ones back through roughly Weibo's newest 2,000. With mediaOnly: true it lists only the posts that carry photos or videos, which reaches further back in time. Every post has the same fields on every tool: id, shortId (the short id in post links), url, text, textTruncated (lists shorten long posts; the shortened text is the start of the full text, which weibo_post_detail returns), createdAt, postedFrom (the province or country Weibo says it was posted from), source (the app; null in search results), author (id, screenName, url, avatarUrl, verified, verifiedType), stats (reposts, comments, likes, reads), roundedStats (empty when every counter is exact), topics (the #topics# in the text), media (each with kind, url, downloadUrl, width, height, durationSeconds, coverUrl; downloadUrl opens anywhere, Weibo's own url does not; images have dimensions, videos a duration), mediaTruncated (a search can list fewer pictures than the post has; weibo_post_detail returns every one), editCount, isPinned (known on weibo_user_posts; null elsewhere), and repostOf (the post it reposts, same shape)."
+    },
+    {
+      "name": "weibo_user_profile",
+      "description": "A public Weibo account by id, profile link, custom address or display name: name, bio, avatar, verification, exact follower, following and post counts (followersText is the rounded figure Weibo displays), total reposts, comments and likes received, video plays, gender, location, IP location, hometown, birthday, join date, company, and credit level where Weibo publishes them. An account that does not exist is a 404."
+    },
+    {
+      "name": "woocommerce_categories",
+      "description": "The store's product categories with their names, slugs, product counts, parents and images. Filter to one category by slug, or to the children of one, and pass a category on to the product listing to get what is in it."
+    },
+    {
+      "name": "woocommerce_detect_store",
+      "description": "Given a domain, report whether it runs WooCommerce and the evidence for that answer, plus which product data the store publishes and how complete it is. Answers cleanly for a domain that is not a WooCommerce store."
+    },
+    {
+      "name": "woocommerce_product_detail",
+      "description": "Everything a store publishes about a single product, by id, slug or URL: full description, SKU, regular and sale prices, stock, rating, categories, tags, brand, weight and dimensions, its options, and each variation's own price, SKU and stock."
+    },
+    {
+      "name": "woocommerce_product_reviews",
+      "description": "Reviews of one product, by id, slug or URL: the average rating, review count and star breakdown where published, and each review's rating, title, text, author, verified status, date, photo and video links, the store's reply and helpful votes. Reads the review app that has reviews for the product unless one is named, with sorting, a star filter and a cursor for more."
+    },
+    {
+      "name": "woocommerce_products",
+      "description": "Walk a store's catalog with filters for text, category, tag, price range, sale status and stock. Returns each product's name, link, description, SKU, prices, stock status, categories, tags and image URLs, with a cursor for the next page."
+    },
+    {
+      "name": "woocommerce_resolve_url",
+      "description": "Turn any store, product or category URL into structured input for the other tools: which store it belongs to, whether it points at a product or a category, and the slug or id it carries."
+    },
+    {
+      "name": "woocommerce_review_providers",
+      "description": "List the review systems a store uses — its own WooCommerce reviews, Customer Reviews for WooCommerce, Judge.me, Yotpo, Stamped or REVIEWS.io — and whether each publishes reviews of individual products, of the whole store, or both."
+    },
+    {
+      "name": "woocommerce_store_profile",
+      "description": "Store name, description, domain, currency, locale, product and category counts, logo and social profile links, plus the software versions where the store publishes them."
+    },
+    {
+      "name": "woocommerce_store_reviews",
+      "description": "Reviews across a whole store — every product's reviews and reviews of the store itself, depending on the review system — with each review's product where known, the store's rating summary where published, sorting and a cursor for more."
+    }
+  ]
+}

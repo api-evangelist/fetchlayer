@@ -1,0 +1,443 @@
+# FetchLayer
+> Structured web and social data API for developers and AI agents. Access public social discussions, TikTok accounts, videos, hashtags and comments, Upwork job postings with parsed budgets, public contact emails for a site or profile, Airbnb listings, prices and guest reviews, Booking.com properties, priced room options and guest reviews, flight fares and itineraries for a route and date, Instagram profiles, posts, reels and comments, Weibo posts, comments, profiles, search and the hot-search list, Douyin videos, accounts, comments, collections and the hot-search board, App Store and Google Play reviews, YouTube comments, Google Maps, Trustpilot, Glassdoor and Tripadvisor reviews, Facebook, Google, TikTok and LinkedIn ad libraries, Product Hunt launches, Printables and MakerWorld 3D models, any Shopify or WooCommerce storefront, Amazon prices and products, Google, Bing and DuckDuckGo search results and rank checks, and how ChatGPT answers about a brand, as clean JSON via REST or MCP — no scraping infrastructure.
+
+## Main pages
+- [Home](https://fetchlayer.dev/): Social platforms, one API. Overview of FetchLayer's structured social data platform.
+- [Reddit Scraper API](https://fetchlayer.dev/reddit-scraper): First product — 15 endpoints for public Reddit posts, comments, subreddit data, and user profiles.
+- [Twitter/X Scraper API](https://fetchlayer.dev/twitter-scraper): Search public tweets, retrieve tweet details and replies, inspect profiles, traverse follower/following graphs, and read the captions on a post's video, as structured JSON.
+- [App Store Reviews API](https://fetchlayer.dev/app-store-reviews-api): Fetch public App Store reviews by app ID with country, language, platform, and pagination controls.
+- [YouTube Comments API](https://fetchlayer.dev/youtube-comments-api): Extract public YouTube video comments and nested replies as structured JSON.
+- [Google Maps API](https://fetchlayer.dev/google-maps-reviews-api): Search Google Maps places with address, phone, website, rating and hours, read a place in full, collect emails and social profiles from business websites, and fetch public reviews, as structured JSON.
+- [Google Play Reviews API](https://fetchlayer.dev/google-play-reviews-api): Fetch and filter public Google Play reviews for any Android app by package name or Play Store URL, as structured JSON.
+- [Facebook Ad Library API](https://fetchlayer.dev/facebook-ad-library-api): Search public Facebook and Instagram ads by keyword or advertiser, read full ad copy and creative, and download the video and image files, as structured JSON.
+- [Google Ad Library API](https://fetchlayer.dev/google-ad-library-api): Find the ads an advertiser runs across Google Search, YouTube, Display, Shopping and Play, with creative versions, run dates and verified advertiser identity, as structured JSON.
+- [TikTok Ad Library API](https://fetchlayer.dev/tiktok-ad-library-api): Search the public TikTok Ad Library by keyword or advertiser and pull short-form video ad creative, hooks, CTAs and regional reach as structured JSON.
+- [LinkedIn Ad Library API](https://fetchlayer.dev/linkedin-ad-library-api): Search public LinkedIn B2B ads by keyword or company, with copy, formats, payers, impressions bands and EU targeting disclosures, as structured JSON.
+- [Trustpilot Reviews API](https://fetchlayer.dev/trustpilot-reviews-api): Search Trustpilot companies and pull their TrustScores, star distributions, public reviews and company replies as structured JSON.
+- [Glassdoor API](https://fetchlayer.dev/glassdoor-reviews-api): Pull Glassdoor company ratings, employee reviews, reported pay by role and candidate interview reports as structured JSON.
+- [Tripadvisor Reviews API](https://fetchlayer.dev/tripadvisor-reviews-api): Find any hotel, restaurant or attraction and get its profile, city ranking, traveller reviews and gallery photos as structured JSON.
+- [Product Hunt API](https://fetchlayer.dev/product-hunt-api): Search products, read launches and their nested comment threads, and pull daily, weekly, monthly and yearly leaderboards as structured JSON.
+- [Printables API](https://fetchlayer.dev/printables-api): Search and browse public Printables 3D models, designers, collections and design contests as structured JSON.
+- [MakerWorld API](https://fetchlayer.dev/makerworld-api): Search MakerWorld — Bambu Lab's 3D model community — for models, print profiles, licenses, designers, collections and contests as structured JSON.
+- [Shopify Store API](https://fetchlayer.dev/shopify-store-api): Point one key at any Shopify storefront and read its profile, full product catalogue with variants, prices and stock, and its collections as structured JSON.
+- [WooCommerce Store API](https://fetchlayer.dev/woocommerce-store-api): Point one key at any WooCommerce storefront and read its products, prices, stock, SKUs, variations, images and category tree as structured JSON.
+- [Amazon Product API](https://fetchlayer.dev/amazon-product-api): Check current Amazon prices for up to 20 ASINs in one call, read product details with variations, and search products across 20 Amazon marketplaces as structured JSON.
+- [eBay API](https://fetchlayer.dev/ebay-api): Check current prices for up to 100 eBay listings in one call, search live listings, read full listing details, seller feedback and product reviews as structured JSON, priced for a US buyer.
+- [AliExpress API](https://fetchlayer.dev/aliexpress-api): Search AliExpress products and categories, check current prices and stock for up to 20 products in one call, read full product details and buyer reviews as structured JSON, in the country, currency and language you pin.
+- [Temu API](https://fetchlayer.dev/temu-api): Read one Temu product in full and check current prices for up to 50 variants per call, priced for one of 40 country storefronts, as structured JSON. No search or reviews.
+- [DuckDuckGo SERP API](https://fetchlayer.dev/duckduckgo-search-api): Ranked DuckDuckGo web results with positions, snippets and dates, rank checks for a domain or URL up to 200 deep at 1 credit each, instant answers, search suggestions, news, videos and images as structured JSON.
+- [Bing Search API](https://fetchlayer.dev/bing-search-api): A Bing SERP API — ranked Bing web results with positions, site names, snippets, dates and sitelinks, the AI overview, knowledge panel, People Also Ask questions and related searches, plus news, videos, search suggestions and rank checks up to 200 deep at 1 credit each, as structured JSON.
+- [SERP API](https://fetchlayer.dev/serp-api): One SERP API for Google, Bing and DuckDuckGo — search results pages as structured JSON with a side-by-side comparison of what each engine returns, rank checks at 1 credit at any depth (100 deep on Google, 200 on Bing and DuckDuckGo), worked cost examples, and the search tools on the MCP server.
+- [Web Unblocker API](https://fetchlayer.dev/web-unblocker-api): Give it a URL, get the page back as structured JSON — HTML, visible text, Markdown or an image — including the sites that turn an ordinary request away. Every response carries the exact cost of that page.
+- [Link in Bio API](https://fetchlayer.dev/link-in-bio-api): Read any public link-in-bio page — Linktree, Lnk.Bio, AllMyLinks and solo.to — as structured JSON: the creator's identity, every link in page order with its label, grouping and tracking, and where each link really lands once its redirects are followed. Thirty services are recognised, including the ones whose links cannot be returned and why.
+- [Instagram API](https://fetchlayer.dev/instagram-scraper-api): An Instagram scraper API — public account profiles with the story highlights kept on them, an account's posts, its reels with play counts, its active stories, one post or reel in full, the comments on a post and the replies to them, the reels it lists as popular and the terms it is trending, as structured JSON.
+- [Weibo API](https://fetchlayer.dev/weibo-api): A Weibo (微博) API — posts with exact repost, comment, like and read counts, the comments on a post and the replies to them, account profiles with exact follower counts, an account's newest posts, post search by keyword or #topic# that pages back through time, account search and the live hot-search list, as structured JSON.
+- [Douyin API](https://fetchlayer.dev/douyin-api): A Douyin (抖音) API — videos and image posts with exact like, comment, share and save counts, account profiles with exact follower counts, an account's recent videos, a video's comments, whole collections (合集), related videos, hashtag summaries and the hot-search board, as structured JSON.
+- [Upwork Jobs API](https://fetchlayer.dev/upwork-jobs-api): An Upwork scraper API — public freelance job postings by keyword or by an Upwork search URL, with budgets parsed into numbers rather than display strings, skills, durations, client location, payment-verified status and spend history, and a per-response count of how many postings came back with their fuller record.
+- [Email Finder API](https://fetchlayer.dev/email-finder-api): Find the public contact email a website, social profile or YouTube channel publishes, as structured JSON, with the exact page it came from and a confidence grade based on who published it — and a definitive, successful answer when the target publishes none at all.
+- [Airbnb API](https://fetchlayer.dev/airbnb-api): An Airbnb scraper API — listings for a place with prices returned as structured objects rather than display strings, one listing in full with its amenities, per-category ratings and host profile, and a listing's guest reviews in the language they were written in, where every response states the listing's full review count alongside how many came back.
+- [Booking.com API](https://fetchlayer.dev/booking-api): A Booking.com scraper API — properties for a destination and a stay where every bookable room option is priced rather than the property alone, money returned as a number and a currency code, one property in full with its rooms, bed configurations and amenities, and guest reviews that keep what a guest liked and disliked in separate fields, each response stating how many of the property's total reviews came back.
+- [Flight Search API](https://fetchlayer.dev/flight-search-api): A flight search API — one call returns every itinerary for a route and date, each priced, with its segments, stops, layovers, cabin and operating airlines, one-way or round trip, plus an ISO timestamp saying when the fares were quoted.
+- [TikTok API](https://fetchlayer.dev/tiktok-scraper-api): A TikTok scraper API — public account profiles with the exact follower, like and video counts rather than the rounded ones, the videos an account has posted sorted by latest, popular or oldest, one video in full, keyword search, hashtag feeds with the tag's own total view count, video comments, and the transcript TikTok publishes for a video — full text with timings, plus the free English track that usually accompanies a non-English original — as structured JSON.
+- [AI Visibility API](https://fetchlayer.dev/ai-visibility-api): Track how ChatGPT answers about your brand — whether an answer mentions you, whether it cites your pages (two different things), where you rank among the options it recommends across repeated runs, which prompts and searches lead to your topic, and share of voice against competitors, as structured JSON.
+- [Blog](https://fetchlayer.dev/blog): Integration guides and tutorials.
+- [Pricing](https://fetchlayer.dev/pricing): Plans, request limits, and free tier details — same price list across every platform.
+- [About](https://fetchlayer.dev/about): Who operates FetchLayer.
+- [Contact](https://fetchlayer.dev/contact): Support, sales, and enterprise contact.
+
+## MCP setup guides
+- [Reddit MCP: All Clients Compared](https://fetchlayer.dev/blog/reddit-mcp): Index of every supported MCP client for Reddit data, with a comparison table and setup guide links.
+- [Twitter/X MCP: All Clients Compared](https://fetchlayer.dev/blog/twitter-mcp): Index of every supported MCP client for Twitter/X data, with a comparison table and setup guide links.
+- [MCP server manifest](https://fetchlayer.dev/.well-known/mcp/server-card.json): Machine-readable list of all 221 MCP tools across every platform, per the Model Context Protocol server-card schema.
+- Individual per-client guides (Claude Desktop, Claude Code, Cursor, Windsurf, VS Code, Hermes, KiloCode, OpenClaw) are linked from the two index pages above for both Reddit and Twitter/X.
+
+## About FetchLayer
+- FetchLayer is a unified API for accessing public social platform data as structured JSON.
+- One endpoint, simple auth, no scraping infrastructure or HTML parsing.
+- MCP-compatible: works as a native tool in Cursor, Windsurf, Claude Desktop, and other MCP clients.
+- Live platforms include Reddit, Twitter/X, TikTok, Instagram, Weibo, Douyin, Link in Bio, Web Unblocker, Upwork, Email Finder, Airbnb, Booking.com, flight search, App Store, YouTube, Google Maps, Google Play Store, the Facebook, Google, TikTok and LinkedIn ad libraries, Trustpilot, Glassdoor, Tripadvisor, Product Hunt, Printables, MakerWorld, Amazon, AliExpress, DuckDuckGo, Bing, ChatGPT AI visibility, and any Shopify or WooCommerce storefront.
+- Operated by HootCodes LTD, based in Europe.
+- Free tier included, no credit card required.
+
+## Pricing
+- Free tier: no credit card required, across every platform.
+- Pay-as-you-go: $1.99 per 1,000 requests.
+- Subscriptions: from $25/month (15,000 requests included), scaling to $500/month (1,000,000 requests).
+- Enterprise: dedicated infrastructure from $900/month (5,000,000 requests) up to $1,400/month unlimited fair-use.
+- One price list applies across all platforms — no per-platform rate card.
+- Full breakdown: https://fetchlayer.dev/pricing
+
+## Reddit Scraper
+- 15 endpoints: search, search-comments, post, community-posts, community-details, user-profile, user-posts, user-comments, search-communities, search-users, comment-permalink, popular, leaderboard, resolve-url-type, explore.
+- Returns structured JSON for publicly available Reddit data.
+- community-details includes the subreddit's rules: each rule's number, title and explanation.
+- No Reddit authentication required on the developer's end.
+- Also available as an Apify actor: https://apify.com/neatrat/reddit-scraper
+- TypeScript/JavaScript SDK: @fetchlayer/reddit on npm.
+- Documentation: https://fetchlayer.dev/documentation/reddit
+
+## Twitter/X API
+- 11 endpoints for public Twitter/X search, tweet details and replies, user profiles, timelines, follower/following graphs, and the captions on a post's video.
+- Returns structured JSON for publicly available tweets, engagement data, profile metadata, and network data.
+- Video transcript: the captions X publishes for a post's video, as full text plus segments with start and end times in seconds. Coverage is thin and uneven — 17.5% of 770 videos measured carried captions, but that average misleads on its own: 41% of higher-engagement video, 27.5% of clips between one and three minutes, and 2.6% under ten seconds, with some large accounts returning nothing at all and others near-complete. It is not a generation delay and not English-only.
+- A video with no captions is a normal 200, not an error: transcript.available is false, tracks is empty, and durationSeconds is still filled in. Do not retry it. When a transcript exists, tracks holds exactly one entry — X publishes no translations. transcript.originalLanguage is inferred rather than declared, and is null rather than a guess when X gives no signal; the post's own lang field describes the written text, not the spoken language, and disagreed with the caption language in 28 of 92 measured cases.
+- No Twitter/X authentication required on the developer's end.
+- Documentation: https://fetchlayer.dev/documentation/twitter
+
+## App Store API
+- Search the App Store by name or keyword and fetch public customer reviews by app ID.
+- Reviews include rating, title, body text, version, date, reviewer name, and helpful count where available.
+- Supports country, language, platform, sorting, and pagination controls.
+- Documentation: https://fetchlayer.dev/documentation/appstore
+
+## YouTube API
+- Extract public comments from a YouTube video URL with sorting and pagination.
+- Extract video transcripts as timestamped segments and plain text with optional language selection.
+- Fetch replies to a specific comment thread by comment ID.
+- Documentation: https://fetchlayer.dev/documentation/youtube
+
+## Google Maps API
+- Place search by keyword and location or coordinates: address, phone, website, rating, hours, open-now and business status. Billed per Google result page.
+- Place details for one place: plus code, description and grouped attributes.
+- Place contacts: emails, phone numbers and social profiles found on up to 20 businesses' own websites per call, from places or website URLs. Billed per website that answered plus per place lookup.
+- Fetch public reviews for any business or place by place ID or Google Maps URL.
+- Reviews include rating, text, reviewer name, and date. Sort by relevance or rating, paginate through the full set.
+- Documentation: https://fetchlayer.dev/documentation/google-maps
+
+## Google Play Store API
+- Search the Google Play app catalog by keyword and get package names, developers, ratings, install counts, and prices.
+- Fetch and filter public Google Play reviews for any Android app by package name or Play Store URL.
+- Filter by rating, keyword, date, language, and device type.
+- Documentation: https://fetchlayer.dev/documentation/playstore
+
+## Facebook Ad Library API
+- Search public Facebook and Instagram ads by keyword, or pull every ad one advertiser is running: up to 30 ads a page, with Facebook's estimated total and a cursor tied to the same query or advertiser, country and filters.
+- Every ad names its sponsor (the account that ran it) and, for partnership ads, the account it was posted by, the tagged partner and which of them ran it, each with Facebook username and Instagram username, and instagramUsernameStatus saying whether a null Instagram username means none, not known here, or not filled this time; includeProfiles on an advertiser's ads fills in every account's Instagram username at no extra cost. Start and end dates come as UTC dates and Unix seconds. Missing values are null or [], never left out.
+- Filter by ad type (POLITICAL is accepted for political and issue ads), including the special ad categories housing, employment and financial products and services. An advertiser's ads always name that advertiser; records that cannot be returned as an ad are listed in skippedAds.
+- Keep at most 4 requests in flight per client; extra requests queue first come, first served, and the wait counts against timeoutMs.
+- Also filter by country, active status, media type, publisher platform, ad language, political disclaimer, and impression start date.
+- One ad in full: complete copy, call to action, every creative variation in the ad group, and EU transparency reach by country and age range, with male, female and unknown reach beside each total.
+- Look up advertisers by brand name (or, with matches: "name", only the Pages Facebook's own name search suggests), with alias, category and verification, and get their public profile, including political spend by disclaimer.
+- Resolve an ad's videos and images to download URLs and stream the files, with HTTP Range support.
+- No Meta developer account, app review, or Marketing API access token required.
+- 1 credit per page of up to 30 ads delivered, counted by pagesScraped; an empty result still costs the 1 credit every request pays. URL parsing is free.
+- Documentation: https://fetchlayer.dev/documentation/facebook-ad-library
+
+## Google Ad Library API
+- Find every ad an advertiser is running across Google Search, YouTube, Display, Shopping, Maps and Play.
+- Search resolves an advertiser name, not ad copy: Google publishes no keyword search over the text inside ads, so the flow is name -> advertiser -> ads.
+- Read one ad in full: every creative version, its format, the run dates, and the countries it ran in.
+- Look up an advertiser's verified identity — the legal name and location Google verified for the account.
+- Resolve an ad's videos and images to download URLs and stream the files.
+- Parse any Ad Library URL into the ids the other endpoints take.
+- No Google Cloud project, OAuth consent screen, or Ads API developer token required.
+- Documentation: https://fetchlayer.dev/documentation/google-ad-library
+
+## TikTok Ad Library API
+- Search the public TikTok Ad Library by keyword, or pull every ad one advertiser has run.
+- Built for short-form video creative: the hook, the call to action, the landing page, the run dates, and the reach band.
+- Read one ad in full and resolve its video and image files to download URLs, with streaming.
+- Look up advertisers by name and read their public profile.
+- Covers 33 countries only: the 27 EU member states plus GB, CH, NO, IS, LI and TR. Other countries (US, CA, AU…) are rejected — use one of those codes or ALL.
+- There are no political ads on TikTok — the platform bans them, so no political disclaimer surface exists here.
+- No TikTok developer account, research application, or approval queue.
+- Documentation: https://fetchlayer.dev/documentation/tiktok-ad-library
+
+## LinkedIn Ad Library API
+- Search public LinkedIn B2B ads by keyword, or pull every ad one company runs.
+- Returns copy, headline, CTA, format, the payer behind the ad, and the impressions band.
+- EU targeting disclosures where LinkedIn publishes them: job titles, company sizes and industries an advertiser targeted.
+- Resolve an ad's videos and images to download URLs and stream the files.
+- LinkedIn publishes no advertiser profiles, so there is no profile endpoint — advertiser search resolves a company to its ads.
+- No LinkedIn developer account, OAuth app, or partner application.
+- Documentation: https://fetchlayer.dev/documentation/linkedin-ad-library
+
+## Trustpilot Reviews API
+- Search companies by name, then read the profile behind the number: TrustScore, review count, and the full star distribution.
+- Pull a company's public reviews with text, rating, language, reviewer details, and the company's own replies.
+- Fetch a single review by id, and parse any Trustpilot URL into the ids the other endpoints take.
+- Trustpilot's own ceiling: roughly 200 reviews per filter combination — vary star rating, language or sort to page deeper into a company's history.
+- No Trustpilot Business account, invitation, or OAuth app.
+- Documentation: https://fetchlayer.dev/documentation/trustpilot
+
+## Glassdoor API
+- Four surfaces keyed on one company id: ratings profile, employee reviews, reported pay by role, and candidate interview reports.
+- Reviews carry rating, pros, cons, job title, location and employment status where published.
+- Salaries are page one only — Glassdoor does not paginate the pay tables, so one request returns the reported range per role.
+- Company search resolves a name to the id every other endpoint takes; resolve-url does the same from a Glassdoor URL.
+- No Glassdoor account, partner agreement, or HTML parsing.
+- Documentation: https://fetchlayer.dev/documentation/glassdoor
+
+## Tripadvisor Reviews API
+- Find any hotel, restaurant or attraction by name, then read its profile, rating and ranking against the rest of its city.
+- Traveller reviews with rating, title, text, trip type and date — always 20 reviews per page, so paginate for more.
+- Photo galleries, plus a media route that streams a place photo by id.
+- A full profile comes back in a single request.
+- No Tripadvisor partner account or content API key.
+- Documentation: https://fetchlayer.dev/documentation/tripadvisor
+
+## Product Hunt API
+- Search products by keyword, and read a product with its launch in full.
+- Nested launch comment threads — the discussion under a launch, not just its vote count.
+- Ranked leaderboards for any day, week, month or year back to 2013.
+- Browse the products inside a topic, and search or browse curated collections.
+- Maker and hunter profiles, plus a media route for product and launch images.
+- No Product Hunt developer account, OAuth app, or token to refresh.
+- Documentation: https://fetchlayer.dev/documentation/producthunt
+
+## Printables API
+- Search or browse the public 3D models on Printables, with filters whose accepted ids are discoverable via a filter-values route.
+- Read one model in full, and list a designer's published models and public collections.
+- Designer profiles, collection detail, and the design contests the community competes in, including one contest's winners.
+- Eleven JSON routes plus a media stream for model images and documents.
+- No Printables account or login.
+- Documentation: https://fetchlayer.dev/documentation/printables
+
+## MakerWorld API
+- Search MakerWorld — Bambu Lab's 3D model community — by keyword, and read one model in full.
+- Model detail carries the license and remix terms, the file manifest, the print profiles, and the download, like, print and boost counts.
+- Find designers by name and read their profiles; search collections and read one collection with its models.
+- Model categories and design contests as structured JSON.
+- No MakerWorld account, login, or OAuth.
+- Documentation: https://fetchlayer.dev/documentation/makerworld
+
+## Shopify Store API
+- There is no single target site: the caller supplies any store domain, and one key reads that storefront.
+- Detect whether a domain runs Shopify at all, then read the store profile.
+- List the full product catalogue and read one product with every variant's price, sale price, SKU and stock.
+- List collections, or the products inside one collection, plus a media route for product images.
+- No Partner account, no app installed on the merchant's store, no per-store access token.
+- Customer reviews from the store's review app (Judge.me, Yotpo, Loox, Okendo, Stamped, REVIEWS.io): detect which one a store uses, then read one product's reviews or the whole store's, with rating summary, photos and merchant replies, in one shape.
+- Documentation: https://fetchlayer.dev/documentation/shopify-stores
+
+## WooCommerce Store API
+- You choose the storefront: pass a domain from any of the millions of independent shops running WooCommerce.
+- Detect whether a domain runs WooCommerce, then read the store's details.
+- List products and read one product with prices, sale prices, stock, SKUs, variations and images.
+- List the store's category tree, plus a media route for product images.
+- No consumer key, no plugin, no cooperation from the store required.
+- Customer reviews from native WooCommerce reviews or the store's review app (CusRev, Judge.me, Yotpo, Stamped, REVIEWS.io): find which review app the store uses, then read one product's reviews or the whole store's, with rating summary, photos and merchant replies, in one shape.
+- Documentation: https://fetchlayer.dev/documentation/woocommerce-stores
+
+## Amazon Product API
+- Price check: the current price of up to 20 ASINs or product URLs in one call, each with its own status, in the marketplace's own currency. Built for price monitoring. Each product priced counts as one request.
+- Fast mode prices a batch in the fewest page loads; full mode adds seller and stock status for every product.
+- Product details with list price, stock, seller, aggregate rating, images, feature bullets, categories and every variation ASIN.
+- Keyword search with department, price, rating and sort filters, reporting the filters actually applied; Amazon shows at most 20 result pages.
+- 20 marketplaces (com, co.uk, de, fr, co.jp and more), with prices quoted for a delivery postal code.
+- No customer reviews (aggregate rating and count only) and no price history — call the price check on a schedule to build one.
+- No Product Advertising API access, Associates account or Amazon login.
+- Documentation: https://fetchlayer.dev/documentation/amazon
+
+## eBay API
+- Price check: the current price, shipping cost and status of up to 100 listings per call, answered 50 at a time (~5KB a listing). Built for price monitoring. Each listing priced counts as one request.
+- Every listing asked for comes back: active, ended (with its final price) or not_found. Exact mode adds the seller's own currency, availability and quantity.
+- Search live listings by keyword, category or seller, with condition, buying format, price, shipping and returns filters and five sort orders.
+- Listing details: price, quantity, seller, shipping, returns, auction state, item specifics, category path, images, brand, MPN and GTIN.
+- Seller feedback (score, 1/6/12-month counts, detailed ratings, individual comments) and buyer reviews of eBay catalogue products.
+- Prices are US dollars and shipping is quoted to the United States. Sold and completed prices are not available (eBay does not make them public).
+- Best-match order shifts between requests, so a cursor continuation can repeat listings; de-duplicate on itemId. Retry 502/503, not 400/404. Every response carries a notes array.
+- No eBay developer account, app keys or OAuth.
+- Documentation: https://fetchlayer.dev/documentation/ebay
+
+## AliExpress API
+- Price check: the current price range, original price, stock and one variant of up to 20 products per call, each with its own status (ok, unavailable, not_found, failed). Each product priced counts as one request. Built for price monitoring.
+- Keyword search and category listings, 60 per page, with price, free-shipping, four-stars-and-up, Choice-only and ship-from filters, sorted by best match, orders or price. AliExpress lists at most 60 pages per query.
+- Product details: every variant with options, price, availability and stock, the store, specifications, images and video, and the default shipping option for the market.
+- Buyer reviews with the star distribution, translated text plus the reviewer's original words, reviewer country, variant bought, photos and seller replies.
+- Country (shipTo), currency (USD, EUR, GBP, CAD, AUD, NZD, BRL, MXN, CLP, COP, PEN, ARS, JPY, KRW) and language (en_US, de_DE, pt_BR) are inputs, echoed on every result as market. Any other currency or language is a 400.
+- Product details and price checks are refused by AliExpress in bursts, so an occasional 503 on those two is retryable; search and reviews are unaffected. Retry 502/503, not 400/404. Every response carries a notes array.
+- No affiliate account, open-platform app key or AliExpress login.
+- Documentation: https://fetchlayer.dev/documentation/aliexpress
+
+## Temu API
+- Deliberately small: one product in full, batched price checks, and URL parsing.
+- Read a product by id or URL: price, list price, discount, running promotion, images, specifications, and every listed variant's skuId, price and availability.
+- Check current prices for up to 50 products or variants per call. Send each variant's skuId: a check with it is ~1.6KB, one without loads the whole product page (~1.5MB). Each item priced counts as one request either way.
+- Every price is pinned to one country storefront (40 supported); a wrong-country answer fails rather than returning another currency.
+- Keyword search and reviews are not available — Temu does not make either available to anonymous visitors. No ratings, sold counts, shipping or stock quantities either.
+- Rate limits are tight: retry 502/503 and failed price-check items, not 400/404. Every response carries a notes array.
+- Documentation: https://fetchlayer.dev/documentation/temu
+
+## DuckDuckGo Search API
+- Search: organic results in order with position (1-based across pages), title, URL, displayed URL, domain, snippet and date; ads listed separately and never ranked; the zero-click summary box; cursor pagination. Billed per result page.
+- Rank check: whether a domain (with its subdomains) or a URL path ranks for a query, its best position and every match with URL, title and result page, scanning up to 200 positions. Built for SEO rank tracking. A rank check costs 1 credit regardless of depth; serpPagesFetched reports how many result pages were checked and is never billed.
+- Instant answers (topic summary, definition, fact rows, official website, related topics), search suggestions for a partial query, news articles with publisher and publication time, videos with duration, uploader and view count, and images with size, color, type, layout and license filters.
+- 64 regions, safe search and time-range filters. Rankings vary by the searcher's country; results reflect a US searcher (us-en) unless you name a region.
+- DuckDuckGo lists at most about 190-200 organic results for a query, with no total-result count. Search can include the sitelinks under first-page results.
+- URL parsing for search, news, topic, result and ad links is free. Retry 503, not 400. Every response carries a notes array.
+- Documentation: https://fetchlayer.dev/documentation/duckduckgo
+
+## Bing Search API
+- Search: organic results in order with position (1-based across pages), title, URL, displayed URL, domain, site name, snippet, date and sitelinks; from the first page, the answer box (a fact or Bing's AI overview, with sources), knowledge panel, People Also Ask questions, related searches, top stories, videos, Bing's result estimate and a corrected query; ads listed separately and never ranked. Up to 200 results, cursor pagination. Billed per result page.
+- Rank check: whether a domain (with its subdomains) or a URL path ranks for a query, its best position and every match with URL, title and result page, scanning up to 200 positions. A rank check costs 1 credit regardless of depth; serpPagesFetched reports how many result pages were checked and is never billed.
+- Search suggestions for a partial query, Bing News articles with publisher, snippet, age and image (time range down to the past hour), and Bing Videos with hosting site, channel, duration, views and thumbnail (no time filter).
+- 38 markets with country and language overrides, safe search, time range and desktop or mobile. Results reflect an en-US searcher unless you name a market; positions move noticeably between regions and requests.
+- People Also Ask returns questions only; text ads are rare; shopping, maps, weather and flight modules are not returned.
+- URL parsing for search, news, video and result links is free. Retry 503, not 400. Every response carries a notes array.
+- Documentation: https://fetchlayer.dev/documentation/bing
+
+## ChatGPT AI Visibility API
+- Ask: ChatGPT's answer to a prompt as Markdown and plain text, with the pages it cites (position, URL, title, domain, the label shown on the citation, and the sentence that cites it), every inline citation, the web searches it actually ran, and every page it read while searching, each flagged cited. These are the answers an anonymous visitor gets, not API completions.
+- Mentions: whether named brands appear in one answer and, separately, whether the answer cites their pages — mentionCount, the sentence around each mention, citedAsSource with the source positions, and retrieved (a page of theirs was retrieved for the answer but not necessarily cited). Also the brands the answer itself put forward, with the rank it gave them.
+- AI rank: where a brand ranks among the options an answer recommends, over several answers to the same prompt. Per run: rank, citationRank (a separate ranking among the cited sources) and the method the answer used to lay its options out. Across runs: mentionRate, averageRank, bestRank, worstRank, citationRate and averageCitationRank, plus the same per competitor.
+- Prompt discovery: from a seed topic or brand, the prompts asked, the web searches ChatGPT actually ran while answering them (labelled observed_search_query), and the prompts it suggests people use (labelled generated_prompt). Both lists are objects whose text field carries the wording.
+- Visibility report: several brands across several prompts in one request — share of voice per brand plus a per-prompt breakdown of mention rate, average rank and citation rate.
+- Being mentioned and being cited are different outcomes with different fixes, and every route reports both. Answers vary between runs, so track with several runs and read the aggregate, keeping prompt, country and webSearch fixed.
+- 1 credit per answer generated, which is what pagesScraped reports; extra brands are free because they come from the same answers. Web search cannot be turned off; there is no model, temperature or system prompt to choose, and nothing here measures traffic or clicks.
+- Retry 503, not 400. Every response carries a notes array.
+- Documentation: https://fetchlayer.dev/documentation/chatgpt
+
+## Web Unblocker API
+- Two routes: fetch any public URL as HTML, visible text or Markdown, or screenshot it as a PNG or JPEG (visible area or the whole scrollable page). This is the one API here that reads no particular site.
+- A page costs what it is hard to get, and never more: 1 unit for a simple page, 3 for a harder one, 6 for a hard one, 9 for the hardest, at three units to the credit. An easy page always costs the cheapest rate.
+- One request runs inside a 120-second budget. Work that cannot finish in what is left of it is abandoned before it starts rather than cut off halfway, so nothing that produced no page is billed. A 404 returns immediately. A 503 means the page could not be fetched at all and is not billed.
+- maxEffort is the caller's ceiling on what a single request may cost before it gives up. It caps cost rather than choosing a tier; the cheapest that works is always used regardless, and a capped request says so in notes.
+- Every response carries a usage block: what the request cost, a plain-language explanation of that figure, bytes transferred, sub-requests skipped to save bandwidth, and the wall-clock total. A charge can be audited rather than trusted.
+- The hardest pages are the slowest. In a large burst some will exhaust the 120-second budget and come back unread rather than wrong — expect a slow tail and retry it rather than sizing every timeout for the worst case.
+- expectText and waitForSelector name what must appear on the page, so a block page answering 200 is reported unsuccessful rather than returned as the article you asked for.
+- Not implemented, stated plainly: nothing drives the page for you (no click, scroll or type), no caching, and no per-target-host rate limiting.
+- Public http and https only. Reserved address space is refused before a request is made, in every spelling — loopback, private ranges, link-local and cloud metadata, integer forms, IPv4-mapped, NAT64, 6to4 — ports are allowlisted to 80, 443, 8080 and 8443, credentials before the hostname are rejected, and every redirect hop is re-validated against the same rules as the first.
+- Documentation: https://fetchlayer.dev/documentation/web-unblocker
+
+## Link in Bio API
+- One page in full: the creator's display name, bio and avatar, the page's colours and font, whether it sells anything or takes tips, any gate in front of it, the social icon row, and every link. Read the shape: the link list is at `profile.links[]` and the count at `profile.linkCount`, the creator's name at `profile.identity.displayName`, with `notes[]` and `pagesFetched` at the top level.
+- Links only: the same list at the top level as `links[]`, optionally narrowed by `kind` (link, embed, product, social, heading, group) and `limit`. `totalLinks` reports how many the page had before the filter, and `destinationsResolved` says whether an absent destination means "not asked for" or "could not be reached".
+- Each link carries kind, title, description, url, position, parentId, thumbnail, tracked (clicks routed through the service's own tracker), monetized, product and gates — plus `destination` when redirects were followed: the final url, host, hop chain, page title and whether a shortener or affiliate redirector was involved.
+- Unwrap link: follow one link through its redirects, up to 20 hops, and report where it lands. Detect provider: which of 30 services an address belongs to, whether its links can be returned, and why not when they cannot. Resolve URL: the same verdict, free, from the address alone.
+- `profile` takes a full page address (https://linktr.ee/spotify), not a bare handle — a handle alone is a 400, because the same handle exists on many services. Pass `provider` alongside a handle when that is all you have.
+- Four services are supported: Linktree (richest), Lnk.Bio, AllMyLinks and solo.to. Twenty-six more are recognised but not supported, each with the reason — behind bot verification (Beacons, HeyLink, Direct.me, Lynk.id), rendered after the page opens (Komi, Pillar, Bio.fm), shut down (Bento, Linkpop, ContactInBio, Tap.bio), or a general site builder rather than a link page (Carrd).
+- An empty list is a 200 with a note saying the page is live and published no links, and it genuinely means empty: a page whose links could not be returned at all is a 502 instead. Coverage between pages is uneven because creators differ — 68 links on one Linktree, 11 on another, 3 on a third, 0 on a parked one, all of them a 200.
+- 1 credit per page fetched, reported as pagesFetched. Reading a page costs 1 whether it holds 68 links or none. URL parsing is free, and provider detection costs nothing when the address is recognised from its shape.
+- Documentation: https://fetchlayer.dev/documentation/link-in-bio
+
+## Instagram API
+- Account profile: bio, unwrapped bio links, avatar, verified/private/memorialised flags, pronouns, badges, exact follower, following and post counts, whether a story is up now (hasActiveStory) and when the latest was posted (latestStoryAt), and the id, title and cover of every story highlight kept on the profile. A highlight's contents are not public; its title and cover are. postCount is never rounded: on the rare request where only a rounded figure is available it is null, the note gives the rounded figure, and a retry usually returns the exact one. Pass include: ["country"] to also get country (where the account is based, e.g. "United States") and dateJoined (YYYY-MM); it adds 1-2 seconds, and without it both are null with a note saying so.
+- Account posts: the posts an account published, newest first, pinned posts first on page one. Each post normally carries its posting date, likeCount and commentCount, and for a video playCount and videoDuration (seconds), with fieldsFrom "listing_full"; with include every post does. A post still missing one of them is named in the note by short code, with the fields it lacks; asking again with include returns them, and so does post detail. A private account returns no posts, with the note "This account is private, so its posts and reels are not public." About 2-4 seconds per page.
+- Account reels: the same shape, with playCount, likeCount, commentCount and the author on every reel, and normally also createdAt, videoDuration, caption and video links (with include, every reel); a reel still missing one is named in the note, and asking again with include returns it.
+- Account stories: the stories an account has up right now, oldest first, each frame with takenAt, expiresAt (Instagram's own expiry, normally 24 hours later), image or video renditions, a video's length, attached links and re-shared posts, plus the profile and latestStoryAt, current as of the request. No active story is an empty list with a note, and a private account is stories: null with a note; both cost 1 credit. Usually 2-5 seconds.
+- Post detail: one post or reel in full by URL or short code (including the /<username>/p/<code>/ form) — caption, date, like and comment counts, a video's playCount (the view count Instagram shows) and videoDuration, countsHidden, dimensions, alt text, carousel frames, author and co-authors, tagged accounts, place, Instagram's own topic labels, hashtags, mentions and hasAudio. Photos and carousels have no public view count, so playCount is null for them.
+- Repost, share and save counts on request: post detail, account posts and account reels take include with any of "reposts", "shares", "saves". repostCount (reposts to other accounts' profiles) works on every post; shareCount (shares, as Instagram counts them under a reel) and saveCount exist for reels and videos only and are null on photos and carousels. Same price: 1 credit per page fetched. The popular-reels feed takes no include, and these values are separate from the profile's include: ["country"].
+- Timing with include: about 1 to 2 seconds more per post, and a few seconds more per listing page, usually 2 to 8. When a count is not available for some posts the note names them, and post detail with include returns them for any single post.
+- Post comments page: newest first, 10-16 to a page, up to 10 pages in one request. Post comments takes pages, cursor and limit and returns nextCursor; each page costs 1 credit, so pages: 3 is 3 credits if three pages were fetched. A comment with no text is a GIF, photo or sticker: kind says which ("image" covers photos and stickers) and mediaUrl links it. replyCount is the number of replies on every page; on a first page some reply counts and the photos of photo comments can be empty, with a note, and asking again fills them. Post detail includes a preview of the first comments, without reply counts. totalCount counts replies too, so it is higher than the comments listed.
+- Comment replies: the replies to one comment, oldest first, given the post and the comment's id from post comments. About 8 replies a page and about 2 seconds a page; a request for several pages can take up to about 20 seconds between pages, so follow nextCursor one page at a time. Each reply has the comment shape. totalCount is Instagram's own count; when Instagram lists fewer replies than it counts, the last page says so with numbers ("Instagram lists 5 of the 6 replies it counts for this comment."), and a finished list ends "There are no further replies to read." Paging never returns a reply twice. A comment not on that post is a 404; a cursor from another route, post or comment, or a malformed one, is a 400. 1 credit per page fetched.
+- Popular reels and trending searches: the reels Instagram currently lists as popular, from many accounts, varying between calls, with play counts, captions, authors and video (likes, comments and dates come from post detail); and the terms Instagram is promoting, in sections it publishes (currently seven, named in notes), with its own rounded post counts per term. These are the public substitutes for keyword search, which Instagram does not make public.
+- Restricted accounts (typically age-restricted brands) answer 200 with restricted: true, not 404: a basic profile, up to 12 recent posts with counts and dates and no further pages, and no play counts.
+- Instagram serves 12 items per page whatever limit says, so a limit of 60 takes five pages and costs five credits. Without a limit, every item on the pages fetched comes back: pages: 2 alone returns 24 for 2 credits. pagesFetched reports how many pages were fetched. A nextCursor works only on the route, and with the account, that produced it; any other cursor is a 400.
+- Ids are strings: every id (posts, story frames, carousel frames, comments, accounts) is Instagram's exact id. They are 64-bit numbers, larger than a JSON number can carry exactly, so keep them as strings; a link built from one is exact, e.g. https://www.instagram.com/stories/<username>/<id>/. Post detail and post comments accept a post's numeric id as well as its URL or short code. playCount is Instagram plays, the same figure on listings and on a single post.
+- caption is the author's written post body and altText is Instagram's machine-written image description. Neither is a transcript, and Instagram publishes no subtitles here.
+- Not available, because Instagram does not make it public: posts under a hashtag, posts at a place, keyword search, follower and following lists, tagged posts, who liked a post, share and save counts on photos and carousels, view counts on photos and carousels, the contents of a highlight, and former usernames.
+- 1 credit per page of results read, reported as pagesFetched. URL parsing is free. Retry 502 and 503, not 400 or 404.
+- Documentation: https://fetchlayer.dev/documentation/instagram
+
+## Weibo API
+- Post detail: one public post in full by link, numeric id or short id — the complete text, author, when and from which province or country it was posted, the app, exact repost, comment, like and read counts, topics, photos and video, edit count, and the post it reposts. 1 credit.
+- Post comments: most-liked first (hot, default) or newest first (latest), 20 to a credit, up to 1000 in a request. Each comment has text, time, the province the commenter posted from, likes, replyCount, a few inline replies, and author. totalCount is Weibo's own count and includes replies. Very large threads stop at a few hundred comments (about 300 hot, about 740 latest), however many Weibo counts, and notes says so.
+- Comment replies: every reply under one comment, oldest first, each naming the comment it answers; 20 to a credit, up to 500.
+- Account profile: by numeric id, profile link, custom address or display name. Bio, verification, location, IP location, join date, exact follower, following and post counts (23800264, not 2380万, which comes beside it as followersText), and the reposts, comments and likes received across all its posts. 1 credit.
+- Account posts: the account's posts newest first, every kind, 50 a page, with nextCursor back through roughly the newest 2,000 posts Weibo lists; 1 credit per 50 returned. mediaOnly: true lists only its posts with photos or video, which reach further back, 1 credit per 48. A post's mediaTruncated is true when a list showed fewer pictures than the post has; post detail returns every one.
+- Search posts: by keyword or #topic#. Tabs latest (default), all, original and verified return every matching post newest first, up to 50 a page and 1 credit per 50 returned, and nextCursor keeps going back, for years. top, hot and videos are ranked, one page per time range; media and images give one page; combined gives the first page of every filter for 9 credits. since and until take a date (China time) or an ISO date-time. These are the posts Weibo's public search shows, which can leave out posts Weibo filters from search, so don't treat a search as a census. There is no region filter.
+- Search accounts: the first page of accounts for a name or keyword, up to 50, with follower counts rounded the way Weibo displays them in search; account profile gives the exact figure. 1 credit.
+- Trending: Weibo's live hot-search list (热搜) with exact heat scores, category, Weibo's new/hot badge and when each topic joined the list. Paid placements are left out unless includePromoted is true. 1 credit.
+- Media: every photo and video carries a downloadUrl at https://api.fetchlayer.dev/weibo/media that opens anywhere (Weibo's own links don't), with Range support. 1 credit per request.
+- Not available: reposts lists and follower lists. A null field means Weibo did not publish that value, never zero.
+- Every response carries skippedRecords — records Weibo sent that could not be read ({id, reason, fieldsPresent}), normally empty; one unreadable record never costs the rest of the response or the cursor. A cursor is bound to the request that issued it (post, comment, account, sort, tab, since and until), and a user-posts cursor needs mediaOnly: true. A 400 names the field first, e.g. "post: not a Weibo post: 0. …".
+- URL parsing is free. Retry 503, not 400 or 404; a 502 means Weibo's answer could not be used.
+- Documentation: https://fetchlayer.dev/documentation/weibo
+
+## Douyin API
+- Video detail: one video or image post in full by id, link or pasted share text — caption, time, length, exact likes, comments, shares and saves, author with exact follower count, music, hashtags (with ids), cover and media links (which expire), isAd, pinned, and the collection it belongs to. Douyin does not publish play counts, so stats.plays is always null. 1 credit.
+- Video comments: top-level comments in Douyin's ranking, each with exact likes, replyCount, the province it was posted from (ipLocation) and the commenter; up to 2000 in a request, continuing with cursor. totalComments is Douyin's total. 1 credit per 50 comments.
+- Comment replies: the replies under one comment as a flat list, from the comment's id (in video comments) and its video — exact likes, ipLocation, the commenter and replyTo (the reply it answers, or null); up to 500 in a request with a cursor. totalReplies is Douyin's own count and can be one higher than the list served. 1 credit per 29 replies.
+- Account profile: by sec_uid, profile link or share link — nickname, 抖音号, bio, IP location, verification, exact followers, following, video count and total likes received. 1 credit.
+- Account videos: up to about 41 of the account's most recent videos, newest first, in one response with no cursor; olderVideosExist and notes flag when it has more. Follower counts are null on list routes, never 0. 1 credit.
+- Collection videos: every video in one collection (合集) in episode order, plus the collection's total plays and saves, from the collection id or any video in it; up to 500 with a cursor. The list of an account's collections is not available, and a collection is not an account's whole history. 1 credit per 15 videos.
+- Related videos (about 10 per video), hashtag summary (views and accounts posting; a hashtag's videos are not available) and the hot-search board with heat scores: 1 credit each.
+- Not available: search, play counts, a hashtag's video list, an account's list of collections.
+- URL and share-text parsing is free. Retry 502 later and 503 now; not 400 or 404.
+- Documentation: https://fetchlayer.dev/documentation/douyin
+
+## Upwork API
+- Three routes: search public job postings by keyword or by an Upwork search URL, read one posting in full by id or URL, and parse any Upwork address for free.
+- Every posting carries the listing-level fields Upwork publishes on its results page: title, description, url, jobType, budget, experienceLevel, relativeDate, skills, proposalsRange, duration, workload, freelancersToHire, clientLocation, clientPaymentVerified, clientRating, clientFeedbackCount and clientTotalSpent.
+- Coverage caveat, stated first because it decides how to use the data: the fuller record behind a posting — the exact posting time, the exact proposal count, the client's hire rate and average paid rate — is not always available, and how much of it is varies by hour. When it is not, the search route still answers 200, `enrichedJobs` comes back lower than the number of postings (0 when none), every such posting is marked `enriched: false`, and notes says so in words. Detect it with one comparison: enrichedJobs against jobs.length. Retrying often returns more.
+- A listing-level posting is a real result, not an error. What it is not is a posting with no proposals: `proposals` is null while `proposalsRange` still reports a bucket such as "50+". Reading a null as a zero is the one mistake that silently corrupts an analysis, which is why `enriched` is on every row and not only in the total. Measured 17 September 2026: a five-posting search returned 200 in 25.8s with enrichedJobs 0.
+- job-detail returns only that fuller record, so when it is unavailable it answers 503 with a retry hint rather than something thinner. Four consecutive calls returned 503 in the window measured on 17 September 2026 while the search route kept answering 200 throughout. Treat it as best-effort.
+- budget is parsed, not a display string: {type, amount, min, max, currency, raw}. Fixed-price fills amount; hourly with a published range fills min and max; hourly with no published rate fills neither and keeps raw "Hourly". A null min means no rate was published, not a rate of zero. raw is always Upwork's own string, so any parse can be checked by eye.
+- postedAt is an ISO timestamp and postedAtIsApproximate says when it was derived from a phrase such as "Posted 1 hour ago" rather than from an exact published time. Check the flag before using it as a precise ordering key.
+- Every field on the search route is optional on its own, but a request must give either query or searchUrl — an empty body is a 400 in about 80ms saying exactly that. job-detail likewise needs jobId or jobUrl. The request body is a strict object, so an unknown field is a 400 naming it.
+- 1 credit per results page fetched, reported as pagesFetched; a page costs the same whether it returns 3 postings or 50. URL parsing is free. One page measured 24-28s. No Upwork account is required.
+- Documentation: https://fetchlayer.dev/documentation/upwork
+
+## Email Finder API
+- Two routes: find the public contact email a target publishes, and parse a target for free. A target is a website, a social profile URL or a YouTube channel.
+- Returns the address with emailSource, sourceUrl, confidence, onTargetDomain, status, entityName, entityHandle, targetKind, resolvedUrl, searched, incomplete, complete, pagesCrawled and pagesFetched.
+- NO_EMAIL_LISTED is a successful 200, not a failure: the search ran and the target publishes no email address. github.com, g2.com and ticketmaster.com all answer this way, each with a note naming what was examined. A target that could not be checked at all is a 503 instead — indeed.com in 6.2s, a domain that does not resolve in 2.8s. Retry the 503; take the 200. That separation is what makes a negative result worth having.
+- Confidence is graded on who published an address, not on the domain. Only an address the target published on its own pages can grade high: python.org returned psf@python.org from its own /about page at high, while stripe.com returned an address that genuinely is @stripe.com, found elsewhere on the web, at medium. The rule exists because a lookup once returned jane.diaz@stripe.com at high confidence — Stripe's own fictional demo persona from their checkout examples. Every response carries sourceUrl, so a grade can be checked against the page.
+- onTargetDomain is measured against the target as given. For a YouTube channel that host is youtube.com, so an address published on the creator's own website reads false and grades low; sourceUrl is what tells you it is still a good address.
+- searched[] lists what was examined, incomplete[] lists anything that could not be finished, and complete summarises the two — so a partial answer is distinguishable from a whole one and from a failed one. Websites and YouTube channels are the strong inputs; every one measured returned a complete answer. Social profiles are supported, can take longer, and may return a partial result, which the response marks as incomplete.
+- A lookup took 9.5s to 101.6s for a 200 across websites, X profiles and YouTube channels measured on 17 September 2026. It is driven by how much there is to look through for a given target rather than by the kind of target, so budget timeouts against the top of that range.
+- 1 credit per completed lookup, including a NO_EMAIL_LISTED — the work is the same either way and what is bought is a definitive answer about a target. Every completed lookup reports pagesFetched 1. Target parsing is free. pagesCrawled (1 to 65 across the set measured) shows how big a search was and prices nothing.
+- Documentation: https://fetchlayer.dev/documentation/email-finder
+
+## Airbnb API
+- Five routes: search listings for a place, read one listing in full, read a listing's guest reviews, read a listing's availability calendar, and read any Airbnb link for free. Every route is a POST with a strict JSON body — an unknown field is a 400 naming it.
+- Reviews report their own completeness, which is the reason to use this route. Every response carries totalReviewCount (the listing's full review count as Airbnb reports it) beside reviewCount (how many came back), plus hasMore, and says it in words: "These are 10 of the 52 reviews the source reports for this listing." and "More reviews are available. Continue with nextCursor." Pull the whole set and the same field reads "These are 52 of the 52 reviews the source reports for this listing.", with hasMore false and nextCursor null. A caller can tell a sample from a complete set without a second call, so an average over ten of fifty-two is never mistaken for the listing's rating.
+- Each review carries id, rating, text in the language the guest wrote it, language, translatedText (only where Airbnb published a translation — the original is never replaced), createdAt, reviewer {id, firstName, profilePictureUrl, location} and hostResponse {text, createdAt} where the host replied. The response also returns topics, Airbnb's own tally of what reviewers wrote about. Across 100 reviews measured on one Lisbon listing, 86 were English and the rest spanned nine other languages; 14 carried a published translation and 2 a host reply.
+- Dates are optional and the two routes that take them behave differently, deliberately. search-listings always prices: with no checkIn/checkOut it prices every result for Airbnb's own default stay window and reports that window back on the response's own checkIn/checkOut plus a note. listing-detail does not: with no dates listing.price is null and a note says to pass checkIn and checkOut to price a stay. A search has to price to be a search; a single-listing request will not invent a stay you did not ask about. checkIn and checkOut must be given together — one alone is a 400 saying so.
+- price is a structured object, not a number: {total, perNight, nights, taxesAndFees, originalTotal, qualifier, note}, each money value being {amount, currency, formatted}. A measured stay returned total $940.47 against originalTotal $1,083.09 over 4 nights with $36.70 of taxes and fees broken out. originalTotal above total is a discount; null means there is none to report.
+- A search listing carries id, url, name, roomName, coordinates, rating {average, count}, badges ("Guest favorite", "Superhost", "Featured hotel"), photos and price. A page is up to 18 listings.
+- listing-detail returns title, propertyType, roomType, personCapacity, descriptionHtml, location {area, coordinates, isExactLocation}, rating {average, count, categories} with the breakdown by ACCURACY, CLEANLINESS, CHECKIN, LOCATION, COMMUNICATION and VALUE, host {name, isSuperhost, isVerified, rating, yearsHosting, monthsHosting, responseRate, responseTime, about, stats, highlights}, amenities, photos, highlights, price, checkIn and checkOut. Per-category ratings live here, on the listing — an individual review carries one overall rating.
+- listing-availability returns the calendar night by night: {listingId, startDate, endDate, nights, notes, pagesFetched}, each night carrying date, available, bookable, availableForCheckin, availableForCheckout, minNights and maxNights. from is any date inside the first month you want and the range snaps to that whole month; months goes up to 12 — Airbnb's own ceiling per request, and months: 13 is a 400 reading "months: Must be -1 (the maximum) or between 1 and 12" — with -1 meaning that maximum. Default 3 months. Measured: {"listing":"33579922"} returned 200 in 0.36s with pagesFetched 1 and 91 nights; months -1 returned 365 nights, still one page.
+- Read the booking-window note before reading a run of closed nights as a closure. Every availability response carries it verbatim: "Dates beyond the host's own booking window come back marked unavailable rather than omitted — a long unbroken run of closed nights near the end of this window usually means the window, not a closure." Every night asked for comes back, so a host who has opened four months still returns months five through twelve when twelve are requested, marked available false and indistinguishable from a booked night. A solid block of closed nights running to endDate is the edge of what the host has opened, not a fully booked property; scattered closed nights inside an open range are real closures.
+- A closed night that still allows checkout is the far end of a booked stay: available false with availableForCheckout true and availableForCheckin false is somebody else's last night — a stay can end on it, none can start on it. That pairing is how you find where a booking ends; a 365-night pull on one measured listing had 19 of them.
+- There is no per-night pricing on listing-availability. It says which nights are open and how long a stay has to be; listing-detail with checkIn and checkOut is what prices a stay. bookable is null on nights already past.
+- A listing id that names nothing is a 404 with a message — {"error":"no listing was found for id \"1\""} — not a 503. A wrong id is a wrong request, so there is nothing to retry.
+- 1 credit per page fetched, reported as pagesFetched; a page costs the same whether it comes back full or half empty, and a review walk stops early when limit is reached. URL reading is free and reports pagesFetched 0. Measured against production on 17 September 2026 over three runs each: a one-page Lisbon search 1.6-1.9s with 18 listings, a listing read 0.96-1.19s, ten reviews 0.53-0.58s, three months of calendar 0.36s with 91 nights, a link read in about 0.10s. A full year of availability is one page, the same single credit as the three-month default. No Airbnb account is required.
+- Documentation: https://fetchlayer.dev/documentation/airbnb
+
+## Booking.com API
+- Four routes: search properties for a destination and a stay, read one property in full, read a property's guest reviews, and read any Booking.com link for free. Every route is a POST with a strict JSON body — an unknown field is a 400 naming it, {"error":"Unrecognized key: \"sortBy\""}.
+- search-hotels prices every bookable room option, not just the property. A result carries price for the cheapest bookable stay and roomOptions[], each with its own price, originalPrice, occupancy, freeCancellationUntil, mealPlan and hasCrib. Money is {amount, currency} — a number and a currency code, never a display string to unpick. A Lisbon search for 15-18 October returned 21 properties, all 21 priced, from €434.00 to €1,216. "The cheapest room in this city that sleeps three, includes breakfast and is still cancellable next week" is a filter over one response rather than four more calls.
+- Dates are optional and the response says which stay it priced. Without checkIn/checkOut the search still prices, using a stay window it chooses, and reports that window back on checkIn/checkOut and in notes[]: "No check-in/check-out was given, so this search used a default stay this service chose (2026-10-17 to 2026-10-18). Pass checkIn and checkOut to price a specific stay." A price is never silently for dates the caller did not ask about.
+- hotel-detail does not price a stay, deliberately, and says so when given dates: "This route does not return a live price for this stay. Use search-hotels with the same destination and dates to get this property's priced room options." It is the catalogue read — rooms with name, description, sizeSquareMeters, bedConfiguration, occupancy and photos, plus amenities, languagesSpoken, photos, starRating and the property's own check-in and check-out windows.
+- One caveat worth stating plainly: on hotel-detail the aggregate reviewScore comes back {average: null, count: null, label: null} while reviewScoreBreakdown carries all seven category scores in full. Measured on two unrelated properties. The headline number is populated on search results ({average: 7.9, count: 17, label: "Good"}) and on hotel-reviews, which reports totalReviewCount alongside the category scores. Category detail from detail; the single number from a search row or a reviews call.
+- hotel-reviews reports its own completeness. totalReviewCount is the property's full review count, reviewCount is how many came back, hasMore is the boolean, and notes[] says it in words: "These are 10 of the 3854 reviews the source reports for this property." plus "More reviews are available. Continue with nextCursor." A caller can tell a sample from a complete set without a second call, so an average over ten of 3,854 is never mistaken for the property's score.
+- A review keeps what the guest liked and what they disliked as separate fields — positiveText and negativeText, either of which may be null — in the language the guest wrote it, with language beside it and nothing machine-translated over it. Alongside them: the guest's score, the stayCheckIn/stayCheckOut dates and nights the review refers to, the roomType they stayed in, reviewer {name, countryCode, countryName, travelerType} (e.g. "Couple", "Family with young children"), and the property's hostResponse where there is one. Counting complaints is a filter on one field rather than sentiment analysis over a paragraph that mixes both.
+- categoryScores splits a property's rating seven ways — Staff, Facilities, Cleanliness, Comfort, Value for money, Location, Free Wifi — each {category, label, average}. One measured Paris hotel scored Location 9.44 against Facilities 7.82, a gap a single headline number hides entirely.
+- Paging is driven by hasMore and nextCursor, never by arithmetic on resultsTotal. resultsTotal (2403 on a Lisbon search) is how many properties Booking.com reports for the destination, not a promise they can all be walked: one measured query returned 26 with hasMore true and the same query later returned 21 with hasMore false. A page is about 25 properties, and hotelCount is what actually arrived.
+- A property id that names nothing is a 404 with a message — {"error":"no property was found for \"zz/no-such-hotel-xyz\""} — not a 503. A wrong id is a wrong request, so there is nothing to retry.
+- 1 credit per page fetched, reported as pagesFetched; a review walk stops early when limit is reached. URL reading is free and reports pagesFetched 0. Measured against production on 17 September 2026 over three runs each: a one-page Lisbon search 3.61-3.94s with 21 priced properties, a property read 3.62-3.93s, ten reviews 4.28-4.49s with all seven category scores, three pages of 60 reviews 6.14s, a link read in 65-130ms. No Booking.com account is required.
+- Documentation: https://fetchlayer.dev/documentation/booking
+
+## Flight Search API
+- One route, one call: give it a route and a date and get back every itinerary for it, each priced. There is no paging and no cursor to walk. POST with a strict JSON body — an unknown field is a 400 naming it.
+- Measured against production on 17 September 2026: JFK-LHR one way returned 48 itineraries, all 48 priced; DUB-STN 18 of 18; a LAX-NRT round trip for two adults 18 of 18; a nonstop business-class JFK-LHR search 44 of 44. Coverage spans full-service and low-cost carriers side by side — DUB-STN returned Ryanair, Ryanair UK and Turkish Airlines together, and LAX-NRT returned United, JAL, ANA and Philippine Airlines.
+- price is {amount, currency, formatted} and priceType says what the number covers, "one_way" or "round_trip_total". Pass currency to price everything in one.
+- A round trip prices the whole trip but does not itemize the return. Give returnDate and priceType comes back "round_trip_total" while inbound is null: each outbound option is priced against its cheapest matching return, and that return flight is not described. The total is real; the return leg's times are not in the response. For a one-way search, omit returnDate — there is no implicit return window.
+- Read stops, not segments.length. A one-stop itinerary can arrive as a single segments[] entry; stops is the authoritative count and layovers[] carries the detail — {airportCode, airportName, city, durationMinutes}. Measured on a LAX-NRT option: one segment, stops 1, and a 125-minute layover at Manila (MNL). Counting segments would call that a nonstop.
+- No matches is a 200, not an error: itineraries [], itineraryCount 0 and a note saying so in words, "No itineraries were found for these dates and filters." Measured on DUB-STN with nonstopOnly and cabinClass "first". There is nothing to retry — the filters are usually tighter than the route supports.
+- Every response carries scrapedAt, an ISO timestamp for when the fares were quoted. Fares move constantly, so cite that timestamp rather than implying a price holds.
+- Parameters: origin, destination (three-letter airport codes) and departureDate (YYYY-MM-DD) are required; returnDate, adults (1-9), children (0-9), infants (0-9), cabinClass (economy, premium_economy, business, first), nonstopOnly and currency are optional. Errors name the field: {"error":"origin: must be a 3-letter airport code"} and {"error":"departureDate \"2020-01-01\" is in the past"}.
+- Each itinerary carries id, outbound, inbound, price, priceType and airlines[]; each leg carries segments[] — the operating airline, departure and arrival airport codes and full names, times and dates — plus stops, layovers[] and durationMinutes.
+- 1 credit per search, reported as pagesFetched, whether it returns 48 itineraries or none. Measured 1.34-2.84s on JFK-LHR, 1.67-1.86s on DUB-STN, 1.68-2.76s on the LAX-NRT round trip and 1.78s on the nonstop business-class search.
+- Documentation: https://fetchlayer.dev/documentation/flights
+
+## TikTok API
+- Account profile: one public account, named by username, userId or secUid: bio, avatar, verification and organization flags, creation date, bio link, and stats — follower, following, like, video and friend counts. These are the exact published figures, not the rounded ones shown on the page, so a follower count comes back as 1719888 rather than 1.7M. region is the account's registered country or region: null with a note on the first request for an account, filled on later ones (kept 90 days); for it at once, read accountRegion off a video with include ["exactStats"]. postingRegion is where the account's recent videos were posted (null with a note on the first request for an account; ask again shortly). Counts are as TikTok shows them to US viewers and can differ slightly between requests.
+- Account videos: the videos an account has posted, sorted by latest, popular or oldest, with the account's profile returned alongside them so listing posts does not also need a profile call. At most 35 a page. A private account returns no videos, with the note "This account is private, so its posts are not public."
+- Video detail: one video in full by id or URL. Search: videos matching a keyword, in TikTok's own ranking for the term. Hashtag videos: the feed under a tag, plus the tag's own id, description, cover and exact view and video counts; at most 30 a page, and a hashtag that does not exist is a 404. TikTok lists a hashtag popular first, not by date, and only its top 170-200 or so posts. Optional since, knownIds, lastPollAt and within (a window such as 7d) return only posts new to you, each with newlyPublished, plus an incremental summary; billing is unchanged. A hashtag can be named by hashtagId; requireHashtag keeps only posts carrying the tag; stopReason says why the list stopped (end, cut_short — with a cursor when posts came back — or limit/pages/time/interrupted with a cursor). pollState ("new", then each response's nextPollState) remembers what you already have, so knownIds is not needed. includeSearch adds posts a search for the hashtag finds that the list does not, marked source "search".
+- Comments: text, timestamp, like and reply counts, pinned and author flags, and each commenter's profile. `replies` holds only the replies TikTok inlines with a comment; `replyCount` reports the true total, and `totalCount` is TikTok's published figure for the video, which can exceed what paging reaches.
+- Video transcript: the transcript TikTok publishes for a video, as full text plus segments with start and end times in seconds. 68% of 185 videos measured across 14 languages had one; a photo carousel has 0% by nature, because there is no audio. The translations are free — a non-English video usually carries an English track alongside its original, so one request returns both. A video with none is a normal 200 with transcript.available false, an empty tracks list, durationSeconds still filled in, and a note saying why; do not retry it.
+- One video shape on every route: id, url, description, createdAt, durationSeconds, isPhotoPost, coverUrl, assets, stats (playCount, diggCount, commentCount, shareCount, collectCount, repostCount), roundedStats, author, music, hashtags, mentions, mentionedUsers, hashtagDetails, isAd, isPaidPartnership, isShoppable, commercialSignals (TikTok's own raw values behind those flags), createdRegion and language. Hashtags and mentions are TikTok's own tags, not parsed out of the caption.
+- Views, likes, comments and shares are published rounded once they reach 10,000 (to the nearest 100 from 10,000, 100,000 from 1M, 100M from 1B); roundedStats names which counters on a record are rounded, and empty means exact. Saves and every account and hashtag count are exact.
+- Video detail with include ["exactStats"] also returns the exact counts behind the rounded ones (views, likes, comments, shares and saves as whole numbers, e.g. 7,856,927 rather than 7,900,000), plus the ad flag isAdsNative, the numeric brandedContentType and accountRegion, the region the account is registered in; the same include fills every video on a user-videos, search or hashtag page. A video not filled is a normal 200 with those fields null and a note; about 2 to 5 seconds more when filled (up to about 25 in the rare case they cannot be), no extra charge. Exact counts are filled for nearly all posts — about 19 in 20 resolve, most on the first ask. The rest come back null with a note; asking again later can fill them.
+- mentionedUsers and hashtagDetails give each tag's ids and its start and end in the caption, in UTF-16 code units; an account tag's text is often its display name, so identify it by username, userId or secUid. A mentioned user's unresolved is null when the tag leads to an account, account_unavailable when TikTok names only its userId (deleted, banned or otherwise unavailable; username and secUid null), and not_published when TikTok published no account id. isAd means TikTok runs or ran the post as an ad, not the creator's own #ad; isPaidPartnership is TikTok's paid-partnership label; isShoppable marks a shop video. createdRegion is where that one post was made, filled on video detail, and on account, search and hashtag listings with include: ["createdRegion"] (a few seconds more; without timeoutMs filling stops about 20 seconds in, and unfilled videos stay null with a note).
+- Media: a video's downloadUrl delivers the MP4 without the TikTok watermark, with Range support; it is null when the creator has turned off downloads (403 "The creator has turned off downloads for this video."). An image's downloadUrl delivers the photo-carousel frame or cover. Each request to media costs 1 credit, a range request included.
+- Search offers no sort order and no date filter, because TikTok offers a public caller neither; passing one is a 400 naming the field rather than a parameter that is accepted and ignored.
+- 1 credit per page of results fetched, reported as pagesFetched; hashtag videos are the exception, at 1 credit per page of up to 30 posts delivered, minimum 1 credit per request, stated as credits on each response. nextCursor is an opaque token to pass back unchanged with the same request, and continuing never repeats or skips a video; a cursor from another route, account, hashtag, search term or video is a 400. Comments come at most 50 a page and search about 12. URL parsing is free. Up to 500 videos, 500 comments and 20 pages in one request. Retry 503, not 400. Every response carries a notes array, and an empty result always comes with a note explaining it.
+- Documentation: https://fetchlayer.dev/documentation/tiktok
+
+## Optional
+- [npm SDK](https://www.npmjs.com/package/@fetchlayer/reddit): Official TypeScript client for the Reddit API.
+- [GitHub](https://github.com/fetchlayer-dev/reddit-scraper-js): Open-source SDK source.
