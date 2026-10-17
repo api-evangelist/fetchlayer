@@ -1,0 +1,24 @@
+{
+  "provider": "fetchlayer",
+  "sources": [
+    "_ae-authored/fetchlayer-openapi-generated.yml"
+  ],
+  "outputs": [
+    "fetchlayer-airbnb-api-openapi.yml",
+    "fetchlayer-bing-api-openapi.yml",
+    "fetchlayer-douyin-api-openapi.yml",
+    "fetchlayer-duckduckgo-api-openapi.yml",
+    "fetchlayer-ebay-api-openapi.yml",
+    "fetchlayer-temu-api-openapi.yml",
+    "fetchlayer-weibo-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "fetchlayer-openapi-generated.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: written (+7 apis, 8 total)"
+  ],
+  "skipped": []
+}

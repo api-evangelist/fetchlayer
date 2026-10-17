@@ -1,0 +1,105 @@
+openapi: 3.2.0
+info:
+  title: HootCodes eBay API
+  version: '2026-10-16'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-16: 7 operation(s) read from 6 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; HootCodes has published no machine-readable contract that the pipeline could find. Engine: local.'
+  x-evidence-tiers:
+    code-example: 8
+    documentation: -1
+    pages-with-code: 6
+    pages-read: 6
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-16'
+  x-generator: generate-contract-from-docs.py
+  x-engine: local
+  x-sources:
+  - https://fetchlayer.dev/ebay-api
+  - https://fetchlayer.dev/serp-api
+  - https://fetchlayer.dev/temu-api
+  - https://fetchlayer.dev/weibo-api
+  - https://fetchlayer.dev/airbnb-api
+  - https://fetchlayer.dev/douyin-api
+servers:
+- url: https://api.fetchlayer.dev
+security:
+- bearer: []
+tags:
+- name: Ebay
+paths:
+  /ebay/{ebayid}:
+    post:
+      operationId: post_ebay_ebayid
+      tags:
+      - Ebay
+      summary: 'One listing in full: price in US dollars and in the seller’s currency, exact…'
+      description: Provides detailed information for a single eBay listing.
+      x-source: https://fetchlayer.dev/ebay-api
+      parameters:
+      - name: ebayid
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostEbayEbayidRequest'
+      responses:
+        '201':
+          description: Success (shape read from the example response on the page)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostEbayEbayidResponse'
+      x-evidence:
+        kind: documentation
+        collapsed_from: 6 example path(s) differing only at ebayId
+components:
+  schemas:
+    PostEbayEbayidResponse:
+      type: object
+      properties:
+        mode:
+          type: string
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              itemId:
+                type: string
+              status:
+                type: string
+              price:
+                type: object
+                properties:
+                  amount:
+                    type: number
+                  currency:
+                    type: string
+              buyingFormat:
+                type: string
+              freeShipping:
+                type: boolean
+        activeCount:
+          type: integer
+        endedCount:
+          type: integer
+        notes:
+          type: array
+          items: {}
+    PostEbayEbayidRequest:
+      type: object
+      properties:
+        listings:
+          type: array
+          items:
+            type: string
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer

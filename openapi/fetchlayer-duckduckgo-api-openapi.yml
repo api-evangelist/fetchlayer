@@ -1,0 +1,107 @@
+openapi: 3.2.0
+info:
+  title: HootCodes Duckduckgo API
+  version: '2026-10-16'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-16: 7 operation(s) read from 6 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; HootCodes has published no machine-readable contract that the pipeline could find. Engine: local.'
+  x-evidence-tiers:
+    code-example: 8
+    documentation: -1
+    pages-with-code: 6
+    pages-read: 6
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-16'
+  x-generator: generate-contract-from-docs.py
+  x-engine: local
+  x-sources:
+  - https://fetchlayer.dev/ebay-api
+  - https://fetchlayer.dev/serp-api
+  - https://fetchlayer.dev/temu-api
+  - https://fetchlayer.dev/weibo-api
+  - https://fetchlayer.dev/airbnb-api
+  - https://fetchlayer.dev/douyin-api
+servers:
+- url: https://api.fetchlayer.dev
+security:
+- bearer: []
+tags:
+- name: Duckduckgo
+paths:
+  /duckduckgo/search:
+    post:
+      operationId: post_duckduckgo_search
+      tags:
+      - Duckduckgo
+      summary: POST /duckduckgo/search
+      x-source: https://fetchlayer.dev/serp-api
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostDuckduckgoSearchRequest'
+      responses:
+        '201':
+          description: Success (shape read from the example response on the page)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostDuckduckgoSearchResponse'
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: 'curl -X POST  https://api.fetchlayer.dev/duckduckgo/search  -H "Authorization: Bearer ss-your-key"  -H "Content-Type: application/json"  -d ''{"query":"open source crm","limit":10}'' Fields a DuckDuckGo search returns results ads zeroClick Empty or null when the engine doesn’t show it for that query. One page read, one request. $0.00199 at full price. Captured 15 September 2026. Every field in the D'
+components:
+  schemas:
+    PostDuckduckgoSearchResponse:
+      type: object
+      properties:
+        resultType:
+          type: string
+        region:
+          type: string
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              position:
+                type: integer
+              title:
+                type: string
+              domain:
+                type: string
+              date:
+                type: string
+                format: date-time
+        ads:
+          type: array
+          items:
+            type: object
+            properties:
+              title:
+                type: string
+              domain:
+                type: string
+        zeroClick:
+          type:
+          - string
+          - 'null'
+        endOfResults:
+          type: boolean
+        pagesScraped:
+          type: integer
+        nextCursor:
+          type: string
+    PostDuckduckgoSearchRequest:
+      type: object
+      properties:
+        query:
+          type: string
+        limit:
+          type: integer
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer

@@ -1,0 +1,115 @@
+openapi: 3.2.0
+info:
+  title: HootCodes Bing API
+  version: '2026-10-16'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-16: 7 operation(s) read from 6 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; HootCodes has published no machine-readable contract that the pipeline could find. Engine: local.'
+  x-evidence-tiers:
+    code-example: 8
+    documentation: -1
+    pages-with-code: 6
+    pages-read: 6
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-16'
+  x-generator: generate-contract-from-docs.py
+  x-engine: local
+  x-sources:
+  - https://fetchlayer.dev/ebay-api
+  - https://fetchlayer.dev/serp-api
+  - https://fetchlayer.dev/temu-api
+  - https://fetchlayer.dev/weibo-api
+  - https://fetchlayer.dev/airbnb-api
+  - https://fetchlayer.dev/douyin-api
+servers:
+- url: https://api.fetchlayer.dev
+security:
+- bearer: []
+tags:
+- name: Bing
+paths:
+  /bing/{bingid}:
+    post:
+      operationId: post_bing_bingid
+      tags:
+      - Bing
+      summary: POST /bing/rank-check
+      x-source: https://fetchlayer.dev/serp-api
+      parameters:
+      - name: bingid
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostBingBingidRequest'
+      responses:
+        '201':
+          description: Success (shape read from the example response on the page)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostBingBingidResponse'
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl -X POST  https://api.fetchlayer.dev/bing/rank-check  -H \"Authorization: Bearer ss-your-key\"  -d '{\"query\":\"reddit api\",\"target\":\"fetchlayer.dev\",\"depth\":200}' {\n \"resultType\" : \"rank-check\" ,\n \"query\" : \"reddit api\" ,\n \"market\" : \"en-US\" ,\n \"target\" : {\n \"input\" : \"fetchlayer.dev\" ,\n \"type\" : \"domain\" \n },\n \"found\" : true ,\n \"position\" : 124 ,\n \"matches\" : [\n {\n \"position\" : 124 ,\n \"page\" : 1"
+        collapsed_from: 2 example path(s) differing only at bingId
+components:
+  schemas:
+    PostBingBingidResponse:
+      type: object
+      properties:
+        resultType:
+          type: string
+        query:
+          type: string
+        market:
+          type: string
+        target:
+          type: object
+          properties:
+            input:
+              type: string
+            type:
+              type: string
+        found:
+          type: boolean
+        position:
+          type: integer
+        matches:
+          type: array
+          items:
+            type: object
+            properties:
+              position:
+                type: integer
+              page:
+                type: integer
+              url:
+                type: string
+        depth:
+          type: integer
+        depthScanned:
+          type: integer
+        serpPagesFetched:
+          type: integer
+        pagesScraped:
+          type: integer
+    PostBingBingidRequest:
+      type: object
+      properties:
+        query:
+          type: string
+        target:
+          type: string
+        depth:
+          type: integer
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer

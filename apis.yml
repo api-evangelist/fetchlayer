@@ -100,21 +100,22 @@ common:
 
 apis:
 - name: FetchLayer API
-  description: Social media scraping API suite providing programmatic access to content, profiles, comments, and analytics across multiple platforms.
+  description: >-
+    Social media scraping API suite providing programmatic access to content, profiles, comments, and
+    analytics across multiple platforms.
   humanURL: https://fetchlayer.dev/documentation
   baseURL: null
   aid: fetchlayer:fetchlayer-api-2
-- aid: fetchlayer:fetchlayer-api
-  name: HootCodes API
-  description: 'HootCodes API as documented publicly: 7 operations. Contract generated from the documentation by API Evangelist (2026-10-16);
-
-    not the provider''s own document.'
-  humanURL: https://fetchlayer.dev/ebay-api
+- aid: fetchlayer:fetchlayer-airbnb-api
+  name: HootCodes Airbnb API
+  description: The Airbnb API from HootCodes — 1 operation(s) for airbnb.
+  humanURL: https://fetchlayer.dev/documentation
   baseURL: https://api.fetchlayer.dev
+  tags:
+  - Airbnb
   properties:
   - type: OpenAPI
-    url: openapi/_ae-authored/fetchlayer-openapi-generated.yml
-    x-provenance: generated
+    url: openapi/fetchlayer-airbnb-api-openapi.yml
   - type: JSONSchema
     url: json-schema/fetchlayer-post-bing-bingid-response-schema.json
   - type: JSONSchema
@@ -127,7 +128,138 @@ apis:
     url: json-schema/fetchlayer-post-ebay-ebayid-response-schema.json
   - type: JSONSchema
     url: json-schema/fetchlayer-post-temu-temuid-request-schema.json
-
+- aid: fetchlayer:fetchlayer-bing-api
+  name: HootCodes Bing API
+  description: The Bing API from HootCodes — 1 operation(s) for bing.
+  humanURL: https://fetchlayer.dev/documentation
+  baseURL: https://api.fetchlayer.dev
+  tags:
+  - Bing
+  properties:
+  - type: OpenAPI
+    url: openapi/fetchlayer-bing-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-bing-bingid-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-duckduckgo-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-douyin-douyinid-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-temu-temuid-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-ebay-ebayid-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-temu-temuid-request-schema.json
+- aid: fetchlayer:fetchlayer-douyin-api
+  name: HootCodes Douyin API
+  description: The Douyin API from HootCodes — 1 operation(s) for douyin.
+  humanURL: https://fetchlayer.dev/documentation
+  baseURL: https://api.fetchlayer.dev
+  tags:
+  - Douyin
+  properties:
+  - type: OpenAPI
+    url: openapi/fetchlayer-douyin-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-bing-bingid-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-duckduckgo-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-douyin-douyinid-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-temu-temuid-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-ebay-ebayid-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-temu-temuid-request-schema.json
+- aid: fetchlayer:fetchlayer-duckduckgo-api
+  name: HootCodes Duckduckgo API
+  description: The Duckduckgo API from HootCodes — 1 operation(s) for duckduckgo.
+  humanURL: https://fetchlayer.dev/documentation
+  baseURL: https://api.fetchlayer.dev
+  tags:
+  - Duckduckgo
+  properties:
+  - type: OpenAPI
+    url: openapi/fetchlayer-duckduckgo-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-bing-bingid-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-duckduckgo-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-douyin-douyinid-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-temu-temuid-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-ebay-ebayid-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-temu-temuid-request-schema.json
+- aid: fetchlayer:fetchlayer-ebay-api
+  name: HootCodes eBay API
+  description: The Ebay API from HootCodes — 1 operation(s) for ebay.
+  humanURL: https://fetchlayer.dev/documentation
+  baseURL: https://api.fetchlayer.dev
+  tags:
+  - Ebay
+  properties:
+  - type: OpenAPI
+    url: openapi/fetchlayer-ebay-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-bing-bingid-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-duckduckgo-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-douyin-douyinid-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-temu-temuid-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-ebay-ebayid-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-temu-temuid-request-schema.json
+- aid: fetchlayer:fetchlayer-temu-api
+  name: HootCodes Temu API
+  description: The Temu API from HootCodes — 1 operation(s) for temu.
+  humanURL: https://fetchlayer.dev/documentation
+  baseURL: https://api.fetchlayer.dev
+  tags:
+  - Temu
+  properties:
+  - type: OpenAPI
+    url: openapi/fetchlayer-temu-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-bing-bingid-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-duckduckgo-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-douyin-douyinid-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-temu-temuid-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-ebay-ebayid-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-temu-temuid-request-schema.json
+- aid: fetchlayer:fetchlayer-weibo-api
+  name: HootCodes Weibo API
+  description: The Weibo API from HootCodes — 1 operation(s) for weibo.
+  humanURL: https://fetchlayer.dev/documentation
+  baseURL: https://api.fetchlayer.dev
+  tags:
+  - Weibo
+  properties:
+  - type: OpenAPI
+    url: openapi/fetchlayer-weibo-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-bing-bingid-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-duckduckgo-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-douyin-douyinid-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-temu-temuid-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-ebay-ebayid-response-schema.json
+  - type: JSONSchema
+    url: json-schema/fetchlayer-post-temu-temuid-request-schema.json
 x-coverage:
   state: unreadable
   reason: no-machine-readable-spec

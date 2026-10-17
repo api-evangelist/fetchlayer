@@ -1,0 +1,116 @@
+openapi: 3.2.0
+info:
+  title: HootCodes Temu API
+  version: '2026-10-16'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-16: 7 operation(s) read from 6 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; HootCodes has published no machine-readable contract that the pipeline could find. Engine: local.'
+  x-evidence-tiers:
+    code-example: 8
+    documentation: -1
+    pages-with-code: 6
+    pages-read: 6
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-16'
+  x-generator: generate-contract-from-docs.py
+  x-engine: local
+  x-sources:
+  - https://fetchlayer.dev/ebay-api
+  - https://fetchlayer.dev/serp-api
+  - https://fetchlayer.dev/temu-api
+  - https://fetchlayer.dev/weibo-api
+  - https://fetchlayer.dev/airbnb-api
+  - https://fetchlayer.dev/douyin-api
+servers:
+- url: https://api.fetchlayer.dev
+security:
+- bearer: []
+tags:
+- name: Temu
+paths:
+  /temu/{temuid}:
+    post:
+      operationId: post_temu_temuid
+      tags:
+      - Temu
+      summary: POST /temu/price-check
+      x-source: https://fetchlayer.dev/temu-api
+      parameters:
+      - name: temuid
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostTemuTemuidRequest'
+      responses:
+        '201':
+          description: Success (shape read from the example response on the page)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostTemuTemuidResponse'
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl -X POST  https://api.fetchlayer.dev/temu/price-check  -H \"Authorization: Bearer ss-your-key\"  -H \"Content-Type: application/json\"  -d '{\"market\":\"US\",\"items\":[\n {\"goodsId\":\"607033881415363\",\n \"skuId\":\"117585735607558\"}]}' Response {\n \"market\" : { \"code\" : \"US\" , \"currency\" : \"USD\" },\n \"items\" : [{\n \"skuId\" : \"117585735607558\" ,\n \"status\" : \"ok\" ,\n \"price\" : { \"amount\" : 18.39 , \"currency\" : \""
+        collapsed_from: 3 example path(s) differing only at temuId
+components:
+  schemas:
+    PostTemuTemuidRequest:
+      type: object
+      properties:
+        market:
+          type: string
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              goodsId:
+                type: string
+              skuId:
+                type: string
+    PostTemuTemuidResponse:
+      type: object
+      properties:
+        market:
+          type: object
+          properties:
+            code:
+              type: string
+            currency:
+              type: string
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              skuId:
+                type: string
+              status:
+                type: string
+              price:
+                type: object
+                properties:
+                  amount:
+                    type: number
+                  currency:
+                    type: string
+              availability:
+                type: string
+              variantLookedUp:
+                type: boolean
+        okCount:
+          type: integer
+        notes:
+          type: array
+          items: {}
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer

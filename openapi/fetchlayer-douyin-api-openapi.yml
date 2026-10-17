@@ -1,0 +1,108 @@
+openapi: 3.2.0
+info:
+  title: HootCodes Douyin API
+  version: '2026-10-16'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-16: 7 operation(s) read from 6 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; HootCodes has published no machine-readable contract that the pipeline could find. Engine: local.'
+  x-evidence-tiers:
+    code-example: 8
+    documentation: -1
+    pages-with-code: 6
+    pages-read: 6
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-16'
+  x-generator: generate-contract-from-docs.py
+  x-engine: local
+  x-sources:
+  - https://fetchlayer.dev/ebay-api
+  - https://fetchlayer.dev/serp-api
+  - https://fetchlayer.dev/temu-api
+  - https://fetchlayer.dev/weibo-api
+  - https://fetchlayer.dev/airbnb-api
+  - https://fetchlayer.dev/douyin-api
+servers:
+- url: https://api.fetchlayer.dev
+security:
+- bearer: []
+tags:
+- name: Douyin
+paths:
+  /douyin/{douyinid}:
+    post:
+      operationId: post_douyin_douyinid
+      tags:
+      - Douyin
+      summary: Every video in a collection (合集), in episode order, with the collection’s total…
+      x-source: https://fetchlayer.dev/douyin-api
+      parameters:
+      - name: douyinid
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostDouyinDouyinidRequest'
+      responses:
+        '201':
+          description: Success (shape read from the example response on the page)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostDouyinDouyinidResponse'
+      x-evidence:
+        kind: documentation
+        collapsed_from: 10 example path(s) differing only at douyinId
+components:
+  schemas:
+    PostDouyinDouyinidResponse:
+      type: object
+      properties:
+        video:
+          type: object
+          properties:
+            id:
+              type: string
+            kind:
+              type: string
+            createdAt:
+              type: string
+              format: date-time
+            stats:
+              type: object
+              properties:
+                likes:
+                  type: integer
+                comments:
+                  type: integer
+                shares:
+                  type: integer
+                saves:
+                  type: integer
+            author:
+              type: object
+              properties:
+                nickname:
+                  type: string
+                followerCount:
+                  type: integer
+            collection:
+              type: object
+              properties:
+                name:
+                  type: string
+                episode:
+                  type: integer
+    PostDouyinDouyinidRequest:
+      type: object
+      properties:
+        video:
+          type: string
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
