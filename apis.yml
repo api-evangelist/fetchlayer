@@ -27,6 +27,11 @@ tags:
 - Company
 - Social Media
 - Data Extraction
+- Software-as-a-Service
+tags_raw:
+- Company
+- Social Media
+- Data Extraction
 - API
 - SaaS
 
@@ -178,6 +183,8 @@ apis:
   humanURL: https://fetchlayer.dev/documentation
   baseURL: https://api.fetchlayer.dev
   tags:
+  - DuckDuckGo
+  tags_raw:
   - Duckduckgo
   properties:
   - type: OpenAPI
@@ -200,6 +207,8 @@ apis:
   humanURL: https://fetchlayer.dev/documentation
   baseURL: https://api.fetchlayer.dev
   tags:
+  - eBay
+  tags_raw:
   - Ebay
   properties:
   - type: OpenAPI
